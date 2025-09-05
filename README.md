@@ -17,12 +17,7 @@ This repository contains my personal NixOS configuration. It's not recommended  
 
 This configuration is based on NixOS version 25.05.
 
-*   [List key aspects of your config, e.g., User environment, Network setup, Shell configuration, etc.]
-*   [Example:  A custom shell environment with aliases and prompt.]
-*   [Example:  Network configuration using DHCP and static IP.]
-*   [Example:  Installation of essential development tools (e.g., Python, Node.js).]
-
-**Note:** This configuration is for a single user and assumes my Desktop.
+**Note:** This configuration is for a single user and assumes my Desktop only.
 
 ## Configuration Files
 

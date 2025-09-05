@@ -11,6 +11,9 @@
   imports = [
     # include NixOS-WSL modules
     <nixos-wsl/modules>
+    ./virtualisation-wsl.nix
+    ./nvidia-wsl.nix
+    ./packages-common.nix
   ];
 
   wsl.enable = true;
@@ -37,7 +40,6 @@
     description = "Alex";
     extraGroups = [ "networkmanager" "wheel" "render" "video" "libvirt" ];
     packages = with pkgs; [
-      zsh
     ];
   };
   
@@ -80,17 +82,6 @@
     enable32Bit = true;
   };
   
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = false;
-    open = false;
-    #nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-  
-  virtualisation.containers.enable = true;
-  
 #    extraPackages = with pkgs; [
 #      mesa.drivers
 #      libvdpau-va-gl
@@ -110,71 +101,9 @@
        runScript = "fish"; 
        extraOutputsToInstall = ["dev"];
    }))  
-    nix-index
-    cachix
-    binutils
-    direnv
-    exfat
-    nox
-    patchelf
-    pciutils
-    wget
-    curl
-    jq
-    mc
-    htop
-    rsync
-    neofetch
-    git
-    gdal
-    gperftools    
-    # dev
-    conda
-    go
-    llvmPackages_latest.bintools
-    llvmPackages_latest.clang
-    llvmPackages_latest.lldb
-    llvmPackages_latest.stdenv
-    maven
-    nil
-    ninja
-    nodejs
-    protobuf
-    gcc
-    libgcc
-    clang-tools
-    cmake
-    jre_minimal
-    jdk    
-  # Arhives
-    unrar
-    unzip
-    atool
-    zip
-    p7zip   
-  # media
-    ffmpeg
-    yt-dlp
-    sox
-  # misc
     nvtopPackages.nvidia
-    dive
-    podman-tui
-    podman-compose
-    libGL
+    
   ];
-
-  virtualisation = {
-    podman = {
-      enable = true;
-
-      # Create a 'docker' alias for podman, to use it as a drop in replacement
-      dockerCompat = true;
-
-      # Required for containers under podman-compose to be able to talk to each other
-      defaultNetwork.settings.dns_enabled = true;
-    };
-  };
 
   environment.sessionVariables = {
     #CUDA_PATH = "${pkgs.cudatoolkit}";

@@ -1,2 +1,2 @@
 #!/bin/bash
-ln -s ~/projects/nix-config/configuration.nix /etc/nixos/configuration.nix
+sudo ln -sf ~/projects/nix-config/config/configuration.nix /etc/nixos/configuration.nix

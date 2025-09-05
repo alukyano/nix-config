@@ -25,7 +25,7 @@
      extraOutputsToInstall = ["dev"];
    }))
    #Packages
-
+   nvtopPackages.nvidia
   ])
   ++ lib.optionals nvidiaEnabled [
     (config.hardware.nvidia.package.settings.overrideAttrs (oldAttrs: {

@@ -1,15 +1,15 @@
 { config, lib, pkgs, ... }:
 {
-    hardware.nvidia = {
-        modesetting.enable = true;
-        powerManagement.enable = true;
-        #powerManagement.finegrained = true;
-        open = false;
-        nvidiaSettings = true;
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    #powerManagement.finegrained = true;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
     
-    services.xserver.videoDrivers = [ "nvidia" ];  
+  services.xserver.videoDrivers = [ "nvidia" ];  
     
   environment.systemPackages = 
   let

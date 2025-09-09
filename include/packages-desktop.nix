@@ -64,5 +64,8 @@
         simplescreenrecorder
         xnviewmp
         loupe
+        inkscape-with-extensions
+        gimp-with-plugins
+        evince
    ];
 }

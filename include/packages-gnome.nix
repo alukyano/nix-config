@@ -4,6 +4,8 @@
       # gnome
         gnome-terminal
         gnome-system-monitor
+        file-roller
+        gnome-disk-utility
         nautilus  
         gedit 
         gnome-tweaks

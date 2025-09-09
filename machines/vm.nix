@@ -10,6 +10,7 @@
       ../include/packages-desktop.nix
       ../include/packages-gnome.nix
       ../include/bash.nix
+      ../include/xfce.nix
     ];
 
   system.stateVersion = "25.05";

@@ -18,7 +18,7 @@ case "$1" in
     sudo ln -sf ~/projects/nix-config/config/configuration.nix /etc/nixos/configuration.nix
     ;;
   wsl)
-    echo "Linking desktop..."
+    echo "Linking wsl..."
     cp -f ~/projects/nix-config/machines/wsl-nvidia.nix ~/projects/nix-config/config/configuration.nix
     #cp -f ~/projects/nix-config/machines/desktop-hw.nix ~/projects/nix-config/config/hardware-configuration.nix
     sudo ln -sf ~/projects/nix-config/config/configuration.nix /etc/nixos/configuration.nix

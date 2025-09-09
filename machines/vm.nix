@@ -9,7 +9,7 @@
       ../include/packages-common.nix
       ../include/packages-desktop.nix
       ../include/packages-gnome.nix
-      ../include/ai.nix
+      ../include/bash.nix
     ];
 
   system.stateVersion = "25.05";

@@ -25,8 +25,8 @@ case "$1" in
     ;;
   vm)
     echo "Linking vm..."
-    cp -f ~/projects/nix-config/machines/vmdesktop.nix ~/projects/nix-config/config/configuration.nix
-    cp -f ~/projects/nix-config/machines/vmdesktop-hw.nix ~/projects/nix-config/config/hardware-configuration.nix
+    cp -f ~/projects/nix-config/machines/vm.nix ~/projects/nix-config/config/configuration.nix
+    cp -f ~/projects/nix-config/machines/vm-hw.nix ~/projects/nix-config/config/hardware-configuration.nix
     sudo ln -sf ~/projects/nix-config/config/configuration.nix /etc/nixos/configuration.nix
    
     ;;

@@ -46,8 +46,6 @@
         cmake
         jre_minimal
         jdk
-        wine
-        winetricks
         uv
         micromamba
         #python310.withPackages

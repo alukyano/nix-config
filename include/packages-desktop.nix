@@ -37,7 +37,8 @@
         chromium
         brave
         librewolf
-        google-chrome
+        vivaldi
+        vivaldi-ffmpeg-codecs
     # GUI dev tools
         jetbrains.pycharm-community
         vscode
@@ -51,10 +52,9 @@
         sqlitebrowser
         nedit # Text editor for LARGE text files.
         freetube
-        onlyoffice-bin
         obsidian
         libreoffice
-        notepad-next
+        #notepad-next
     # Media stuff:
         vlc
         handbrake

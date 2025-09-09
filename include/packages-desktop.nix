@@ -64,8 +64,5 @@
         simplescreenrecorder
         xnviewmp
         loupe
-    # Remote Connect Applications
-        realvnc-vnc-viewer
-        remmina  
    ];
 }

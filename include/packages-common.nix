@@ -49,6 +49,7 @@
         wine
         winetricks
         uv
+        micromamba
         #python310.withPackages
     # Archives
         unrar

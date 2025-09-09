@@ -11,9 +11,9 @@
   imports = [
     # include NixOS-WSL modules
     <nixos-wsl/modules>
-    ./virtualisation-wsl.nix
-    ./nvidia-wsl.nix
-    ./packages-common.nix
+    ../include/virtualisation-wsl.nix
+    ../include/nvidia-wsl.nix
+    ../include/packages-common.nix
   ];
 
   wsl.enable = true;

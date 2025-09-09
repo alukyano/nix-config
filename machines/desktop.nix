@@ -4,15 +4,16 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./rustdesk.nix
-      ./fonts.nix
-      ./nvidia.nix
-      ./virtualisation.nix
-      ./packages-common.nix
-      ./packages-desktop.nix
-      ./packages-gnome.nix
-      ./games.nix
-      ./ai.nix
+      ../include/rustdesk.nix
+      ../include/fonts.nix
+      ../include/nvidia.nix
+      ../include/virtualisation.nix
+      ../include/packages-common.nix
+      ../include/packages-desktop.nix
+      ../include/packages-gnome.nix
+      ../include/games.nix
+      ../include/ai.nix
+      ../include/netbird.nix
     ];
 
   system.stateVersion = "25.05";
@@ -126,13 +127,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages =  [
-   #python fix
+   # python fix
     (pkgs.writeShellScriptBin "python" ''
       export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
       exec ${pkgs.python3}/bin/python "$@"
     '')
-   #Packages
-
+   # Remote Connect Applications
+     pkgs.realvnc-vnc-viewer
+     pkgs.remmina  
   ];
 
   nix.gc = {

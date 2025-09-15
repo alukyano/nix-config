@@ -38,6 +38,7 @@
   users.users.alukyano = {
     isNormalUser = true;
     description = "Alex";
+    hashedPassword = "$6$V8olEhX1KSVilxP/$PZwWTNcDA7Zw.fARC6hGVGYsOgzkwtFf3tt1Zwi2yFuHa.Ib7jiByZaDEZIEe05c9Z.RNZDiliAVX0XQxgKDP0";
     extraGroups = [ "networkmanager" "wheel" "render" "video" "libvirt" ];
     packages = with pkgs; [
     ];

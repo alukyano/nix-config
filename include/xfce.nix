@@ -50,8 +50,6 @@
       xorg.xev
       xsel
       xtitle
-      #elementary-xfce-icon-theme
-      #zuki-themes
     ];
   };
 

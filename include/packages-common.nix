@@ -47,8 +47,6 @@
         jre_minimal
         jdk
         uv
-        micromamba
-        #python310.withPackages
     # Archives
         unrar
         unzip

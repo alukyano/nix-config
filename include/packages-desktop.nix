@@ -33,7 +33,7 @@
     };
     
     services.xrdp.enable = true;
-    services.xrdp.defaultWindowManager = "${pkgs.xfce4.xfce4-session}/bin/xfce4-session"; 
+    services.xrdp.defaultWindowManager = "xfce4-session"; 
 
     environment.systemPackages = with pkgs; [
     # Browsers

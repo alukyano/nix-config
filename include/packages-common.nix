@@ -47,6 +47,7 @@
         jre_minimal
         jdk
         uv
+        zsh
     # Archives
         unrar
         unzip

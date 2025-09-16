@@ -19,7 +19,6 @@
 
     # Enable the X11 windowing system.
     services.libinput.enable = true;
-    services.gnome.gnome-remote-desktop.enable = true;
     services.xserver = {
         enable = true;
         displayManager = {
@@ -27,11 +26,15 @@
             gdm.wayland = false;
         };
         desktopManager.gnome.enable = true;
+        desktopManager.xfce.enable = true;
 
         xkb.layout = "us,ru";
         xkb.options = "grp:ctrl_shift_toggle";
     };
     
+    services.xrdp.enable = true;
+    services.xrdp.defaultWindowManager = "${pkgs.xfce4.xfce4-session}/bin/xfce4-session"; 
+
     environment.systemPackages = with pkgs; [
     # Browsers
         chromium
@@ -67,5 +70,4 @@
         inkscape-with-extensions
         gimp-with-plugins
         evince
-   ];
-}
+   ];}

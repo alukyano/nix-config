@@ -6,7 +6,7 @@
 }: {
   # ============================= User related =============================
 
-  builders-use-substitutes = true;
+  #builders-use-substitutes = true;
 
   # do garbage collection weekly to keep disk usage low
   nix.gc = {
@@ -122,22 +122,4 @@ environment.systemPackages = with pkgs; [
         ffmpeg
         yt-dlp    
    ];
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  #services.geoclue2.enable = true;
-  security.polkit.enable = true;
-
-    #udev.packages = with pkgs; [gnome-settings-daemon];
-  };
 }

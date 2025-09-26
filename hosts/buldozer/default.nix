@@ -12,7 +12,7 @@
     ../../modules/games.nix
     ../../modules/fonts.nix
     ../../modules/netbird.nix
-    ../../modules/nvidia-compute.nix
+    ../../modules/nvidia.nix
     ../../modules/rustdesk.nix
     ../../modules/remote.nix
     ../../modules/virtualisation.nix

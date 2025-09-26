@@ -6,19 +6,20 @@
 
 {
   imports = [
-    ../../modules/common.nix
-    ../../modules/xfce-desktop.nix
-    ../../modules/desktop.nix
-    ../../modules/games.nix
-    ../../modules/fonts.nix
-    ../../modules/netbird.nix
-    ../../modules/nvidia.nix
-    ../../modules/rustdesk.nix
-    ../../modules/remote.nix
-    ../../modules/virtualisation.nix
-
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+      # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+      # Include modules    
+      ../../modules/common.nix
+      ../../modules/nvidia.nix
+      ../../modules/intel.nix
+      ../../modules/xfce-desktop.nix
+      ../../modules/desktop.nix
+      ../../modules/games.nix
+      ../../modules/fonts.nix
+      ../../modules/netbird.nix
+      ../../modules/rustdesk.nix
+      ../../modules/remote.nix
+      ../../modules/virtualisation.nix
     ];
 
   
@@ -26,6 +27,9 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/nvme0n1";
   boot.loader.grub.useOSProber = true;
+
+  boot.initrd.kernelModules = [ "nvidia" ];
+  #boot.blacklistedKernelModules = [ "nouveau" ];
 
   system.stateVersion = "25.05";
 
@@ -77,55 +81,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-        nix-index
-        cachix
-        binutils
-        direnv
-        exfat
-        nox
-        ntfs3g
-        patchelf
-        pciutils
-        wget
-        curl
-        jq
-        mc
-        htop
-        rsync
-        neofetch
-        git
-        gdal
-        gperftools
-        neovim
-        imagemagick
-    # Dev
-        go
-        llvmPackages_latest.bintools
-        llvmPackages_latest.clang
-        llvmPackages_latest.lldb
-        llvmPackages_latest.stdenv
-        maven
-        nil
-        ninja
-        nodejs
-        protobuf
-        gcc
-        libgcc
-        clang-tools
-        cmake
-        jre_minimal
-        jdk
-        uv
-        zsh
-    # Archives
-        unrar
-        unzip
-        atool
-        zip
-        p7zip  
-    # media
-        ffmpeg
-        yt-dlp    
+
   ];
 
   nix.gc = {

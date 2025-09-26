@@ -3,12 +3,11 @@
 [![NixOS](https://img.shields.io/badge/NixOS-blue.svg?style=flat)](https://nixos.org/)
 [![Nix](https://img.shields.io/badge/Nix-green.svg?style=flat)](https://nixos.org/nix/)
 
-This repository contains my personal NixOS configuration. It's not recommended  to use it as a starting point for others who want to use nixos.
+This repository contains my personal NixOS configuration using flakes. It's not recommended  to use it as a starting point for others who want to use nixos. Of course, you can look on it and reuse any parts in case you found it's useful.
 
 ## Table of Contents
 
 * [About](#about)
-* [Configuration Files](#configuration-files)
 * [Running the Configuration](#running-the-configuration)
 * [Contributing](#contributing)
 * [License](#license)
@@ -18,13 +17,6 @@ This repository contains my personal NixOS configuration. It's not recommended  
 This configuration is based on NixOS version 25.05.
 
 **Note:** This configuration is for a single user and assumes my Desktop only.
-
-## Configuration Files
-
-The core configuration files are located in the `configuration.nix` directory.
-
-*   `configuration.nix`: This is the primary NixOS configuration file.
-
 
 **Important:**  Be very careful when applying this configuration to a new system.  Understand what each setting does *before* applying it.
 
@@ -40,16 +32,10 @@ The core configuration files are located in the `configuration.nix` directory.
     ```bash
     sudo nixos-rebuild switch --flake .#config
     ```
-    or, if you're not using flakes:
-    ```bash
-    sudo nixos-rebuild boot
-    ```
-    (The `switch` command applies the current configuration.  `boot` applies the configuration to the bootloader, which is less common for experimentation).
-
 
 ## Contributing
 
-Because this is personal stuff, I don't need any contributions to this repository!
+Because this is almost personal stuff, I don't need any contributions to this repository!
 
 ## License
 

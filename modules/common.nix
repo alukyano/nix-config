@@ -1,0 +1,151 @@
+{
+  pkgs,
+  lib,
+  username,
+  ...
+}: {
+  # ============================= User related =============================
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.${username} = {
+    isNormalUser = true;
+    description = username;
+    extraGroups = ["networkmanager" "wheel"];
+  };
+
+    nix.settings.trusted-users = [username];
+
+    builders-use-substitutes = true;
+  };
+
+  # do garbage collection weekly to keep disk usage low
+  nix.gc = {
+    automatic = lib.mkDefault true;
+    dates = lib.mkDefault "weekly";
+    options = lib.mkDefault "--delete-older-than 7d";
+  };
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.alukyano = {
+    isNormalUser = true;
+    description = "Alex";   
+    hashedPassword = "$6$V8olEhX1KSVilxP/$PZwWTNcDA7Zw.fARC6hGVGYsOgzkwtFf3tt1Zwi2yFuHa.Ib7jiByZaDEZIEe05c9Z.RNZDiliAVX0XQxgKDP0";
+    extraGroups = [ "networkmanager" "wheel" "render" "video" "libvirt" "docker" ];
+    packages = with pkgs; [
+    #  
+    ];
+  };
+    # Set your time zone.
+  time.timeZone = "Europe/Moscow";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "ru_RU.UTF-8";
+    LC_IDENTIFICATION = "ru_RU.UTF-8";
+    LC_MEASUREMENT = "ru_RU.UTF-8";
+    LC_MONETARY = "ru_RU.UTF-8";
+    LC_NAME = "ru_RU.UTF-8";
+    LC_NUMERIC = "ru_RU.UTF-8";
+    LC_PAPER = "ru_RU.UTF-8";
+    LC_TELEPHONE = "ru_RU.UTF-8";
+    LC_TIME = "ru_RU.UTF-8";
+  };
+
+  programs.dconf.enable = true;
+
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  networking.firewall.enable = false;
+
+  # Enable the OpenSSH daemon.
+  services.openssh = {
+    enable = true;
+    settings = {
+      X11Forwarding = true;
+      PermitRootLogin = "no"; # disable root login
+      PasswordAuthentication = true; # disable password login
+    };
+    openFirewall = true;
+  };
+
+environment.systemPackages = with pkgs; [
+        nix-index
+        cachix
+        binutils
+        direnv
+        exfat
+        nox
+        ntfs3g
+        patchelf
+        pciutils
+        wget
+        curl
+        jq
+        mc
+        htop
+        sysstat
+        lm_sensors # for `sensors` command        
+        rsync
+        neofetch
+        git
+        gdal
+        gperftools
+        neovim
+        imagemagick
+        nnn
+        dysk
+        duf
+    # Dev
+        go
+        llvmPackages_latest.bintools
+        llvmPackages_latest.clang
+        llvmPackages_latest.lldb
+        llvmPackages_latest.stdenv
+        maven
+        nil
+        ninja
+        nodejs
+        protobuf
+        gcc
+        libgcc
+        clang-tools
+        cmake
+        jre_minimal
+        jdk
+        uv
+        zsh
+    # Archives
+        unrar
+        unzip
+        atool
+        zip
+        p7zip  
+    # media
+        ffmpeg
+        yt-dlp    
+   ];
+
+  # Enable sound with pipewire.
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  # Enable sound with pipewire.
+  services.pulseaudio.enable = false;
+  #services.geoclue2.enable = true;
+  security.polkit.enable = true;
+
+    #udev.packages = with pkgs; [gnome-settings-daemon];
+  };
+}

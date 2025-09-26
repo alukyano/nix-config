@@ -55,35 +55,6 @@
 
   networking.hostName = "msc-xalukyano"; # Define your hostname.
   networking.networkmanager.enable = true;
-
-  # Set your time zone
-  time.timeZone = "Europe/Moscow";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "ru_RU.UTF-8";
-    LC_IDENTIFICATION = "ru_RU.UTF-8";
-    LC_MEASUREMENT = "ru_RU.UTF-8";
-    LC_MONETARY = "ru_RU.UTF-8";
-    LC_NAME = "ru_RU.UTF-8";
-    LC_NUMERIC = "ru_RU.UTF-8";
-    LC_PAPER = "ru_RU.UTF-8";
-    LC_TELEPHONE = "ru_RU.UTF-8";
-    LC_TIME = "ru_RU.UTF-8";
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.alukyano = {
-    isNormalUser = true;
-    description = "Alex";   
-    hashedPassword = "$6$V8olEhX1KSVilxP/$PZwWTNcDA7Zw.fARC6hGVGYsOgzkwtFf3tt1Zwi2yFuHa.Ib7jiByZaDEZIEe05c9Z.RNZDiliAVX0XQxgKDP0";
-    extraGroups = [ "networkmanager" "wheel" "render" "video" "libvirt" "docker" ];
-    packages = with pkgs; [
-    #  
-    ];
-  };
   
   environment = {
     enableDebugInfo = true;
@@ -133,7 +104,6 @@
       export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
       exec ${pkgs.python3}/bin/python "$@"
     '')
-
      pkgs.onlyoffice-bin
   ];
 

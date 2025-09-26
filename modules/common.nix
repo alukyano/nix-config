@@ -6,17 +6,7 @@
 }: {
   # ============================= User related =============================
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${username} = {
-    isNormalUser = true;
-    description = username;
-    extraGroups = ["networkmanager" "wheel"];
-  };
-
-    nix.settings.trusted-users = [username];
-
-    builders-use-substitutes = true;
-  };
+  builders-use-substitutes = true;
 
   # do garbage collection weekly to keep disk usage low
   nix.gc = {
@@ -29,7 +19,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.alukyano = {
+  users.users.${username} = {
     isNormalUser = true;
     description = "Alex";   
     hashedPassword = "$6$V8olEhX1KSVilxP/$PZwWTNcDA7Zw.fARC6hGVGYsOgzkwtFf3tt1Zwi2yFuHa.Ib7jiByZaDEZIEe05c9Z.RNZDiliAVX0XQxgKDP0";
@@ -38,6 +28,8 @@
     #  
     ];
   };
+
+  nix.settings.trusted-users = [username];
     # Set your time zone.
   time.timeZone = "Europe/Moscow";
 

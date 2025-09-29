@@ -87,6 +87,7 @@ environment.systemPackages = with pkgs; [
         dysk
         duf
     # Dev
+        libsecret
         go
         llvmPackages_latest.bintools
         llvmPackages_latest.clang

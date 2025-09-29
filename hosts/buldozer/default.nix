@@ -10,7 +10,7 @@
       ./hardware-configuration.nix
       # Include modules    
       ../../modules/common.nix
-      ../../modules/nvidia.nix
+      ../../modules/nvidia-compute.nix
       ../../modules/intel.nix
       ../../modules/xfce-desktop.nix
       ../../modules/desktop.nix
@@ -28,8 +28,8 @@
   boot.loader.grub.device = "/dev/nvme0n1";
   boot.loader.grub.useOSProber = true;
 
-  boot.initrd.kernelModules = [ "nvidia" ];
-  #boot.blacklistedKernelModules = [ "nouveau" ];
+  boot.initrd.kernelModules = [ "i915" ];
+  boot.blacklistedKernelModules = [ "nvidia" "nouveau" "nvidia_drm" "nvidia_modeset" ];
 
   system.stateVersion = "25.05";
 
@@ -50,6 +50,7 @@
     # Swappiness to reduce swapfile usage.
   boot.kernel.sysctl = { "vm.swappiness" = 10;};
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages.nvidia_x11 = true;
   boot.tmp.useTmpfs = true;
 
   swapDevices = [{
@@ -72,6 +73,9 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.nvidia.acceptLicense = true;
+
+
     
   programs.nix-ld = {
     enable = true;

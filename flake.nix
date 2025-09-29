@@ -14,17 +14,19 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    #nix-stable.url = "github:nixos/nixpkgs/nixos-25.05";
 
     home-manager = {
        url = "github:nix-community/home-manager";
        inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # catppuccin-bat = {
-    #   url = "github:catppuccin/bat";
-    #   flake = false;
-    # };
+     catppuccin-bat = {
+       url = "github:catppuccin/bat";
+       flake = false;
+     };
   };
 
 outputs = inputs @ {
@@ -116,7 +118,7 @@ outputs = inputs @ {
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
-          system = "aarch64-linux";
+          #system = "aarch64-linux";
 
           modules = [
             ./hosts/vm-darwin

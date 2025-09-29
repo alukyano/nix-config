@@ -17,6 +17,7 @@
     hardware.nvidia-container-toolkit = {
         enable = true;
         mount-nvidia-executables = false;
+        suppressNvidiaDriverAssertion = true;
     };
 
     virtualisation.containers.enable = true;

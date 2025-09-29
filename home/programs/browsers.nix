@@ -29,5 +29,4 @@
         google-chrome
   ];
   
-  };
 }

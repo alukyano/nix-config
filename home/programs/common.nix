@@ -17,7 +17,6 @@
 
     # misc
     libnotify
-    wineWowPackages.wayland
     xdg-utils
     graphviz
 
@@ -30,11 +29,6 @@
     # cloud native
     docker-compose
     kubectl
-
-    nodejs
-    nodePackages.npm
-    nodePackages.pnpm
-    yarn
 
     # db related
     dbeaver-bin

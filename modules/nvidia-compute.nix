@@ -1,10 +1,23 @@
 {pkgs, ...}: {
   # for Nvidia GPU
-  hardware.nvidia.datacenter.enable = true;
+  #hardware.nvidia.enable = true;
   
+  services.xserver.videoDrivers = ["intel"];
   hardware.graphics.enable = true;
   hardware.nvidia = {
-    #package = config.boot.kernelPackages.nvidiaPackages.stable;
     modesetting.enable = false;
+    powerManagement.enable = false;
+    #powerManagement.finegrained = true;
+    open = false;
+    nvidiaSettings = true;
+    #package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+    
+  environment.systemPackages = 
+  with pkgs; [
+    #Packages
+    nvtopPackages.nvidia
+    cudaPackages.cudatoolkit
+    linuxPackages.nvidia_x11
+  ];
 }

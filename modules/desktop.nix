@@ -28,6 +28,11 @@
         inkscape-with-extensions
         gimp-with-plugins
         evince
+    # VPN
+        nekoray  
+    # Browsers
+        firefox
+        chromium  
     ];
 
   # Enable sound with pipewire.

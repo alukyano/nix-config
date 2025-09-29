@@ -7,10 +7,9 @@
 
   imports = [
     ../../home/core.nix
-
+    ../../home/programs
     # ../../home/fcitx5
     # ../../home/i3
-    # ../../home/programs
     # ../../home/rofi
     # ../../home/shell
   ];

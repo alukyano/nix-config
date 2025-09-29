@@ -14,12 +14,12 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     #nix-stable.url = "github:nixos/nixpkgs/nixos-25.05";
 
     home-manager = {
-       url = "github:nix-community/home-manager";
+       url = "github:nix-community/home-manager/release-25.05";
        inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -73,6 +73,54 @@ outputs = inputs @ {
 
           modules = [
             ./hosts/msc-xalukyano
+            ./users/${username}/nixos.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              home-manager.extraSpecialArgs = inputs // specialArgs;
+              home-manager.users.${username} = import ./users/${username}/home.nix;
+            }
+          ];
+        };
+
+      sputnik = let
+        username = "alukyano";
+        desktop = "gnome";
+        specialArgs = {inherit username desktop;};
+      in
+        nixpkgs.lib.nixosSystem {
+          inherit specialArgs;
+          system = "x86_64-linux";
+
+          modules = [
+            ./hosts/sputnik
+            ./users/${username}/nixos.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              home-manager.extraSpecialArgs = inputs // specialArgs;
+              home-manager.users.${username} = import ./users/${username}/home.nix;
+            }
+          ];
+        };
+
+      saturn = let
+        username = "alukyano";
+        desktop = "gnome";
+        specialArgs = {inherit username desktop;};
+      in
+        nixpkgs.lib.nixosSystem {
+          inherit specialArgs;
+          system = "x86_64-linux";
+
+          modules = [
+            ./hosts/saturn
             ./users/${username}/nixos.nix
 
             home-manager.nixosModules.home-manager

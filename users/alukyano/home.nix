@@ -8,6 +8,7 @@
   imports = [
     ../../home/core.nix
     ../../home/programs
+    ../../home/xfce
     # ../../home/fcitx5
     # ../../home/i3
     # ../../home/rofi

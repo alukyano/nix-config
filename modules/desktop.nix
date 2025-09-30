@@ -25,6 +25,7 @@
         simplescreenrecorder
         xnviewmp
         loupe
+        feh
         inkscape-with-extensions
         gimp-with-plugins
         evince

@@ -27,7 +27,7 @@
         vivaldi
         vivaldi-ffmpeg-codecs
         google-chrome
-        yandex-browser-stable
+        #yandex-browser-stable
   ];
   
 }

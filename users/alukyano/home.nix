@@ -11,8 +11,8 @@
     ../../home/xfce
     # ../../home/fcitx5
     # ../../home/i3
-    # ../../home/rofi
-    # ../../home/shell
+     ../../home/rofi
+     ../../home/shell
   ];
 
 

@@ -4,9 +4,9 @@
   cache = config.xdg.cacheHome;
 in {
   imports = [
-    ./nushell
+  #  ./nushell
     ./common.nix
-    ./starship.nix
+  #  ./starship.nix
     ./terminals.nix
   ];
 

@@ -28,8 +28,11 @@
         inkscape-with-extensions
         gimp-with-plugins
         evince
+        viewnior
     # VPN
-        nekoray  
+        nekoray 
+    # Cloud    
+        yandex-disk 
     # Browsers
         firefox
         chromium  

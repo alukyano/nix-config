@@ -13,10 +13,10 @@
       ];
     };
 
-    firefox = {
-      enable = true;
-      profiles.${username} = {};
-    };
+    # firefox = {
+    #   enable = true;
+    #   profiles.${username} = {};
+    # };
   };
 
   home.packages = with pkgs; [
@@ -27,6 +27,7 @@
         vivaldi
         vivaldi-ffmpeg-codecs
         google-chrome
+        yandex-browser-stable
   ];
   
 }

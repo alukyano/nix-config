@@ -1,4 +1,20 @@
 {pkgs, ...}: {
+    
+# Enable the X11 windowing system.
+    services.libinput.enable = true;
+    services.xserver = {
+        enable = true;
+        displayManager = {
+            gdm.enable = true;
+            gdm.wayland = false;
+        };
+        desktopManager.gnome.enable = true;
+        desktopManager.xfce.enable = true;
+
+        xkb.layout = "us,ru";
+        xkb.options = "grp:ctrl_shift_toggle";
+    };   
+   
    environment.systemPackages = with pkgs; [
       # gnome
         gnome-terminal

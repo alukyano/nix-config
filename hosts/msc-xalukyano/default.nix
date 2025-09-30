@@ -4,16 +4,19 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../include/rustdesk.nix
-      ../include/fonts.nix
-      ../include/nvidia.nix
-      ../include/virtualisation.nix
-      ../include/packages-common.nix
-      ../include/packages-desktop.nix
-      ../include/packages-gnome.nix
-      ../include/games.nix
-      ../include/ai.nix
-      ../include/netbird.nix
+      # Include modules    
+      ../../modules/common.nix
+      ../../modules/nvidia-prime-intel.nix
+      ../../modules/gnome-desktop.nix
+      ../../modules/desktop.nix
+      ../../modules/games.nix
+      ../../modules/fonts.nix
+      ../../modules/netbird.nix
+      ../../modules/rustdesk.nix
+      ../../modules/remote.nix
+      ../../modules/virtualisation.nix
+      ../../modules/wine.nix
+      ../../modules/ai.nix
     ];
 
   system.stateVersion = "25.05";
@@ -41,9 +44,6 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.tmp.useTmpfs = true;
 
-  boot.initrd.kernelModules = [ "nvidia" ];
-  boot.blacklistedKernelModules = [ "nouveau" ];
-
   swapDevices = [{
     device = "/swapfile";
     size = 4 * 1024;
@@ -55,57 +55,16 @@
 
   networking.hostName = "msc-xalukyano"; # Define your hostname.
   networking.networkmanager.enable = true;
+
+  # Allow unfree packages
+  nixpkgs.config.nvidia.acceptLicense = true;
   
-  environment = {
-    enableDebugInfo = true;
-    localBinInPath = true;
-    sessionVariables = {
-    #CUDA_PATH = "${pkgs.cudatoolkit}";
-    EXTRA_LDFLAGS = "-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib";
-    EXTRA_CCFLAGS = "-I/usr/include";
-    LD_LIBRARY_PATH = [
-      "/usr/lib/wsl/lib"
-      "${pkgs.linuxPackages.nvidia_x11}/lib"
-      "${pkgs.ncurses5}/lib"
-      "/run/opengl-driver/lib"
-    ];
-    MESA_D3D12_DEFAULT_ADAPTER_NAME = "Nvidia";
-    };
-  };
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
       zlib zstd stdenv.cc.cc curl openssl attr libssh bzip2 libxml2 acl libsodium util-linux xz systemd glib libGL
     ];
   };
-  
-  programs = {
-    fish.enable = true;
-    java.enable = true;
-    dconf.enable = true;
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages =  [
-   # python fix
-    (pkgs.writeShellScriptBin "python" ''
-      export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
-      exec ${pkgs.python3}/bin/python "$@"
-    '')
-     pkgs.onlyoffice-bin
-  ];
 
   nix.gc = {
     automatic = true;

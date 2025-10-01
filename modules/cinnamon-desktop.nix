@@ -6,24 +6,24 @@
         enable = true;
         displayManager = {
             lightdm.enable = true;
-            defaultSession = "cinnamon"; 
         };
         desktopManager.cinnamon.enable = true;
 
         xkb.layout = "us,ru";
         xkb.options = "grp:ctrl_shift_toggle";
     };   
+    services.displayManager.defaultSession = "cinnamon";
    
    environment.systemPackages = with pkgs; [
       # cinnamon
-		cinnamon.cinnamon-common
-		cinnamon.cinnamon-control-center
-		cinnamon.cinnamon-settings-daemon
-		cinnamon.cinnamon-session
-		cinnamon.cinnamon-menus
-		cinnamon.cinnamon-translations
-		cinnamon.cinnamon-screensaver
-		cinnamon.cinnamon-desktop
+		cinnamon-common
+		cinnamon-control-center
+		cinnamon-settings-daemon
+		cinnamon-session
+		cinnamon-menus
+		cinnamon-translations
+		cinnamon-screensaver
+		cinnamon-desktop
       # gnome
         gnome-terminal
         gnome-system-monitor

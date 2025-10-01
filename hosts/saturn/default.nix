@@ -13,13 +13,13 @@
       ../../modules/amd.nix
       ../../modules/cinnamon-desktop.nix
       ../../modules/desktop.nix
-#      ../../modules/games.nix
-#      ../../modules/fonts.nix
-#      ../../modules/netbird.nix
-#      ../../modules/rustdesk.nix
-#      ../../modules/remote.nix
-#      ../../modules/virtualisation.nix
-#      ../../modules/wine.nix
+      ../../modules/games.nix
+      ../../modules/fonts.nix
+      ../../modules/netbird.nix
+      ../../modules/rustdesk.nix
+      ../../modules/remote.nix
+      ../../modules/virtualisation.nix
+      ../../modules/wine.nix
     ];
   
   # Bootloader.

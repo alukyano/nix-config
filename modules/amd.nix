@@ -21,7 +21,11 @@
   environment.systemPackages = 
   with pkgs; [
     #Packages
-    rocminfo
+    rocmPackages.rpp
+    rocmPackages.clr
+    rocmPackages.hipcc
+    rocmPackages.rocm-smi
+    rocmPackages.rocm-runtime
   ];      
 
 }

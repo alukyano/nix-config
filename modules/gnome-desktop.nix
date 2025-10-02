@@ -9,7 +9,6 @@
             gdm.wayland = false;
         };
         desktopManager.gnome.enable = true;
-        desktopManager.xfce.enable = true;
 
         xkb.layout = "us,ru";
         xkb.options = "grp:ctrl_shift_toggle";

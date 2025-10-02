@@ -10,7 +10,7 @@
       ./hardware-configuration.nix
       # Include modules    
       ../../modules/common.nix
-      ../../modules/amd.nix
+      ../../modules/nvidia-prime-amd.nix
       ../../modules/cinnamon-desktop.nix
       ../../modules/desktop.nix
       ../../modules/games.nix

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{config, pkgs, ...}: {
   # for Nvidia GPU
   #hardware.nvidia.datacenter.enable = true;
 

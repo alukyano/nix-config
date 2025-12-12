@@ -20,8 +20,8 @@
     # EDITOR = "emacs";
   };
 
-  programs.git = {
-    userName = "alukyano";
-    userEmail = "alukyano@gmail.com";
+  programs.git.settings = {
+    user.name = "alukyano";
+    user.email = "alukyano@gmail.com";
   };
 }

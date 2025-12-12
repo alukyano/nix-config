@@ -20,7 +20,7 @@ fonts = {
       hack-font
       fira-code
       fira-code-symbols
-      ubuntu_font_family
+      ubuntu_classic
       inconsolata
       noto-fonts
       jetbrains-mono

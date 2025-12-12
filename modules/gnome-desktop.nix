@@ -2,17 +2,28 @@
     
 # Enable the X11 windowing system.
     services.libinput.enable = true;
-    services.xserver = {
-        enable = true;
-        displayManager = {
-            gdm.enable = true;
-            gdm.wayland = false;
-        };
-        desktopManager.gnome.enable = true;
+    
+    # Enable the X11 windowing system.
+    services.xserver.enable = true;
 
-        xkb.layout = "us,ru";
-        xkb.options = "grp:ctrl_shift_toggle";
-    };   
+    # Enable the GNOME Desktop Environment.
+    services.xserver.displayManager.gdm.enable = true;
+    services.xserver.displayManager.gdm.wayland = false;
+    services.xserver.desktopManager.gnome.enable = true;
+    services.xserver.xkb.layout = "us,ru";
+    services.xserver.xkb.options = "grp:ctrl_shift_toggle";
+    
+#    services.xserver = {
+#        enable = true;
+#        displayManager = {
+#            gdm.enable = true;
+#            gdm.wayland = false;
+#        };
+#        desktopManager.gnome.enable = true;
+#
+#        xkb.layout = "us,ru";
+#        xkb.options = "grp:ctrl_shift_toggle";
+#    };   
    
    environment.systemPackages = with pkgs; [
       # gnome

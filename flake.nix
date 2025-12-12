@@ -134,6 +134,30 @@ outputs = inputs @ {
           ];
         };
 
+      moon = let
+        username = "alukyano";
+        desktop = "gnome";
+        specialArgs = {inherit username desktop;};
+      in
+        nixpkgs.lib.nixosSystem {
+          inherit specialArgs;
+          system = "x86_64-linux";
+
+          modules = [
+            ./hosts/moon
+            ./users/${username}/nixos.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              home-manager.extraSpecialArgs = inputs // specialArgs;
+              home-manager.users.${username} = import ./users/${username}/home.nix;
+            }
+          ];
+        };
+        
       wsl-nvidia = let
         username = "alukyano";
         desktop = "none";

@@ -7,6 +7,7 @@ with lib;
   hardware = {
     nvidia = {
       modesetting.enable = true;
+      open = false;
       nvidiaPersistenced = true;
 
       #---------------------------------------------------------------------
@@ -32,7 +33,7 @@ with lib;
     #---------------------------------------------------------------------
     opengl = {
       enable = true;
-      driSupport = true;
+      #driSupport = true;
       driSupport32Bit = true;
 
       #---------------------------------------------------------------------
@@ -40,12 +41,11 @@ with lib;
       #---------------------------------------------------------------------
       extraPackages = with pkgs; [        
         
-        amdvlk
         intel-media-driver      # LIBVA_DRIVER_NAME=iHD
         libvdpau-va-gl
         nvidia-vaapi-driver
-        vaapiIntel                  # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-        vaapiVdpau
+        intel-vaapi-driver                 # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        libva-vdpau-driver
         vulkan-validation-layers
       ];
 
@@ -81,7 +81,7 @@ with lib;
 
     clinfo
     gwe
-    nvtop-nvidia
+    nvtopPackages.nvidia
     virtualglLib
     vulkan-loader
     vulkan-tools

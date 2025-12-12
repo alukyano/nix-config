@@ -4,11 +4,21 @@ with lib;
 
 {
 
+
+  
+  hardware.nvidia.prime = {
+    offload.enable = true;
+    offload.enableOffloadCmd = true;
+    intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:1:0:0";
+    #amdgpuBusId = "PCI:54:0:0"; # If you have an AMD iGPU
+  };
+  
   hardware = {
     nvidia = {
       modesetting.enable = true;
       open = false;
-      nvidiaPersistenced = true;
+      #nvidiaPersistenced = true;
 
       #---------------------------------------------------------------------
       # Enable the nvidia settings menu
@@ -26,15 +36,10 @@ with lib;
       #---------------------------------------------------------------------
       package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
-
-    #---------------------------------------------------------------------
-    # Direct Rendering Infrastructure (DRI) support, both for 32-bit and 64-bit, and 
-    # Make sure opengl is enabled
-    #---------------------------------------------------------------------
-    opengl = {
+    
+    graphics = {
       enable = true;
-      #driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true; 
 
       #---------------------------------------------------------------------
       # Install additional packages that improve graphics performance and compatibility.
@@ -62,7 +67,7 @@ with lib;
       motherboard = "intel";
       package = pkgs.openrgb-with-all-plugins;
     };
-    xserver.videoDrivers = [ "nvidia" ];
+    xserver.videoDrivers = [ "nvidia" "i915" ];
   };
 
   #---------------------------------------------------------------------

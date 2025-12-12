@@ -2,7 +2,7 @@
     
 # Enable the X11 windowing system.
     services.libinput.enable = true;
-    services.xserver = {
+    services = {
         enable = true;
         displayManager = {
             gdm.enable = true;

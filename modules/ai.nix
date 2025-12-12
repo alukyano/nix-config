@@ -1,10 +1,10 @@
 {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
-        openai-whisper 
+        openai-whisper
     ];
 
     services.ollama = { 
         enable = true; 
-    #    acceleration="cuda"; 
+        acceleration="cuda"; 
     };
 }

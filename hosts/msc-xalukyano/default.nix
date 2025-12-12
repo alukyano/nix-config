@@ -6,7 +6,7 @@
       ./hardware-configuration.nix
       # Include modules    
       ../../modules/common.nix
-      ../../modules/nvidia-prime-intel.nix
+      ../../modules/nvidia.nix
       ../../modules/gnome-desktop.nix
       ../../modules/desktop.nix
       ../../modules/games.nix
@@ -19,7 +19,7 @@
       ../../modules/ai.nix
     ];
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
@@ -46,7 +46,7 @@
 
   swapDevices = [{
     device = "/swapfile";
-    size = 4 * 1024;
+    size = 8 * 1024;
   }];
 
   hardware.graphics = {

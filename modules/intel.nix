@@ -9,7 +9,6 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "intel" ]; # Or "modesetting", "fbdev" if needed
 
-  ];
   hardware.graphics.extraPackages = with pkgs; [
      vaapiIntel
      vaapiVdpau
@@ -25,13 +24,5 @@
   # Enable Early KMS for less flicker (optional, might cause issues on some systems)
   # boot.initrd.kernelModules = [ "i915" ];
   # boot.kernelParams = [ "i915.enable_psr=0" ]; # Disable Panel Self Refresh if flickering
-}
-
-  hardware.graphics.extraPackages = with pkgs; [
-     vaapiIntel
-     vaapiVdpau
-     libvdpau-va-gl
-     intel-media-driver
-  ];
 
 }

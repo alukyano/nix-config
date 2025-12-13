@@ -2,15 +2,15 @@
 
 {
   # Enable OpenGL and Vulkan (essential for graphics)
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Enable X11 server (if using a DE/WM)
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "intel" ]; # Or "modesetting", "fbdev" if needed
 
   hardware.graphics.extraPackages = with pkgs; [
-     vaapiIntel
-     vaapiVdpau
+     intel-vaapi-driver
+     libva-vdpau-driver
      libvdpau-va-gl
      intel-media-driver
     # For 32-bit apps:

@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       # Include modules    
       ../../modules/common.nix
+      ../../modules/intel.nix
       ../../modules/gnome-desktop.nix
       ../../modules/desktop.nix
       ../../modules/games.nix

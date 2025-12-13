@@ -3,7 +3,6 @@
 {
   # Enable OpenGL and Vulkan (essential for graphics)
   hardware.opengl.enable = true;
-  hardware.opengl.driSupport = true; # For DRI3
 
   # Enable X11 server (if using a DE/WM)
   services.xserver.enable = true;

@@ -39,7 +39,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.grub.useOSProber = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
   # Swappiness to reduce swapfile usage.
   boot.kernel.sysctl = { "vm.swappiness" = 10;};
   boot.kernelPackages = pkgs.linuxPackages_latest;

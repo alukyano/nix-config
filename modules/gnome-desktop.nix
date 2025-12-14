@@ -8,7 +8,7 @@
 
     # Enable the GNOME Desktop Environment.
     services.displayManager.gdm.enable = true;
-    services.displayManager.gdm.wayland = false;
+    #services.displayManager.gdm.wayland = false;
     services.desktopManager.gnome.enable = true;
     services.xserver.xkb.layout = "us,ru";
     services.xserver.xkb.options = "grp:ctrl_shift_toggle";

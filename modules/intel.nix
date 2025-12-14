@@ -1,12 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  # Enable OpenGL and Vulkan (essential for graphics)
-  hardware.graphics.enable = true;
-
   # Enable X11 server (if using a DE/WM)
   services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "intel" ]; # Or "modesetting", "fbdev" if needed
+  services.xserver.videoDrivers = [ "modesetting" ]; # Or "modesetting", "fbdev" if needed
 
   hardware.graphics.extraPackages = with pkgs; [
      intel-vaapi-driver
@@ -21,7 +18,7 @@
   boot.kernelParams = [ "i915.force_probe=46a6" ]; # Replace 46a8 with your GPU's Device ID (from `lspci -nn | grep VGA`)
 
   # Enable Early KMS for less flicker (optional, might cause issues on some systems)
-  # boot.initrd.kernelModules = [ "i915" ];
+  boot.initrd.kernelModules = [ "i915" ];
   # boot.kernelParams = [ "i915.enable_psr=0" ]; # Disable Panel Self Refresh if flickering
 
 }

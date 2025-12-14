@@ -35,10 +35,11 @@
     "https://cuda-maintainers.cachix.org"
   ];
  
-  # Bootloader.
+  # Bootloader.  
   boot.loader.systemd-boot.enable = true;
   boot.loader.grub.useOSProber = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Swappiness to reduce swapfile usage.
   boot.kernel.sysctl = { "vm.swappiness" = 10;};
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -57,7 +58,7 @@
   networking.networkmanager.enable = true;
 
   # Allow unfree packages
-  nixpkgs.config.nvidia.acceptLicense = true;
+  #nixpkgs.config.nvidia.acceptLicense = true;
   
   programs.nix-ld = {
     enable = true;

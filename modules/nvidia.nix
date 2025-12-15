@@ -3,9 +3,6 @@
 with lib;
 
 {
-
-
-  
   hardware.nvidia.prime = {
     offload.enable = true;
     offload.enableOffloadCmd = true;
@@ -91,6 +88,15 @@ with lib;
     vulkan-loader
     vulkan-tools
 
+    cudaPackages.cudatoolkit
+    linuxPackages.nvidia_x11
+    linuxPackages.nvidiaPackages.stable
   ];
+
+  hardware.nvidia-container-toolkit = {
+      enable = true;
+      mount-nvidia-executables = false;
+      suppressNvidiaDriverAssertion = true;
+  };
 
 }

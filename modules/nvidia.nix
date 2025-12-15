@@ -13,8 +13,8 @@ with lib;
   
   hardware = {
     nvidia = {
-      modesetting.enable = true;
-      open = false;
+      modesetting.enable = false;
+      open = true;
       #nvidiaPersistenced = true;
 
       #---------------------------------------------------------------------

@@ -3,7 +3,7 @@
     boot.kernelModules = [ "kvm-intel" "kvm-amd" ];
 
     programs = {
-        virt-manager.enable = true;
+        #virt-manager.enable = true;
     };
 
     virtualisation.containers.enable = true;
@@ -12,13 +12,13 @@
   virtualisation = {
     libvirtd = {
       enable = true;
-      package = with pkgs.stable; libvirt;
+      package = with pkgs; libvirt;
       qemu = {
         vhostUserPackages = with pkgs; [ virtiofsd ];
-        package = with pkgs.stable; qemu;
+        package = with pkgs; qemu;
         swtpm = {
           enable = false;
-          package = with pkgs.stable; swtpm;
+          package = with pkgs; swtpm;
         };
       };
     };
@@ -29,7 +29,7 @@
   programs.virt-manager.enable = true;
 
   environment.systemPackages = with pkgs; [
-    # winboat
+    winboat
     freerdp
     dive
     libguestfs-with-appliance

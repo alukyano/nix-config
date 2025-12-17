@@ -15,6 +15,9 @@
       ../../modules/rustdesk.nix
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
+      ../../modules/docker.nix
+      ../../modules/n8n.nix
+      ../../modules/adb.nix
       ../../modules/wine.nix
       ../../modules/ai.nix
     ];
@@ -48,6 +51,13 @@
     device = "/swapfile";
     size = 8 * 1024;
   }];
+
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=no
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+    '';
 
   hardware.graphics = {
     enable = true;

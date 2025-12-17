@@ -11,6 +11,20 @@ with lib;
     #amdgpuBusId = "PCI:54:0:0"; # If you have an AMD iGPU
   };
   
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable //
+  {
+    open = config.boot.kernelPackages.nvidiaPackages.stable.open.overrideAttrs 
+      (old: {
+        patches = (old.patches or [ ]) ++ [
+          (pkgs.fetchpatch {
+            name = "get_dev_pagemap.patch";
+            url = "https://github.com/NVIDIA/open-gpu-kernel-modules/commit/3e230516034d29e84ca023fe95e284af5cd5a065.patch";
+            hash = "sha256-BhL4mtuY5W+eLofwhHVnZnVf0msDj7XBxskZi8e6/k8=";
+          })
+        ];
+    });
+  };
+
   hardware = {
     nvidia = {
       modesetting.enable = false;
@@ -31,7 +45,7 @@ with lib;
       #---------------------------------------------------------------------
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
       #---------------------------------------------------------------------
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
+      #package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
     
     graphics = {

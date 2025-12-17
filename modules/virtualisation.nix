@@ -1,4 +1,4 @@
-{pkgs, username, ...}: {
+{config, pkgs, pkgs-unstable, username, ...}: {
 
     boot.kernelModules = [ "kvm-intel" "kvm-amd" ];
 
@@ -28,8 +28,11 @@
   services.spice-vdagentd.enable = true;
   programs.virt-manager.enable = true;
 
+
+  #_module.args.pkgs-unstable = import nixpkgs-unstable {};
+  
   environment.systemPackages = with pkgs; [
-    #winboat
+    pkgs-unstable.winboat
     freerdp
     dive
     libguestfs-with-appliance

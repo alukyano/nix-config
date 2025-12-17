@@ -15,6 +15,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     #nix-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
@@ -32,6 +33,7 @@
 outputs = inputs @ {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
     ...
   }: {
@@ -41,7 +43,13 @@ outputs = inputs @ {
         desktop = "xfce";
         # desktop = "i3";
         # desktop = "gnome";
-        specialArgs = {inherit username desktop;};
+        pkgs-unstable = import nixpkgs-unstable {
+          system = "x86_64-linux";
+          config = {
+            allowUnfree = true;
+          };
+        };            
+        specialArgs = {inherit username desktop pkgs-unstable;};
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
@@ -65,7 +73,13 @@ outputs = inputs @ {
       msc-xalukyano = let
         username = "alukyano";
         desktop = "gnome";
-        specialArgs = {inherit username desktop;};
+        pkgs-unstable = import nixpkgs-unstable {
+          system = "x86_64-linux";
+          config = {
+            allowUnfree = true;
+          };
+        };            
+        specialArgs = {inherit username desktop pkgs-unstable;};
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
@@ -89,7 +103,13 @@ outputs = inputs @ {
       sputnik = let
         username = "alukyano";
         desktop = "gnome";
-        specialArgs = {inherit username desktop;};
+        pkgs-unstable = import nixpkgs-unstable {
+          system = "x86_64-linux";
+          config = {
+            allowUnfree = true;
+          };
+        };            
+        specialArgs = {inherit username desktop pkgs-unstable;};
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
@@ -113,7 +133,13 @@ outputs = inputs @ {
       saturn = let
         username = "alukyano";
         desktop = "gnome";
-        specialArgs = {inherit username desktop;};
+        pkgs-unstable = import nixpkgs-unstable {
+          system = "x86_64-linux";
+          config = {
+            allowUnfree = true;
+          };
+        };            
+        specialArgs = {inherit username desktop pkgs-unstable;};
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
@@ -137,7 +163,14 @@ outputs = inputs @ {
       moon = let
         username = "alukyano";
         desktop = "gnome";
-        specialArgs = {inherit username desktop;};
+        pkgs-unstable = import nixpkgs-unstable {
+          system = "x86_64-linux";
+          config = {
+            allowUnfree = true;
+          };
+        };          
+        specialArgs = {inherit username desktop pkgs-unstable;};
+      
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;

@@ -15,6 +15,9 @@
       ../../modules/rustdesk.nix
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
+      ../../modules/docker.nix
+      ../../modules/n8n.nix
+      ../../modules/adb.nix
       ../../modules/wine.nix
       ../../modules/ai_na.nix
     ];
@@ -53,6 +56,13 @@
   hardware.graphics = {
     enable = true;
   };
+
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=no
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+    '';
 
   networking.hostName = "moon"; # Define your hostname.
   networking.networkmanager.enable = true;

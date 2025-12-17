@@ -29,7 +29,7 @@
   programs.virt-manager.enable = true;
 
   environment.systemPackages = with pkgs; [
-    winboat
+    #winboat
     freerdp
     dive
     libguestfs-with-appliance

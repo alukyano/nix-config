@@ -19,8 +19,12 @@
       ../../modules/rustdesk.nix
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
+      ../../modules/docker.nix
+      ../../modules/n8n.nix
+      ../../modules/adb.nix
       ../../modules/wine.nix
-    ];
+      ../../modules/ai.nix    
+      ];
   
   # Bootloader.
   boot.loader.grub.enable = true;

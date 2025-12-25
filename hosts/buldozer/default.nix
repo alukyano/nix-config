@@ -5,6 +5,11 @@
 { config, pkgs, ... }:
 
 {
+
+  nix.settings = {
+    download-buffer-size = 524288000; # 500 MiB
+  };
+
   imports = [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix

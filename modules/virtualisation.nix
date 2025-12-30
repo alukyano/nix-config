@@ -27,9 +27,6 @@
   users.users.${username}.extraGroups = [ "libvirtd" ];
   services.spice-vdagentd.enable = true;
   programs.virt-manager.enable = true;
-
-
-  #_module.args.pkgs-unstable = import nixpkgs-unstable {};
   
   environment.systemPackages = with pkgs; [
     pkgs-unstable.winboat

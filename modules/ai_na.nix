@@ -3,6 +3,7 @@
         openai-whisper
         pkgs-unstable.lmstudio
         pkgs-unstable.vllm
+        pkgs-unstable.koboldcpp
     ];
 
     services.ollama = { 

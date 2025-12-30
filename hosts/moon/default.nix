@@ -7,7 +7,8 @@
       # Include modules    
       ../../modules/common.nix
       ../../modules/intel.nix
-      ../../modules/gnome-desktop.nix
+      ../../modules/cinnamon-desktop.nix
+      ../../modules/xfce-desktop.nix
       ../../modules/desktop.nix
       ../../modules/games.nix
       ../../modules/fonts.nix
@@ -20,6 +21,7 @@
       ../../modules/adb.nix
       ../../modules/wine.nix
       ../../modules/ai_na.nix
+      ../../modules/xrdp.nix
     ];
 
   system.stateVersion = "25.11";
@@ -82,5 +84,8 @@
     dates = "weekly";
     options ="-delete-older-than 7d";
   };
+
+  #services.xserver.displayManager.defaultSession = "xfce";
+  services.displayManager.defaultSession = "cinnamon";
 }
 

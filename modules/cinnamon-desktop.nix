@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{lib, pkgs, ...}: {
     
 # Enable the X11 windowing system.
     services.libinput.enable = true;
@@ -12,7 +12,7 @@
         xkb.layout = "us,ru";
         xkb.options = "grp:ctrl_shift_toggle";
     };   
-    services.displayManager.defaultSession = "cinnamon";
+    services.displayManager.defaultSession = lib.mkDefault "cinnamon";
    
    environment.systemPackages = with pkgs; [
       # cinnamon

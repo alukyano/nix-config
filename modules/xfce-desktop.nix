@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{lib, pkgs, ...}: {
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -7,7 +7,7 @@
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
 
-  services.displayManager.defaultSession = "xfce";
+  services.displayManager.defaultSession = lib.mkDefault "xfce";
 
   # Configure keymap in X11
   services.xserver.xkb = {

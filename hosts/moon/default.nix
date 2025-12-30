@@ -86,6 +86,6 @@
   };
 
   #services.xserver.displayManager.defaultSession = "xfce";
-  services.displayManager.defaultSession = "cinnamon";
+  services.displayManager.defaultSession = lib.mkForce "cinnamon";
 }
 

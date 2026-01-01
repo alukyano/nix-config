@@ -1,4 +1,4 @@
 {pkgs, ...}: {
   services.xrdp.enable = true;
-  services.xrdp.defaultWindowManager = "xfce-session"; 
+  services.xrdp.defaultWindowManager = "cinnamon-session"; 
 }

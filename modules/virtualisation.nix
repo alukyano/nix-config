@@ -23,7 +23,11 @@
       };
     };
     spiceUSBRedirection.enable = true;
+
+    appvm.enable = true;
+    appvm.user = "user";
   };
+  
   users.users.${username}.extraGroups = [ "libvirtd" ];
   services.spice-vdagentd.enable = true;
   programs.virt-manager.enable = true;

@@ -2,7 +2,7 @@
 
 pkgs.buildFHSEnv {
   name = "micromamba-env";
-  targetPkgs = ps: [ ps.micromamba ps.bash ps.gcc ps.fontconfig ]; # add libs if needed
+  targetPkgs = ps: [ ps.micromamba ps.python310 ps.bash ps.gcc ps.fontconfig ]; # add libs if needed
   profile = ''
         set -e
         eval "$(micromamba shell hook --shell=posix)"

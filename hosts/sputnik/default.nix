@@ -51,7 +51,7 @@
 
   swapDevices = [{
     device = "/swapfile";
-    size = 16 * 1024;
+    size = 32 * 1024;
   }];
 
   hardware.graphics = {
@@ -80,4 +80,7 @@
     dates = "weekly";
     options ="-delete-older-than 7d";
   };
+
+  #services.xserver.displayManager.defaultSession = "xfce";
+  services.displayManager.defaultSession = lib.mkForce "cinnamon";
 }

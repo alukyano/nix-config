@@ -15,6 +15,7 @@
         freetube
         obsidian
         libreoffice
+        libsecret
         #notepad-next
     # Media stuff:
         vlc

@@ -1,3 +1,4 @@
+# truly works for comfy
 { pkgs ? import <nixpkgs> {
         config.allowUnfree = true;
         config.cudaSupport = true;

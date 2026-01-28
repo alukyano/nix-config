@@ -19,6 +19,8 @@
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     #nix-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
+    llm-agents.url = "github:numtide/llm-agents.nix";
+    
     home-manager = {
        url = "github:nix-community/home-manager/release-25.11";
        inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +37,7 @@ outputs = inputs @ {
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
+    llm-agents,
     ...
   }: {
     nixosConfigurations = {

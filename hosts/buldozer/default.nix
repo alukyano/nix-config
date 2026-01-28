@@ -28,7 +28,8 @@
       ../../modules/n8n.nix
       ../../modules/adb.nix
       ../../modules/wine.nix
-      ../../modules/ai.nix    
+      ../../modules/ai.nix   
+      ../../modules/ai_agents.nix  
       ];
   
   # Bootloader.

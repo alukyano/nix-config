@@ -1,7 +1,9 @@
-{pkgs, pkgs-llm, ...}: {
-    environment.systemPackages = with pkgs; [
-    pkgs-llm.claude-code
-    pkgs-llm.opencode
-    pkgs-llm.gemini-cli
+{pkgs, llm-agents, ...}: {
+
+  environment.systemPackages = with llm-agents.packages.x86_64-linux; [
+    claude-code
+    opencode
+    gemini-cli
   ];
-}
+
+} 

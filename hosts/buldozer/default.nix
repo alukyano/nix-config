@@ -30,7 +30,7 @@
       ../../modules/wine.nix
       ../../modules/ai.nix  
       ../../modules/winboat.nix
-     # ../../modules/ai_agents.nix  
+      ../../modules/ai_agents.nix  
       ];
   
   # Bootloader.
@@ -38,7 +38,7 @@
   boot.loader.grub.device = "/dev/nvme0n1";
   boot.loader.grub.useOSProber = true;
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
     
@@ -46,14 +46,14 @@
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
     "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
- #   "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+    "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
   ];
 
   nix.settings.substituters = [
     "https://cache.nixos.org"
     "https://nixpkgs-wayland.cachix.org"
     "https://cuda-maintainers.cachix.org"
-  #  "https://cache.numtide.com"
+    "https://cache.numtide.com"
   ];
   
     # Swappiness to reduce swapfile usage.

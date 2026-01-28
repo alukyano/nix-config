@@ -30,7 +30,7 @@
       ../../modules/wine.nix
       ../../modules/ai.nix  
       ../../modules/winboat.nix
-      ../../modules/ai_agents.nix  
+      #../../modules/ai_agents.nix  
       ];
   
   # Bootloader.

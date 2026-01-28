@@ -106,6 +106,7 @@ environment.systemPackages = with pkgs; [
         jdk
         uv
         zsh
+        nodejs_24
     # Archives
         unrar
         unzip

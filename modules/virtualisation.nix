@@ -1,4 +1,4 @@
-{config, pkgs, pkgs-unstable, username, ...}: {
+{config, pkgs, username, ...}: {
 
     boot.kernelModules = [ "kvm-intel" "kvm-amd" ];
 
@@ -33,7 +33,6 @@
   programs.virt-manager.enable = true;
   
   environment.systemPackages = with pkgs; [
-    pkgs-unstable.winboat
     freerdp
     dive
     libguestfs-with-appliance

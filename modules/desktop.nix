@@ -40,6 +40,8 @@
         chromium  
     ];
 
+
+  programs.throne.tunMode.enable = true;
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;

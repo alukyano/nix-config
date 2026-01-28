@@ -7,19 +7,25 @@
     # nix com    extra-substituters = [munity's cache server
     extra-substituters = [
       "https://nix-community.cachix.org"
+ #     "https://cache.numtide.com"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+ #     "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
     ];
+
   };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.inputs.nixpkgs.follows = "nixpkgs";
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     #nix-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
     llm-agents.url = "github:numtide/llm-agents.nix";
+    llm-agents.inputs.nixpkgs.follows = "nixpkgs";
     
     home-manager = {
        url = "github:nix-community/home-manager/release-25.11";
@@ -45,14 +51,20 @@ outputs = inputs @ {
         username = "alukyano";
         desktop = "xfce";
         # desktop = "i3";
-        # desktop = "gnome";
-        pkgs-unstable = import nixpkgs-unstable {
-          system = "x86_64-linux";
-          config = {
-            allowUnfree = true;
-          };
-        };            
-        specialArgs = {inherit username desktop pkgs-unstable;};
+        # desktop = "gnome";    
+        # pkgs-unstable = import nixpkgs-unstable {
+        #   system = "x86_64-linux";
+        #   config = {
+        #     allowUnfree = true;
+        #   };     
+        #};
+        # pkgs-llm = import llm-agents {
+        #   system = "x86_64-linux";
+        #   config = {
+        #     allowUnfree = true;
+        #   };     
+        # };
+        specialArgs = {inherit nixpkgs-unstable username desktop;};
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;

@@ -1,7 +1,7 @@
-{pkgs, ...}: {
-    environment.systemPackages = with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
-    claude-code
-    opencode
-    gemini-cli
+{pkgs, pkgs-llm, ...}: {
+    environment.systemPackages = with pkgs; [
+    pkgs-llm.claude-code
+    pkgs-llm.opencode
+    pkgs-llm.gemini-cli
   ];
 }

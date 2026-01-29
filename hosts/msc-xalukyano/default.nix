@@ -7,7 +7,8 @@
       # Include modules    
       ../../modules/common.nix
       ../../modules/nvidia.nix
-      ../../modules/gnome-desktop.nix
+      #../../modules/gnome-desktop.nix
+      ../../modules/kde.nix
       ../../modules/desktop.nix
       ../../modules/games.nix
       ../../modules/fonts.nix

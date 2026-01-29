@@ -50,7 +50,7 @@
 
   swapDevices = [{
     device = "/swapfile";
-    size = 8 * 1024;
+    size = 32 * 1024;
   }];
 
   systemd.sleep.extraConfig = ''

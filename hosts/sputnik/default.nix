@@ -21,6 +21,7 @@
       ../../modules/wine.nix
       ../../modules/ai_na.nix
       ../../modules/xrdp.nix
+      ../../modules/proxy.nix
     ];
 
   system.stateVersion = "25.11";

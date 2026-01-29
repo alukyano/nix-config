@@ -4,7 +4,7 @@ services = {
   displayManager.sddm.enable = true;
   displayManager.sddm.wayland.enable = false;
 };
-
+services.xserver.enable = true;
 services.xrdp.enable = true;
 services.xrdp.defaultWindowManager = "startplasma-x11"; 
 

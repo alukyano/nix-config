@@ -5,11 +5,8 @@ services = {
   displayManager.sddm.wayland.enable = false;
 };
 
-xrdp = {
-    defaultWindowManager = "startplasma-x11";
-    enable = true;
-    openFirewall = true;
-};
+services.xrdp.enable = true;
+services.xrdp.defaultWindowManager = "startplasma-x11"; 
 
 environment.systemPackages = with pkgs;
   [

@@ -30,6 +30,7 @@
       ../../modules/wine.nix
       ../../modules/ai.nix  
       ../../modules/winboat.nix
+      ../../modules/proxy.nix
       #../../modules/ai_agents.nix  
       ];
   

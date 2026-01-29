@@ -7,8 +7,8 @@
       # Include modules    
       ../../modules/common.nix
       ../../modules/nvidia.nix
-      #../../modules/gnome-desktop.nix
-      ../../modules/kde.nix
+      ../../modules/gnome-desktop.nix
+      #../../modules/xfce-desktop.nix
       ../../modules/desktop.nix
       ../../modules/games.nix
       ../../modules/fonts.nix
@@ -21,6 +21,7 @@
       ../../modules/adb.nix
       ../../modules/wine.nix
       ../../modules/ai.nix
+      #../../modules/xrdp.nix
       ../../modules/winboat.nix
     ];
 
@@ -70,6 +71,8 @@
 
   # Allow unfree packages
   nixpkgs.config.nvidia.acceptLicense = true;
+  
+  #services.displayManager.defaultSession = lib.mkForce "cinnamon";
   
   programs.nix-ld = {
     enable = true;

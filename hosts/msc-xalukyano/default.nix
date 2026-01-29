@@ -20,6 +20,7 @@
       ../../modules/adb.nix
       ../../modules/wine.nix
       ../../modules/ai.nix
+      ../../modules/winboat.nix
     ];
 
   system.stateVersion = "25.11";

@@ -85,7 +85,7 @@ outputs = inputs @ {
             allowUnfree = true;
           };
         };            
-        specialArgs = {inherit username desktop pkgs-unstable;};
+        specialArgs = {inherit username desktop pkgs-unstable llm-agents;};
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
@@ -115,7 +115,7 @@ outputs = inputs @ {
             allowUnfree = true;
           };
         };            
-        specialArgs = {inherit username desktop pkgs-unstable;};
+        specialArgs = {inherit username desktop pkgs-unstable llm-agents;};
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
@@ -145,7 +145,7 @@ outputs = inputs @ {
             allowUnfree = true;
           };
         };            
-        specialArgs = {inherit username desktop pkgs-unstable;};
+        specialArgs = {inherit username desktop pkgs-unstable llm-agents;};
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
@@ -175,7 +175,7 @@ outputs = inputs @ {
             allowUnfree = true;
           };
         };          
-        specialArgs = {inherit username desktop pkgs-unstable;};
+        specialArgs = {inherit username desktop pkgs-unstable llm-agents;};
       
       in
         nixpkgs.lib.nixosSystem {

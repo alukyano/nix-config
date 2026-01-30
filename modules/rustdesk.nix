@@ -2,7 +2,7 @@
    systemd.services."rustdesk" = {
         enable = true;
         path = with pkgs; [
-        pkgs.rustdesk
+        pkgs-unstable.rustdesk
         procps
         # This doesn't work since the version of sudo that will then be in the
         # path, won't have the setuid bit set

@@ -22,6 +22,7 @@
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
       ../../modules/ai_cuda.nix  
+      ../../modules/xrdp.nix      
       #../../modules/n8n.nix
       #../../modules/adb.nix
       #../../modules/wine.nix

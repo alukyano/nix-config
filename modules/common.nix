@@ -69,6 +69,7 @@ environment.systemPackages = with pkgs; [
         ntfs3g
         patchelf
         pciutils
+        nettools
         wget
         curl
         jq

@@ -11,7 +11,7 @@
         appimage-run
         qdirstat
         sqlitebrowser
-        #edit # Text editor for LARGE text files.
+        #nedit # Text editor for LARGE text files.
         freetube
         obsidian
         libreoffice
@@ -19,7 +19,7 @@
         #notepad-next
     # Media stuff:
         vlc
-        handbrake
+        #handbrake
         krita # Photoshop alternative... Ish...
         digikam # Also installs showfoto
         shotwell

@@ -19,8 +19,8 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    llm-agents.url = "github:numtide/llm-agents.nix";
-    llm-agents.inputs.nixpkgs.follows = "nixpkgs";
+#    llm-agents.url = "github:numtide/llm-agents.nix";
+#    llm-agents.inputs.nixpkgs.follows = "nixpkgs";
     
     home-manager = {
        url = "github:nix-community/home-manager/release-25.11";
@@ -37,7 +37,7 @@ outputs = inputs @ {
     self,
     nixpkgs,
     nixpkgs-unstable,
-    llm-agents,
+    #llm-agents,
     home-manager,
     ...
   }: {
@@ -115,7 +115,7 @@ outputs = inputs @ {
             allowUnfree = true;
           };
         };            
-        specialArgs = {inherit username desktop pkgs-unstable llm-agents;};
+        specialArgs = {inherit username desktop pkgs-unstable;};
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;

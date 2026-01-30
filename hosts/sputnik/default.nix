@@ -26,7 +26,7 @@
     ];
 
   system.stateVersion = "25.11";
-  
+  #nix.settings.narinfo-cache-positive-ttl = 0;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   nix.settings.trusted-public-keys = [
@@ -69,6 +69,7 @@
 
   networking.hostName = "sputnik"; # Define your hostname.
   networking.networkmanager.enable = true;
+  networking.ipv6.disable = true;
 
   programs.nix-ld = {
     enable = true;

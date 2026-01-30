@@ -36,9 +36,9 @@
       xfce.xfce4-whiskermenu-plugin
       xfce.xfce4-xkb-plugin
       xfce.xfdashboard
-      xfce.xev
-      xfce.xsel
-      xfce.xtitle
+      xev
+      xsel
+      xtitle
     ];
   };
 
@@ -53,9 +53,9 @@
     thunar = {
       enable = true;
       plugins = with pkgs; [
-        thunar-archive-plugin
-        thunar-media-tags-plugin
-        thunar-volman
+        xfce.thunar-archive-plugin
+        xfce.thunar-media-tags-plugin
+        xfce.thunar-volman
       ];
     };
   };

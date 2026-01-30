@@ -6,7 +6,8 @@
       ./hardware-configuration.nix
       # Include modules    
       ../../modules/common.nix
-      ../../modules/nvidia.nix
+      ../../modules/nvidia-prime-intel.nix
+      #../../modules/nvidia.nix
       ../../modules/gnome-desktop.nix
       #../../modules/xfce-desktop.nix
       ../../modules/desktop.nix
@@ -47,7 +48,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   # Swappiness to reduce swapfile usage.
   boot.kernel.sysctl = { "vm.swappiness" = 10;};
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_stable;
   boot.tmp.useTmpfs = true;
 
   swapDevices = [{

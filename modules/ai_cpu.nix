@@ -1,9 +1,9 @@
-{pkgs, ...}: {
-    environment.systemPackages = with pkgs; [
-        openai-whisper
-        lmstudio
-        vllm
-        koboldcpp
-        ollama-cpu
+{pkgs, pkgs-unstable, ...}: {
+    environment.systemPackages = [
+        pkgs-unstable.openai-whisper
+        pkgs-unstable.lmstudio
+        pkgs-unstable.vllm
+        pkgs-unstable.koboldcpp
+        pkgs-unstable.ollama-cpu
     ];
 }

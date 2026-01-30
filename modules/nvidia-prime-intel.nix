@@ -10,7 +10,7 @@
     "nvidia"
   ];
 
-  hardware.nvidia.open = false;
+  hardware.nvidia.open = true;
   hardware.nvidia.prime = {
     offload.enable = true;
     offload.enableOffloadCmd = true;
@@ -39,7 +39,7 @@
     nvtopPackages.nvidia
     cudaPackages.cudatoolkit
     linuxPackages.nvidia_x11
-    linuxPackages.nvidiaPackages.stable
+    linuxPackages.nvidiaPackages.latest
   ];
 
   hardware.graphics.extraPackages = with pkgs; [

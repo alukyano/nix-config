@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, pkgs-unstable, ...}: {
    systemd.services."rustdesk" = {
         enable = true;
         path = with pkgs; [
@@ -28,7 +28,7 @@
     };
 
           # Your configuration options here
-    environment.systemPackages = with pkgs; [
-        rustdesk
+    environment.systemPackages = [
+        pkgs-unstable.rustdesk
    ];
 }

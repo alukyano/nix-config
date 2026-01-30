@@ -20,7 +20,7 @@
       #../../modules/n8n.nix
       #../../modules/adb.nix
       ../../modules/wine.nix
-      ../../modules/ai.nix
+      ../../modules/ai_cuda.nix
       #../../modules/xrdp.nix
       ../../modules/winboat.nix
     ];

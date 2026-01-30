@@ -13,7 +13,7 @@
       ../../modules/common.nix
       ../../modules/nvidia-prime-intel.nix
       ../../modules/cinnamon-desktop.nix
-      ../../modules/xfce-desktop.nix
+      #../../modules/xfce-desktop.nix
       ../../modules/desktop.nix
       ../../modules/fonts.nix
       ../../modules/netbird.nix

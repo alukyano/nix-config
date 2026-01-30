@@ -25,7 +25,7 @@
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
-      ../../modules/ai.nix  
+      ../../modules/ai_cuda.nix  
       #../../modules/n8n.nix
       #../../modules/adb.nix
       #../../modules/wine.nix

@@ -17,7 +17,7 @@
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
       ../../modules/wine.nix
-      ../../modules/ai_na.nix
+      ../../modules/ai_cpu.nix
       ../../modules/xrdp.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix      

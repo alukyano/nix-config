@@ -3,10 +3,7 @@
         openai-whisper
         lmstudio
         vllm
+        koboldcpp
+        ollama-cpu
     ];
-
-    services.ollama = { 
-        enable = true; 
-        acceleration="cuda"; 
-    };
 }

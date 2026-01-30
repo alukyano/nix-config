@@ -4,7 +4,7 @@
   ...
 }: {
   # i3 配置，基于 https://github.com/endeavouros-team/endeavouros-i3wm-setup
-  # 直接从当前文件夹中读取配置文件作为配置内容
+
 
   # wallpaper, binary file
   home.file.".config/i3/wallpaper.jpg".source = ../../wallpaper.jpg;

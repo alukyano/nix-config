@@ -1,7 +1,7 @@
 {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
     # GUI dev tools
-        jetbrains.pycharm-community
+       #jetbrains.pycharm-community
         vscode
         vscode-extensions.golang.go
         vscode-extensions.ms-python.python
@@ -11,7 +11,7 @@
         appimage-run
         qdirstat
         sqlitebrowser
-        nedit # Text editor for LARGE text files.
+        #edit # Text editor for LARGE text files.
         freetube
         obsidian
         libreoffice

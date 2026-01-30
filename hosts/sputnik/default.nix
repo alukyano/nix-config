@@ -16,13 +16,13 @@
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
-      ../../modules/n8n.nix
-      #../../modules/adb.nix
       ../../modules/wine.nix
       ../../modules/ai_na.nix
       ../../modules/xrdp.nix
-      ../../modules/proxy.nix
-      ../../modules/ai_agents.nix  
+      #../../modules/n8n.nix
+      #../../modules/adb.nix      
+      #../../modules/proxy.nix
+      #../../modules/ai_agents.nix  
     ];
 
   system.stateVersion = "25.11";

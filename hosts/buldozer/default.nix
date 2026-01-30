@@ -16,21 +16,22 @@
       # Include modules    
       ../../modules/common.nix
       ../../modules/nvidia-prime-intel.nix
+      ../../modules/cinnamon-desktop.nix
       ../../modules/xfce-desktop.nix
       ../../modules/desktop.nix
-      ../../modules/games.nix
       ../../modules/fonts.nix
       ../../modules/netbird.nix
       ../../modules/rustdesk.nix
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
-      ../../modules/n8n.nix
-      ../../modules/adb.nix
-      ../../modules/wine.nix
       ../../modules/ai.nix  
-      ../../modules/winboat.nix
-      ../../modules/proxy.nix
+      #../../modules/n8n.nix
+      #../../modules/adb.nix
+      #../../modules/wine.nix
+      #../../modules/games.nix
+      #../../modules/winboat.nix
+      #../../modules/proxy.nix
       #../../modules/ai_agents.nix  
       ];
   

@@ -17,8 +17,8 @@
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
-      ../../modules/n8n.nix
-      #./../modules/adb.nix
+      #../../modules/n8n.nix
+      #../../modules/adb.nix
       ../../modules/wine.nix
       ../../modules/ai.nix
       #../../modules/xrdp.nix

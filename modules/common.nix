@@ -96,7 +96,6 @@ environment.systemPackages = with pkgs; [
         maven
         nil
         ninja
-        nodejs
         protobuf
         gcc
         libgcc

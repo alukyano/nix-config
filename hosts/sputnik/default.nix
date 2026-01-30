@@ -17,11 +17,12 @@
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
       ../../modules/n8n.nix
-      ../../modules/adb.nix
+      #../../modules/adb.nix
       ../../modules/wine.nix
       ../../modules/ai_na.nix
       ../../modules/xrdp.nix
       ../../modules/proxy.nix
+      ../../modules/ai_agents.nix  
     ];
 
   system.stateVersion = "25.11";
@@ -32,12 +33,14 @@
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
     "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+    "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
   ];
 
   nix.settings.substituters = [
     "https://cache.nixos.org"
     "https://nixpkgs-wayland.cachix.org"
     "https://cuda-maintainers.cachix.org"
+    "https://cache.numtide.com"
   ];
  
   # Bootloader.  

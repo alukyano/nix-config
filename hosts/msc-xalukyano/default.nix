@@ -7,9 +7,8 @@
       # Include modules    
       ../../modules/common.nix
       ../../modules/nvidia-prime-intel.nix
-      #../../modules/nvidia.nix
       ../../modules/gnome-desktop.nix
-      #../../modules/xfce-desktop.nix
+      ../../modules/cinnamon-desktop.nix
       ../../modules/desktop.nix
       ../../modules/games.nix
       ../../modules/fonts.nix
@@ -18,12 +17,12 @@
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
-      #../../modules/n8n.nix
-      #../../modules/adb.nix
       ../../modules/wine.nix
       ../../modules/ai_cuda.nix
-      #../../modules/xrdp.nix
       ../../modules/winboat.nix
+      ../../modules/xrdp-wayland.nix
+      #../../modules/n8n.nix
+      #../../modules/adb.nix
     ];
 
   system.stateVersion = "25.11";

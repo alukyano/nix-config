@@ -11,7 +11,7 @@
       ./hardware-configuration.nix
       # Include modules    
       ../../modules/common.nix
-      ../../modules/nvidia-prime-intel.nix
+      ../../modules/nvidia-buldozer.nix
       ../../modules/cinnamon-desktop.nix
       #../../modules/xfce-desktop.nix
       ../../modules/desktop.nix

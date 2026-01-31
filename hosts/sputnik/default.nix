@@ -68,7 +68,15 @@
 
   networking.hostName = "sputnik"; # Define your hostname.
   networking.networkmanager.enable = true;
-  #etworking.ipv6.disable = true;
+  #enp3s0
+  networking.interfaces.enp3s0.useDHCP = true;
+  networking.interfaces.br0.useDHCP = true;
+  networking.bridges = {
+    "br0" = {
+      interfaces = [ "enp3s0" ];
+    };
+  };
+  #networking.ipv6.disable = true;
 
   programs.nix-ld = {
     enable = true;

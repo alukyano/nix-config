@@ -6,5 +6,12 @@
         pkgs-unstable.koboldcpp
         pkgs-unstable.ollama-cpu
     ];
-    services.ollama.enable = true;
+services.ollama = {
+     enable = true;
+     host = "0.0.0.0:11434";
+     openFirewall = true;
+     environmentVariables = {
+       OLLAMA_CONTEXT_LENGTH = 65536;
+     };
+   };
 }

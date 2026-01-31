@@ -8,7 +8,7 @@
       ../../modules/common.nix
       ../../modules/nvidia-prime-intel.nix
       ../../modules/gnome-desktop.nix
-      ../../modules/cinnamon-desktop.nix
+      #../../modules/cinnamon-desktop.nix
       ../../modules/desktop.nix
       ../../modules/games.nix
       ../../modules/fonts.nix

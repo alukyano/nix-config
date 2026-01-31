@@ -70,7 +70,14 @@
 
   networking.hostName = "moon"; # Define your hostname.
   networking.networkmanager.enable = true;
-
+  # enp44s0
+  networking.interfaces.enp44s0.useDHCP = true;
+  networking.interfaces.br0.useDHCP = true;
+  networking.bridges = {
+    "br0" = {
+      interfaces = [ "enp44s0" ];
+    };
+  }; 
   # Allow unfree packages
   #nixpkgs.config.nvidia.acceptLicense = true;
   

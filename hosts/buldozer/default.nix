@@ -71,6 +71,14 @@
     '';
 
   networking.hostName = "buldozer"; # Define your hostname.
+  #enp4s0f1
+  networking.interfaces.enp4s0f1.useDHCP = true;
+  networking.interfaces.br0.useDHCP = true;
+  networking.bridges = {
+    "br0" = {
+      interfaces = [ "enp4s0f1" ];
+    };
+  };
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.";
 
   # Enable networking

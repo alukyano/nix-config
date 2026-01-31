@@ -69,7 +69,14 @@
 
   networking.hostName = "msc-xalukyano"; # Define your hostname.
   networking.networkmanager.enable = true;
-  networking.ipv6.disable = true;
+  #enp4s
+  networking.interfaces.enp4s0.useDHCP = true;
+  networking.interfaces.br0.useDHCP = true;
+  networking.bridges = {
+    "br0" = {
+      interfaces = [ "enp4s0" ];
+    };
+  };
 
   # Allow unfree packages
   nixpkgs.config.nvidia.acceptLicense = true;

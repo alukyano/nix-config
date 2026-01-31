@@ -28,6 +28,7 @@
        url = "github:catppuccin/bat";
        flake = false;
      };
+     nixai.url = "github:olafkfreund/nix-ai-help";
   };
 
 outputs = inputs @ {

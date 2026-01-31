@@ -1,9 +1,10 @@
-{pkgs, ...}: {
+{pkgs, pkgs-unstable, ...}: {
     environment.systemPackages = with pkgs; [
-        openai-whisper
-        lmstudio
-        vllm
-        koboldcpp
-        ollama-rocm
+        pkgs-unstable.openai-whisper
+        pkgs-unstable.lmstudio
+        pkgs-unstable.vllm
+        pkgs-unstable.koboldcpp
+        pkgs-unstable.ollama-rocm
     ];
+    services.ollama.enable = true;
 }

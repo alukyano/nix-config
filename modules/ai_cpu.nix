@@ -6,4 +6,5 @@
         pkgs-unstable.koboldcpp
         pkgs-unstable.ollama-cpu
     ];
+    services.ollama.enable = true;
 }

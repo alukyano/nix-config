@@ -12,6 +12,10 @@
   virtualisation = {
     libvirtd = {
       enable = true;
+      allowedBridges = [
+        "virbr0"
+        "br0"
+      ];     
       package = with pkgs; libvirt;
       qemu = {
         vhostUserPackages = with pkgs; [ virtiofsd ];

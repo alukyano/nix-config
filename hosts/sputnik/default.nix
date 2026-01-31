@@ -19,10 +19,10 @@
       ../../modules/wine.nix
       ../../modules/ai_cpu.nix
       ../../modules/xrdp.nix
+      ../../modules/ai-agents.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix      
-      #../../modules/proxy.nix
-      #../../modules/ai_agents.nix  
+      #../../modules/proxy.nix 
     ];
 
   system.stateVersion = "25.11";

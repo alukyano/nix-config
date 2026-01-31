@@ -1,9 +1,8 @@
 {pkgs, llm-agents, ...}: {
 
-  environment.systemPackages = with llm-agents.packages.x86_64-linux; [
+  environment.systemPackages = with pkgs; [
     claude-code
     opencode
-    gemini-cli
   ];
 
 } 

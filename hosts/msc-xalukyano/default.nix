@@ -21,6 +21,7 @@
       ../../modules/ai_cuda.nix
       ../../modules/winboat.nix
       ../../modules/xrdp-wayland.nix
+      ../../modules/ai-agents.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix
     ];

@@ -8,7 +8,7 @@
     ];
 services.ollama = {
      enable = true;
-     host = "0.0.0.0:11434";
+     host = "0.0.0.0";
      openFirewall = true;
      environmentVariables = {
        OLLAMA_CONTEXT_LENGTH = "65536";

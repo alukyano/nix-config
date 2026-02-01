@@ -71,10 +71,10 @@
 
   networking.hostName = "moon"; # Define your hostname.
   networking.networkmanager.enable = true;
-  # enp44s0
+  # enp44s0 58:47:ca:7c:db:e9
   networking.interfaces.enp44s0.useDHCP = true;
   networking.interfaces.br0.useDHCP = true;
-  networking.interfaces.br0.macAddress = "a8:1e:84:ab:cd:ef";
+  networking.interfaces.br0.macAddress = "58:47:ca:7c:db:e9";
   networking.bridges = {
     "br0" = {
       interfaces = [ "enp44s0" ];

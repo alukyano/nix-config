@@ -1,4 +1,4 @@
-{pkgs, pkgs-unstable, username ...}: {  
+{pkgs, pkgs-unstable, username, ...}: {  
   
   services.syncthing = {
     enable = true;

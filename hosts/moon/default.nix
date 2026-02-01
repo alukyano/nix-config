@@ -73,6 +73,7 @@
   # enp44s0
   networking.interfaces.enp44s0.useDHCP = true;
   networking.interfaces.br0.useDHCP = true;
+  networking.interfaces.br0.macAddress = "a8:1e:84:ab:cd:ef";
   networking.bridges = {
     "br0" = {
       interfaces = [ "enp44s0" ];

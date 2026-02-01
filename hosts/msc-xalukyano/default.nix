@@ -69,9 +69,10 @@
 
   networking.hostName = "msc-xalukyano"; # Define your hostname.
   networking.networkmanager.enable = true;
-  #enp4s
+  #enp4s d8:43:ae:a5:05:77
   networking.interfaces.enp4s0.useDHCP = true;
   networking.interfaces.br0.useDHCP = true;
+  networking.interfaces.br0.macAddress = "d8:43:ae:a5:05:77";
   networking.bridges = {
     "br0" = {
       interfaces = [ "enp4s0" ];

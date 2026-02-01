@@ -18,10 +18,11 @@
     services.gnome.gnome-remote-desktop.enable = true;
     services.xrdp.enable = true;
     services.xrdp.openFirewall = true;
-    services.xrdp.defaultWindowManager = "gnome-session";
+    services.xrdp.defaultWindowManager = "${pkgs.gnome-session}/bin/gnome-session";
    
-   environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       # gnome
+        gnome-session
         gnome-terminal
         gnome-system-monitor
         file-roller

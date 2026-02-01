@@ -11,6 +11,7 @@
       ./hardware-configuration.nix
       # Include modules    
       ../../modules/common.nix
+      ../../modules/syncthing.nix
       ../../modules/nvidia-buldozer.nix
       ../../modules/cinnamon-desktop.nix
       #../../modules/xfce-desktop.nix

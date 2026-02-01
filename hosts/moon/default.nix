@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       # Include modules    
       ../../modules/common.nix
+      ../../modules/syncthing.nix
       ../../modules/intel.nix
       ../../modules/cinnamon-desktop.nix
       ../../modules/xfce-desktop.nix

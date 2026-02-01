@@ -1,11 +1,12 @@
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, username ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # Include modules    
       ../../modules/common.nix
+      ../../modules/syncthing.nix
       ../../modules/nvidia-prime-intel.nix
       ../../modules/gnome-desktop.nix
       #../../modules/cinnamon-desktop.nix
@@ -20,7 +21,7 @@
       ../../modules/wine.nix
       ../../modules/ai_cuda.nix
       ../../modules/winboat.nix
-      ../../modules/xrdp-wayland.nix
+      #../../modules/xrdp-wayland.nix
       ../../modules/ai_agents.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix

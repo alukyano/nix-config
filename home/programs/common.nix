@@ -76,10 +76,6 @@
     };
   };
 
-  services = {
-    syncthing.enable = true;
-
-    # auto mount usb drives
-    udiskie.enable = true;
-  };
+  # auto mount usb drives
+  services.udiskie.enable = true;
 }

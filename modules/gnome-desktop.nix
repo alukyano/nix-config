@@ -8,22 +8,17 @@
 
     # Enable the GNOME Desktop Environment.
     services.displayManager.gdm.enable = true;
-    #services.displayManager.gdm.wayland = false;
+    services.displayManager.gdm.wayland = false;
+    services.displayManager.gdm.autoSuspend = false;
+    services.displayManager.autoLogin.enable = false;
     services.desktopManager.gnome.enable = true;
     services.xserver.xkb.layout = "us,ru";
     services.xserver.xkb.options = "grp:ctrl_shift_toggle";
-    
-#    services.xserver = {
-#        enable = true;
-#        displayManager = {
-#            gdm.enable = true;
-#            gdm.wayland = false;
-#        };
-#        desktopManager.gnome.enable = true;
-#
-#        xkb.layout = "us,ru";
-#        xkb.options = "grp:ctrl_shift_toggle";
-#    };   
+
+    services.gnome.gnome-remote-desktop.enable = true;
+    services.xrdp.enable = true;
+    services.xrdp.openFirewall = true;
+    services.xrdp.defaultWindowManager = "gnome-session";
    
    environment.systemPackages = with pkgs; [
       # gnome

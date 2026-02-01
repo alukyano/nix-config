@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       # Include modules    
       ../../modules/common.nix
+      ../../modules/syncthing.nix
       ../../modules/nvidia-prime-amd.nix
       ../../modules/cinnamon-desktop.nix
       ../../modules/desktop.nix
@@ -26,7 +27,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
     

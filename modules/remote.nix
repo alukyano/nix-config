@@ -3,5 +3,6 @@
         # Remote Connect Applications
         #realvnc-vnc-viewer
         remmina
+        x11spice
     ];
 }

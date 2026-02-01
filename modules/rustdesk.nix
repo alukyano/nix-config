@@ -14,7 +14,7 @@
         after= [ "systemd-user-sessions.service" ];
         script = ''
         export PATH=/run/wrappers/bin:$PATH
-        ${pkgs.rustdesk}/bin/rustdesk --service
+        ${pkgs-unstable.rustdesk}/bin/rustdesk --service
         '';
         serviceConfig = {
         ExecStop = "${pkgs.procps}/pkill -f 'rustdesk --'";

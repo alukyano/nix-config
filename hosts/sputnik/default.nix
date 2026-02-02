@@ -71,15 +71,15 @@
   networking.hostName = "sputnik"; # Define your hostname.
   networking.networkmanager.enable = true;
   #enp3s0 38:05:25:30:7b:1b
-  networking.interfaces.enp3s0.useDHCP = true;
-  networking.interfaces.br0.useDHCP = true;
-  networking.interfaces.br0.macAddress = "38:05:25:30:7b:1b";
-  networking.bridges = {
-    "br0" = {
-      interfaces = [ "enp3s0" ];
-    };
-  };
-  #networking.ipv6.disable = true;
+#  networking.interfaces.enp3s0.useDHCP = true;
+#  networking.interfaces.br0.useDHCP = true;
+#  networking.interfaces.br0.macAddress = "38:05:25:30:7b:1b";
+#  networking.bridges = {
+#    "br0" = {
+#      interfaces = [ "enp3s0" ];
+#    };
+#  };
+#  networking.ipv6.disable = true;
 
   programs.nix-ld = {
     enable = true;

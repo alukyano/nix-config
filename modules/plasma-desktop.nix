@@ -1,10 +1,25 @@
 {pkgs, ...}: {
-services = {
-  desktopManager.plasma6.enable = true;
-  displayManager.sddm.enable = true;
-  displayManager.sddm.wayland.enable = false;
-};
+
+  # services.xserver.enable = true;
+
+  #   # Enable the GNOME Desktop Environment.
+  #   services.displayManager.gdm.enable = true;
+  #   #services.displayManager.gdm.wayland = false;
+  #   services.displayManager.gdm.autoSuspend = false;
+  #   services.displayManager.autoLogin.enable = false;
+  #   services.desktopManager.gnome.enable = true;
+  #   services.xserver.xkb.layout = "us,ru";
+  #   services.xserver.xkb.options = "grp:ctrl_shift_toggle";
+
 services.xserver.enable = true;
+services.xserver.xkb.layout = "us,ru";
+services.xserver.xkb.options = "grp:ctrl_shift_toggle";
+
+services.desktopManager.plasma6.enable = true;
+services.displayManager.sddm.enable = true;
+services.displayManager.sddm.wayland.enable = true;
+services.displayManager.autoLogin.enable = false;
+
 services.xrdp.enable = true;
 services.xrdp.defaultWindowManager = "startplasma-x11"; 
 

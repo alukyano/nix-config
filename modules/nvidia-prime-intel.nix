@@ -10,7 +10,7 @@
     "nvidia"
   ];
 
-  hardware.nvidia.open = true;
+  hardware.nvidia.open = false;
   hardware.nvidia.prime = {
     offload.enable = true;
     offload.enableOffloadCmd = true;

@@ -8,8 +8,10 @@
 
     # Enable the GNOME Desktop Environment.
     services.displayManager.gdm.enable = true;
+    
     #services.displayManager.gdm.wayland = false;
     services.displayManager.gdm.autoSuspend = false;
+    services.xserver.displayManager.gdm.settings.daemon.DefaultSession = "gnome-xorg.desktop";
     services.displayManager.autoLogin.enable = false;
     services.desktopManager.gnome.enable = true;
     services.xserver.xkb.layout = "us,ru";

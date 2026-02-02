@@ -18,7 +18,7 @@
       ../../modules/desktop.nix
       ../../modules/fonts.nix
       ../../modules/netbird.nix
-      ../../modules/rustdesk.nix
+      ../../modules/rustdesk-stable.nix
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
       ../../modules/docker.nix

@@ -37,11 +37,18 @@
         yandex-disk 
     # Browsers
         firefox
-        chromium  
+        chromium
+    #terminals
+        alacritty  
+        alacritty-theme
+        kitty
+        kitty-themes
+        ghostty
     ];
 
 
   programs.throne.tunMode.enable = true;
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;

@@ -8,19 +8,20 @@
       ../../modules/common.nix
       ../../modules/syncthing.nix
       ../../modules/nvidia-prime-intel.nix
-      ../../modules/gnome-desktop.nix
-      #../../modules/cinnamon-desktop.nix
+      #../../modules/gnome-desktop.nix
+      ../../modules/cinnamon-desktop.nix
       ../../modules/desktop.nix
       ../../modules/games.nix
       ../../modules/fonts.nix
       ../../modules/netbird.nix
-      ../../modules/rustdesk.nix
+      ../../modules/rustdesk-stable.nix
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
       ../../modules/wine.nix
       ../../modules/ai_cuda.nix
       ../../modules/winboat.nix
+      ../../modules/xrdp.nix
       #../../modules/xrdp-wayland.nix
       ../../modules/ai_agents.nix
       #../../modules/n8n.nix
@@ -51,7 +52,6 @@
   boot.kernel.sysctl = { "vm.swappiness" = 10;};
   boot.kernelParams = [ "ipv6.disable=1" ];
   #boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackages_stable;
   boot.tmp.useTmpfs = true;
 
   swapDevices = [{

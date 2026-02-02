@@ -13,7 +13,7 @@
       ../../modules/games.nix
       ../../modules/fonts.nix
       ../../modules/netbird.nix
-      ../../modules/rustdesk-stable.nix
+      ../../modules/rustdesk-unstable.nix
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
       ../../modules/docker.nix

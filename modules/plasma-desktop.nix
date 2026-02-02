@@ -17,6 +17,7 @@ services.xserver.xkb.options = "grp:ctrl_shift_toggle";
 
 services.desktopManager.plasma6.enable = true;
 services.displayManager.sddm.enable = true;
+
 services.displayManager.sddm.wayland.enable = true;
 services.displayManager.autoLogin.enable = false;
 

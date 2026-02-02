@@ -9,7 +9,8 @@
       ../../modules/syncthing.nix
       ../../modules/nvidia-prime-intel.nix
       #../../modules/gnome-desktop.nix
-      ../../modules/cinnamon-desktop.nix
+      ../../modules/plasma-desktop.nix
+      #../../modules/cinnamon-desktop.nix
       ../../modules/desktop.nix
       ../../modules/games.nix
       ../../modules/fonts.nix
@@ -21,7 +22,7 @@
       ../../modules/wine.nix
       ../../modules/ai_cuda.nix
       ../../modules/winboat.nix
-      ../../modules/xrdp.nix
+      #../../modules/xrdp.nix
       #../../modules/xrdp-wayland.nix
       ../../modules/ai_agents.nix
       #../../modules/n8n.nix

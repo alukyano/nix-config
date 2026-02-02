@@ -20,6 +20,8 @@
     services.xrdp.openFirewall = true;
     services.xrdp.defaultWindowManager = "${pkgs.gnome-session}/bin/gnome-session";
    
+    hardware.graphics.enable = true;
+
     environment.systemPackages = with pkgs; [
       # gnome
         gnome-session

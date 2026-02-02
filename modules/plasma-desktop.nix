@@ -21,6 +21,7 @@ environment.systemPackages = with pkgs;
     kdePackages.isoimagewriter # Optional: Program to write hybrid ISO files onto USB disks
     kdePackages.partitionmanager # Optional: Manage the disk devices, partitions and file systems on your computer
   ];
+  
   environment.plasma6.excludePackages = with pkgs; [
     kdePackages.elisa # Simple music player aiming to provide a nice experience for its users
     kdePackages.kdepim-runtime # Akonadi agents and resources

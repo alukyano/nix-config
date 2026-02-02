@@ -18,21 +18,7 @@
     nvidiaBusId = "PCI:1:0:0";
   };
 
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-  # boot.initrd.kernelModules = [ "i915" ];
-  # boot.blacklistedKernelModules = [ "nvidia" "nvidia_drm" "nvidia_modeset" ];
-
-  # services.xserver.videoDrivers = ["intel"];
-  # hardware.graphics.enable = true;
-  # hardware.nvidia = {
-  #   modesetting.enable = true;
-  #   powerManagement.enable = false;
-  #   #powerManagement.finegrained = true;
-  #   open = false;
-  #   nvidiaSettings = true;
-  #   package = config.boot.kernelPackages.nvidiaPackages.stable;
-  # };
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
     
   environment.systemPackages = 
   with pkgs; [
@@ -40,7 +26,7 @@
     nvtopPackages.nvidia
     cudaPackages.cudatoolkit
     linuxPackages.nvidia_x11
-    linuxPackages.nvidiaPackages.stable
+    linuxPackages.nvidiaPackages.latest
   ];
 
   hardware.graphics.extraPackages = with pkgs; [
@@ -55,4 +41,18 @@
       mount-nvidia-executables = false;
       suppressNvidiaDriverAssertion = true;
   };
+
+  # boot.initrd.kernelModules = [ "i915" ];
+  # boot.blacklistedKernelModules = [ "nvidia" "nvidia_drm" "nvidia_modeset" ];
+
+  # services.xserver.videoDrivers = ["intel"];
+  # hardware.graphics.enable = true;
+  # hardware.nvidia = {
+  #   modesetting.enable = true;
+  #   powerManagement.enable = false;
+  #   #powerManagement.finegrained = true;
+  #   open = false;
+  #   nvidiaSettings = true;
+  #   package = config.boot.kernelPackages.nvidiaPackages.stable;
+  # };  
 }

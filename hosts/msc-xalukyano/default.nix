@@ -49,7 +49,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   # Swappiness to reduce swapfile usage.
   boot.kernel.sysctl = { "vm.swappiness" = 10;};
-  boot.kernelParams = [ "ipv6.disable=1" ];
+  #boot.kernelParams = [ "ipv6.disable=1" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   #boot.kernelPackages = pkgs.linuxPackages_stable;
   boot.tmp.useTmpfs = true;
@@ -73,19 +73,17 @@
   networking.hostName = "msc-xalukyano"; # Define your hostname.
   networking.networkmanager.enable = true;
   #enp4s d8:43:ae:a5:05:77
-  networking.interfaces.enp4s0.useDHCP = true;
-  networking.interfaces.br0.useDHCP = true;
-  networking.interfaces.br0.macAddress = "d8:43:ae:a5:05:77";
-  networking.bridges = {
-    "br0" = {
-      interfaces = [ "enp4s0" ];
-    };
-  };
+  #networking.interfaces.enp4s0.useDHCP = true;
+  #networking.interfaces.br0.useDHCP = true;
+  #networking.interfaces.br0.macAddress = "d8:43:ae:a5:05:77";
+  #networking.bridges = {
+  #    "br0" = {
+  #      interfaces = [ "enp4s0" ];
+  #    };
+  # };
 
   # Allow unfree packages
   nixpkgs.config.nvidia.acceptLicense = true;
-  
-  #services.displayManager.defaultSession = lib.mkForce "cinnamon";
   
   programs.nix-ld = {
     enable = true;

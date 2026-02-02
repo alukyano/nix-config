@@ -8,7 +8,7 @@
 
     # Enable the GNOME Desktop Environment.
     services.displayManager.gdm.enable = true;
-    services.displayManager.gdm.wayland = false;
+    #services.displayManager.gdm.wayland = false;
     services.displayManager.gdm.autoSuspend = false;
     services.displayManager.autoLogin.enable = false;
     services.desktopManager.gnome.enable = true;

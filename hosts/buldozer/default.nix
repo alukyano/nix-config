@@ -73,14 +73,14 @@
 
   networking.hostName = "buldozer"; # Define your hostname.
   #enp4s0f1 a8:1e:84:7e:ec:9f
-  networking.interfaces.enp4s0f1.useDHCP = true;
-  networking.interfaces.br0.useDHCP = true;
-  networking.interfaces.br0.macAddress = "a8:1e:84:7e:ec:9f";
-  networking.bridges = {
-    "br0" = {
-      interfaces = [ "enp4s0f1" ];
-    };
-  };
+  # networking.interfaces.enp4s0f1.useDHCP = true;
+  # networking.interfaces.br0.useDHCP = true;
+  # networking.interfaces.br0.macAddress = "a8:1e:84:7e:ec:9f";
+  # networking.bridges = {
+  #   "br0" = {
+  #     interfaces = [ "enp4s0f1" ];
+  #   };
+  # };
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.";
 
   # Enable networking

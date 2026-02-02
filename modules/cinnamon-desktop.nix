@@ -10,8 +10,8 @@
     services.xserver.desktopManager.cinnamon.enable = true;
 
     services.xserver.displayManager.lightdm.enable = true;
-    services.xserver.displayManager.autoLogin.enable = false;
-    services.xserver.displayManager.defaultSession = lib.mkDefault "cinnamon";
+    services.displayManager.autoLogin.enable = false;
+    services.displayManager.defaultSession = lib.mkDefault "cinnamon";
     #services.displayManager.gdm.wayland = false;
     #services.displayManager.lightdm.autoSuspend = false;  
     hardware.graphics.enable = true;

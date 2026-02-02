@@ -8,8 +8,10 @@
 
     # Enable the GNOME Desktop Environment.
     services.displayManager.gdm.enable = true;
-    services.displayManager.gdm.wayland = false;
+    
+    #services.displayManager.gdm.wayland = false;
     services.displayManager.gdm.autoSuspend = false;
+    services.xserver.displayManager.gdm.settings.daemon.DefaultSession = "gnome-xorg.desktop";
     services.displayManager.autoLogin.enable = false;
     services.desktopManager.gnome.enable = true;
     services.xserver.xkb.layout = "us,ru";
@@ -20,6 +22,8 @@
     services.xrdp.openFirewall = true;
     services.xrdp.defaultWindowManager = "${pkgs.gnome-session}/bin/gnome-session";
    
+    hardware.graphics.enable = true;
+
     environment.systemPackages = with pkgs; [
       # gnome
         gnome-session

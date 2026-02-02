@@ -13,7 +13,7 @@
       ../../modules/games.nix
       ../../modules/fonts.nix
       ../../modules/netbird.nix
-      ../../modules/rustdesk.nix
+      ../../modules/rustdesk-stable.nix
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
@@ -70,6 +70,7 @@
 
   networking.hostName = "sputnik"; # Define your hostname.
   networking.networkmanager.enable = true;
+<<<<<<< HEAD
   #enp3s0 38:05:25:30:7b:1b
 #  networking.interfaces.enp3s0.useDHCP = true;
 #  networking.interfaces.br0.useDHCP = true;
@@ -80,6 +81,17 @@
 #    };
 #  };
 #  networking.ipv6.disable = true;
+=======
+  # #enp3s0 38:05:25:30:7b:1b
+  # networking.interfaces.enp3s0.useDHCP = true;
+  # networking.interfaces.br0.useDHCP = true;
+  # networking.interfaces.br0.macAddress = "38:05:25:30:7b:1b";
+  # networking.bridges = {
+  #   "br0" = {
+  #     interfaces = [ "enp3s0" ];
+  #   };
+  # };
+>>>>>>> c459f1daf169a3a9b6d92211f9f04be1990c03d9
 
   programs.nix-ld = {
     enable = true;

@@ -1,10 +1,26 @@
 {pkgs, ...}: {
-services = {
-  desktopManager.plasma6.enable = true;
-  displayManager.sddm.enable = true;
-  displayManager.sddm.wayland.enable = false;
-};
+
+  # services.xserver.enable = true;
+
+  #   # Enable the GNOME Desktop Environment.
+  #   services.displayManager.gdm.enable = true;
+  #   #services.displayManager.gdm.wayland = false;
+  #   services.displayManager.gdm.autoSuspend = false;
+  #   services.displayManager.autoLogin.enable = false;
+  #   services.desktopManager.gnome.enable = true;
+  #   services.xserver.xkb.layout = "us,ru";
+  #   services.xserver.xkb.options = "grp:ctrl_shift_toggle";
+
 services.xserver.enable = true;
+services.xserver.xkb.layout = "us,ru";
+services.xserver.xkb.options = "grp:ctrl_shift_toggle";
+
+services.desktopManager.plasma6.enable = true;
+services.displayManager.sddm.enable = true;
+
+services.displayManager.sddm.wayland.enable = true;
+services.displayManager.autoLogin.enable = false;
+
 services.xrdp.enable = true;
 services.xrdp.defaultWindowManager = "startplasma-x11"; 
 
@@ -21,6 +37,7 @@ environment.systemPackages = with pkgs;
     kdePackages.isoimagewriter # Optional: Program to write hybrid ISO files onto USB disks
     kdePackages.partitionmanager # Optional: Manage the disk devices, partitions and file systems on your computer
   ];
+  
   environment.plasma6.excludePackages = with pkgs; [
     kdePackages.elisa # Simple music player aiming to provide a nice experience for its users
     kdePackages.kdepim-runtime # Akonadi agents and resources

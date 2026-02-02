@@ -10,14 +10,15 @@
     "nvidia"
   ];
 
-  hardware.nvidia.open = true;
+  hardware.nvidia.open = false;
   hardware.nvidia.prime = {
     offload.enable = true;
     offload.enableOffloadCmd = true;
     intelBusId = "PCI:0:2:0";
     nvidiaBusId = "PCI:1:0:0";
-    #amdgpuBusId = "PCI:54:0:0"; # If you have an AMD iGPU
   };
+
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
   # boot.initrd.kernelModules = [ "i915" ];
   # boot.blacklistedKernelModules = [ "nvidia" "nvidia_drm" "nvidia_modeset" ];
@@ -39,7 +40,7 @@
     nvtopPackages.nvidia
     cudaPackages.cudatoolkit
     linuxPackages.nvidia_x11
-    linuxPackages.nvidiaPackages.latest
+    linuxPackages.nvidiaPackages.stable
   ];
 
   hardware.graphics.extraPackages = with pkgs; [

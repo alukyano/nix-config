@@ -8,19 +8,21 @@
       ../../modules/common.nix
       ../../modules/syncthing.nix
       ../../modules/nvidia-prime-intel.nix
-      ../../modules/gnome-desktop.nix
+      #../../modules/gnome-desktop.nix
+      ../../modules/plasma-desktop.nix
       #../../modules/cinnamon-desktop.nix
       ../../modules/desktop.nix
       ../../modules/games.nix
       ../../modules/fonts.nix
       ../../modules/netbird.nix
-      ../../modules/rustdesk.nix
+      ../../modules/rustdesk-unstable.nix
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
       ../../modules/wine.nix
       ../../modules/ai_cuda.nix
       ../../modules/winboat.nix
+      #../../modules/xrdp.nix
       #../../modules/xrdp-wayland.nix
       ../../modules/ai_agents.nix
       #../../modules/n8n.nix
@@ -50,8 +52,7 @@
   # Swappiness to reduce swapfile usage.
   boot.kernel.sysctl = { "vm.swappiness" = 10;};
   boot.kernelParams = [ "ipv6.disable=1" ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  #boot.kernelPackages = pkgs.linuxPackages_stable;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.tmp.useTmpfs = true;
 
   swapDevices = [{
@@ -73,19 +74,17 @@
   networking.hostName = "msc-xalukyano"; # Define your hostname.
   networking.networkmanager.enable = true;
   #enp4s d8:43:ae:a5:05:77
-  networking.interfaces.enp4s0.useDHCP = true;
-  networking.interfaces.br0.useDHCP = true;
-  networking.interfaces.br0.macAddress = "d8:43:ae:a5:05:77";
-  networking.bridges = {
-    "br0" = {
-      interfaces = [ "enp4s0" ];
-    };
-  };
+  #networking.interfaces.enp4s0.useDHCP = true;
+  #networking.interfaces.br0.useDHCP = true;
+  #networking.interfaces.br0.macAddress = "d8:43:ae:a5:05:77";
+  #networking.bridges = {
+  #    "br0" = {
+  #      interfaces = [ "enp4s0" ];
+  #    };
+  # };
 
   # Allow unfree packages
   nixpkgs.config.nvidia.acceptLicense = true;
-  
-  #services.displayManager.defaultSession = lib.mkForce "cinnamon";
   
   programs.nix-ld = {
     enable = true;

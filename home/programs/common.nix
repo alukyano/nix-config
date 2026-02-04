@@ -76,6 +76,27 @@
     };
   };
 
+  programs.ghostty = {
+    enable = true;
+    # Optional: enable shell integration
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+    enableZshIntegration = true;
+    
+    settings = {
+      theme = "catppuccin-mocha";
+      font-size = 14;
+      background-opacity = 0.9;
+      window-decoration = false; # Example: remove title bar
+      window-padding-x = 10;
+      window-padding-y = 10;
+      keybind = [
+        "ctrl+shift+n=new_window"
+        "ctrl+shift+w=close_surface"
+      ];
+    };
+  };
+
   # auto mount usb drives
   services.udiskie.enable = true;
 }

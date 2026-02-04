@@ -48,15 +48,15 @@
       enable = true;
       config = {
         pager = "less -FR";
-        theme = "catppuccin-mocha";
+        #theme = "catppuccin-mocha";
       };
-      themes = {
-        # https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme
-        catppuccin-mocha = {
-          src = catppuccin-bat;
-          file = "Catppuccin-mocha.tmTheme";
-        };
-      };
+      # themes = {
+      #   # https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme
+      #   catppuccin-mocha = {
+      #     src = catppuccin-bat;
+      #     file = "Catppuccin-mocha.tmTheme";
+      #   };
+      # };
     };
 
     btop.enable = true; # replacement of htop/nmon
@@ -87,7 +87,7 @@
       theme = "catppuccin-mocha";
       font-size = 14;
       background-opacity = 0.9;
-      window-decoration = false; # Example: remove title bar
+      #window-decoration = false; # Example: remove title bar
       window-padding-x = 10;
       window-padding-y = 10;
       keybind = [

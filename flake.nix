@@ -24,10 +24,6 @@
        inputs.nixpkgs.follows = "nixpkgs";
     };
 
-     catppuccin-bat = {
-       url = "github:catppuccin/bat";
-       flake = false;
-     };
      nixai.url = "github:olafkfreund/nix-ai-help";
   };
 

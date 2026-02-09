@@ -38,7 +38,7 @@ llama-swap = pkgs.runCommand "llama-swap" { } ''
   mkdir -p $out/bin
   tar -xzf ${
     pkgs.fetchurl {
-      url = "https://github.com/mostlygeek/llama-swap/releases/download/v190/llama-swap_175_linux_amd64.tar.gz";
+      url = "https://github.com/mostlygeek/llama-swap/releases/download/v190/llama-swap_190_linux_amd64.tar.gz";
       hash = "sha256:5807e6278622547fd462afbe97652dea82ea91ddbbd07806ede57ee851bfd0e7";
     }
   } -C $out/bin

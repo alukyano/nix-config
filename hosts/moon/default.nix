@@ -25,7 +25,7 @@
       ../../modules/xrdp.nix
       ../../modules/winboat.nix
       ../../modules/ai_agents.nix 
-      ../../modules/ai_llamacpp.nix
+      ../../modules/overrides.nix
     ];
 
   system.stateVersion = "25.11";

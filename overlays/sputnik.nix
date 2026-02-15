@@ -12,7 +12,7 @@ self: super: {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}";
-          hash = "sha256-R6qV+0z0Vgl+7JGwC6a+jc+Wv9uIedoRbw9NzRDnjYM=";
+          hash = "sha256-RztKdBMuY+/3I+QoYybdRrgNp1iAVjDAHGTYxr7exNA=";
         };
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"

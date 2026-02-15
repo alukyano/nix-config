@@ -15,9 +15,8 @@
   };
 
   inputs = {
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     
     home-manager = {
        url = "github:nix-community/home-manager/release-25.11";
@@ -31,7 +30,6 @@ outputs = inputs @ {
     self,
     nixpkgs,
     nixpkgs-unstable,
-    #llm-agents,
     home-manager,
     ...
   }: {
@@ -39,8 +37,6 @@ outputs = inputs @ {
       buldozer = let
         username = "alukyano";
         desktop = "xfce";
-        # desktop = "i3";
-        # desktop = "gnome";    
         pkgs-unstable = import nixpkgs-unstable {
           system = "x86_64-linux";
           config = {
@@ -190,55 +186,7 @@ outputs = inputs @ {
             }
           ];
         };
-        
-      wsl-nvidia = let
-        username = "alukyano";
-        desktop = "none";
-        specialArgs = {inherit username desktop;};
-      in
-        nixpkgs.lib.nixosSystem {
-          inherit specialArgs;
-          system = "x86_64-linux";
-
-          modules = [
-            ./hosts/wsl-nvidia
-            ./users/${username}/nixos.nix
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-
-              home-manager.extraSpecialArgs = inputs // specialArgs;
-              home-manager.users.${username} = import ./users/${username}/home.nix;
-            }
-          ];
-        };  
-
-     vm-darwin = let
-        username = "alukyano"; 
-        #desktop = "gnome";
-        desktop = "xfce";
-        specialArgs = {inherit username desktop;};
-      in
-        nixpkgs.lib.nixosSystem {
-          inherit specialArgs;
-          #system = "aarch64-linux";
-
-          modules = [
-            ./hosts/vm-darwin
-            ./users/${username}/nixos.nix
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-
-              home-manager.extraSpecialArgs = inputs // specialArgs;
-              home-manager.users.${username} = import ./users/${username}/home.nix;
-            }
-          ];
-        };          
+         
     };
   };
 }

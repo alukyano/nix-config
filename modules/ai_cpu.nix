@@ -5,6 +5,7 @@
         pkgs-unstable.vllm
         pkgs-unstable.koboldcpp
         pkgs-unstable.ollama-cpu
+        pkgs-unstable.llama-cpp
     ];
 services.ollama = {
      enable = true;

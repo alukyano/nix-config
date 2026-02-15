@@ -1,5 +1,5 @@
 
-{ config, lib, pkgs, username, ... }:
+{ config, lib, pkgs, pkgs-unstable, username, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -25,7 +25,7 @@
       ../../modules/xrdp.nix
       ../../modules/winboat.nix
       ../../modules/ai_agents.nix 
-      ../../modules/overrides.nix
+      ../../modules/ai_llamacpp.nix
     ];
 
   system.stateVersion = "25.11";

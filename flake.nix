@@ -41,7 +41,8 @@ outputs = inputs @ {
           system = "x86_64-linux";
           config = {
             allowUnfree = true;
-          };     
+          };  
+          overlays = [ (import ./overlays/buldozer.nix) ];   
         };
 
         #specialArgs = {inherit pkgs-unstable llm-agents username desktop;};
@@ -104,6 +105,7 @@ outputs = inputs @ {
           config = {
             allowUnfree = true;
           };
+          overlays = [ (import ./overlays/sputnik.nix) ];
         };            
         specialArgs = {inherit username desktop pkgs-unstable;};
       in

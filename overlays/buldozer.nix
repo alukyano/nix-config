@@ -25,7 +25,7 @@ self: super: {
 
   llama-cpp =
     (super.llama-cpp.override {
-      cudaSupport = false;
+      cudaSupport = true;
       rocmSupport = false;
       metalSupport = false;
       blasSupport = true;
@@ -110,25 +110,4 @@ self: super: {
     } -C $out/bin
     chmod +x $out/bin/llama-swap
   '';
-
-classic-image-viewer = let
-    rev = "72e05443bc19be9c7e41090721c93fdc2618f461";
-  in super.runCommand "classic-image-viewer-${rev}" {
-    src = super.fetchurl {
-      url = "https://github.com/classicimageviewer/ClassicImageViewer/releases/download/v1.4.0/ClassicImageViewer-x86_64.AppImage";
-      sha256 = "sha256-M4CSBv22Hvy99vHyuxUV2dnkY4Vz7EjM7FKIVuYwgVQ=";
-    };
-  } ''
-    mkdir -p $out/bin
-    cp $src $out/ClassicImageViewer.AppImage
-    chmod +x $out/ClassicImageViewer.AppImage
-    
-    # Create wrapper script
-    cat > $out/bin/civ << 'EOFSCRIPT'
-#!/bin/sh
-exec "$(dirname "$(realpath "$0")")/../ClassicImageViewer.AppImage" "$@"
-EOFSCRIPT
-    chmod +x $out/bin/civ
-  '';
-
 }

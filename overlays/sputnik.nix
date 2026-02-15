@@ -1,28 +1,4 @@
 self: super: {
-  # ollama = super.ollama.overrideAttrs (oldAttrs: rec {
-  #   version = "0.15.6";
-  #   src = super.fetchFromGitHub {
-  #     owner = "ollama";
-  #     repo = "ollama";
-  #     rev = "v${version}";
-  #     hash = "sha256-II9ffgkMj2yx7Sek5PuAgRnUIS1Kf1UeK71+DwAgBRE=";
-  #   };
-  #   # vendorHash = "sha256-OQOx0G4kxToe8soef4vZDhp1RtTnLkiT2tQBXgB3T5E=";
-  #   # nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ super.tree-sitter ];
-  #   # postPatch = ''
-  #   #   # Create symlinks for tree-sitter sources
-  #   #   mkdir -p vendor/github.com/tree-sitter/tree-sitter-cpp/src
-  #   #   ln -sf ${super.tree-sitter}/include/tree_sitter/*.h vendor/github.com/tree-sitter/tree-sitter-cpp/src/ 2>/dev/null || true
-  #   #   ln -sf ${super.tree-sitter}/src/*.c vendor/github.com/tree-sitter/tree-sitter-cpp/src/ 2>/dev/null || true
-  #   # '';
-  #   # CGO_CFLAGS = "-I${super.tree-sitter}/include -I${super.tree-sitter}/lib";
-  #   vendorHash = null;
-  #   nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ super.tree-sitter ];
-  #   buildInputs = (oldAttrs.buildInputs or []) ++ [ super.tree-sitter ];
-  #   CGO_CFLAGS = "-I${super.tree-sitter}/include";
-  #   CGO_LDFLAGS = "-L${super.tree-sitter}/lib";
-  # });
-
   llama-cpp =
     (super.llama-cpp.override {
       cudaSupport = false;
@@ -110,25 +86,4 @@ self: super: {
     } -C $out/bin
     chmod +x $out/bin/llama-swap
   '';
-
-classic-image-viewer = let
-    rev = "72e05443bc19be9c7e41090721c93fdc2618f461";
-  in super.runCommand "classic-image-viewer-${rev}" {
-    src = super.fetchurl {
-      url = "https://github.com/classicimageviewer/ClassicImageViewer/releases/download/v1.4.0/ClassicImageViewer-x86_64.AppImage";
-      sha256 = "sha256-M4CSBv22Hvy99vHyuxUV2dnkY4Vz7EjM7FKIVuYwgVQ=";
-    };
-  } ''
-    mkdir -p $out/bin
-    cp $src $out/ClassicImageViewer.AppImage
-    chmod +x $out/ClassicImageViewer.AppImage
-    
-    # Create wrapper script
-    cat > $out/bin/civ << 'EOFSCRIPT'
-#!/bin/sh
-exec "$(dirname "$(realpath "$0")")/../ClassicImageViewer.AppImage" "$@"
-EOFSCRIPT
-    chmod +x $out/bin/civ
-  '';
-
 }

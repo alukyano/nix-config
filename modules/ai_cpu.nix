@@ -4,8 +4,10 @@
         pkgs-unstable.lmstudio
         pkgs-unstable.vllm
         pkgs-unstable.koboldcpp
-        pkgs-unstable.ollama-cpu
+        pkgs-unstable.ollama
         pkgs-unstable.llama-cpp
+        pkgs-unstable.stable-diffusion-cpp
+        pkgs-unstable.llama-swap
     ];
 services.ollama = {
      enable = true;

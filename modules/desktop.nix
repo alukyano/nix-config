@@ -5,6 +5,7 @@
         vscode
         vscode-extensions.golang.go
         vscode-extensions.ms-python.python
+        far2l
     #desktop stuff   
         qgis
         telegram-desktop

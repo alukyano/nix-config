@@ -164,6 +164,7 @@ outputs = inputs @ {
           config = {
             allowUnfree = true;
           };
+          overlays = [ (import ./overlays/moon.nix) ];
         };          
         specialArgs = {inherit username desktop pkgs-unstable;};
       

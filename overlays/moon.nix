@@ -1,6 +1,6 @@
 self: super: {
   ollama = super.ollama.overrideAttrs (oldAttrs: rec {
-    version = "0.15.6";
+    version = "0.16.1";
     src = super.fetchFromGitHub {
       owner = "ollama";
       repo = "ollama";
@@ -18,7 +18,7 @@ self: super: {
       blasSupport = true;
     }).overrideAttrs
       (oldAttrs: rec {
-        version = "7974";
+        version = "8058";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";

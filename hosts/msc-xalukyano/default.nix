@@ -21,12 +21,13 @@
       ../../modules/docker.nix
       ../../modules/wine.nix
       ../../modules/ai_cuda.nix
-      ../../modules/winboat.nix
+      #../../modules/winboat.nix
       #../../modules/xrdp.nix
       #../../modules/xrdp-wayland.nix
       ../../modules/ai_agents.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix
+      ../../modules/civ.nix
     ];
 
   system.stateVersion = "25.11";

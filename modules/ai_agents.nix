@@ -1,8 +1,8 @@
-{pkgs, llm-agents, ...}: {
+{pkgs, pkgs-unstable, ...}: {
 
-  environment.systemPackages = with pkgs; [
-    claude-code
-    opencode
+  environment.systemPackages = [
+    pkgs-unstable.claude-code
+    pkgs-unstable.opencode
   ];
 
 } 

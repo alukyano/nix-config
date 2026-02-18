@@ -87,6 +87,7 @@ environment.systemPackages = with pkgs; [
         nnn
         dysk
         duf
+        screen
     # Dev
         libsecret
         go
@@ -115,6 +116,9 @@ environment.systemPackages = with pkgs; [
         p7zip  
     # media
         ffmpeg
-        yt-dlp    
+        yt-dlp   
+        sox
+        lame
+        flac
    ];
 }

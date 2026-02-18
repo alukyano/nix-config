@@ -2,7 +2,7 @@
     environment.systemPackages = [
         pkgs-unstable.openai-whisper
         pkgs-unstable.lmstudio
-        pkgs-unstable.vllm
+        pkgs.vllm
         pkgs-unstable.koboldcpp
         pkgs-unstable.ollama-cuda
         pkgs-unstable.llama-cpp

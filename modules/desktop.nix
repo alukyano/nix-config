@@ -2,10 +2,13 @@
     environment.systemPackages = with pkgs; [
     # GUI dev tools
        #jetbrains.pycharm-community
+        geany-with-vte
         vscode
+        vscodium
         vscode-extensions.golang.go
         vscode-extensions.ms-python.python
         far2l
+
     #desktop stuff   
         qgis
         telegram-desktop
@@ -39,6 +42,7 @@
     # Browsers
         firefox
         chromium
+        librewolf-unwrapped
     #terminals
         alacritty  
         alacritty-theme

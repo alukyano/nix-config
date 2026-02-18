@@ -67,9 +67,9 @@ self: super: {
 
     buildInputs = [
       super.openblas
-      super.vulkan-headers
-      super.vulkan-loader
-      super.vulkan-validation-layers
+      super.cudaPackages.cudatoolkit
+      super.cudaPackages.cuda_cudart
+      super.cudaPackages.libcublas
       super.shaderc
       super.glslang
       super.spirv-tools
@@ -77,8 +77,7 @@ self: super: {
     ];
 
     cmakeFlags = [
-      "-DGGML_OPENBLAS=ON"
-      "-DSD_VULKAN=ON"
+      "-DGGML_CUDA=ON"
       "-DCMAKE_BUILD_TYPE=Release"
     ];
 
@@ -86,16 +85,16 @@ self: super: {
       runHook preBuild
       mkdir -p $TMPDIR/build
       cd $TMPDIR/build
-      cmake $src -DGGML_OPENBLAS=ON -DSD_VULKAN=ON -DCMAKE_BUILD_TYPE=Release
+      cmake $src -DGGML_CUDA=ON -DCMAKE_BUILD_TYPE=Release
       cmake --build . --config Release -j$(nproc)
       runHook postBuild
     '';
 
     installPhase = ''
       mkdir -p $out/bin
-      cp $TMPDIR/build/bin/sd-cli $out/bin/sd
+      cp $TMPDIR/build/bin/sd-cli $out/bin/sd-cli
       cp $TMPDIR/build/bin/sd-server $out/bin/sd-server
-      chmod +x $out/bin/sd
+      chmod +x $out/bin/sd-cli
       chmod +x $out/bin/sd-server
     '';
   };

@@ -1,5 +1,5 @@
 
-{ config, lib, pkgs, username, ... }:
+{ config, lib, pkgs, options, username, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -89,9 +89,29 @@
   
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [
-      zlib zstd stdenv.cc.cc curl openssl attr libssh bzip2 libxml2 acl libsodium util-linux xz systemd glib libGL
-    ];
+    libraries = options.programs.nix-ld.libraries.default ++ (
+      with pkgs; [
+        glib # libglib-2.0.so.0, libgthread-2.0.so.0
+        zlib 
+        zstd 
+        stdenv.cc.cc 
+        curl 
+        openssl 
+        attr 
+        libssh 
+        bzip2 
+        libxml2 
+        acl 
+        libsodium 
+        util-linux 
+        xz 
+        systemd 
+        libGL
+      ]
+    );
+    # libraries = with pkgs; [
+    #   zlib zstd stdenv.cc.cc curl openssl attr libssh bzip2 libxml2 acl libsodium util-linux xz systemd glib libGL
+    # ];
   };
 
   nix.gc = {

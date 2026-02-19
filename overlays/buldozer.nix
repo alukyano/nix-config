@@ -77,7 +77,8 @@ self: super: {
     ];
 
     cmakeFlags = [
-      "-DGGML_CUDA=ON"
+      "-DSD_CUDA=ON"
+      "-DGGML_OPENBLAS=ON"
       "-DCMAKE_BUILD_TYPE=Release"
     ];
 
@@ -85,7 +86,7 @@ self: super: {
       runHook preBuild
       mkdir -p $TMPDIR/build
       cd $TMPDIR/build
-      cmake $src -DGGML_CUDA=ON -DCMAKE_BUILD_TYPE=Release
+      cmake $src -DSD_CUDA=ON -DGGML_OPENBLAS=ON -DCMAKE_BUILD_TYPE=Release
       cmake --build . --config Release -j$(nproc)
       runHook postBuild
     '';

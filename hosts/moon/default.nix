@@ -18,12 +18,12 @@
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
-      #../../modules/n8n.nix
+      ../../modules/n8n.nix
       #../../modules/adb.nix
       ../../modules/wine.nix
       ../../modules/ai_cpu.nix
       ../../modules/xrdp.nix
-      ../../modules/winboat.nix
+      #../../modules/winboat.nix
       ../../modules/ai_agents.nix 
       ../../modules/civ.nix
     ];

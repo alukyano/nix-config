@@ -26,6 +26,7 @@
       #../../modules/winboat.nix
       ../../modules/ai_agents.nix 
       ../../modules/civ.nix
+      ../../modules/vmcurator.nix
     ];
 
   system.stateVersion = "25.11";

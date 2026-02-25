@@ -120,4 +120,38 @@ self: super: {
     version = "1.4.0";
   };
 
+  vm-curator = let
+    version = "0.4.6";
+  in super.rustPlatform.buildRustPackage {
+    pname = "vm-curator";
+    inherit version;
+
+    src = super.fetchFromGitHub {
+      owner = "mroboff";
+      repo = "vm-curator";
+      rev = "v${version}";
+      hash = "sha256-CZJ3i2u6fKQeXwR5QvN8hG+4uL9xP7cT1vQ8rB3dE0=";
+    };
+
+    cargoHash = "sha256-5W8eN3xR2vK4tP7mL9fQ1cY6bH8dA3jS5oE9gU2pV0=";
+
+    buildInputs = [
+      super.libudev
+      super.systemd
+    ];
+
+    nativeBuildInputs = [
+      super.pkg-config
+    ];
+
+    meta = with super.lib; {
+      description = "A fast and friendly TUI to build and manage QEMU/KVM virtual machines";
+      homepage = "https://github.com/mroboff/vm-curator";
+      license = licenses.mit;
+      maintainers = [ ];
+      platforms = platforms.linux;
+    };
+  };
+
+
 }

@@ -21,6 +21,8 @@
     linuxPackages.nvidiaPackages.stable
   ];
 
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+    
   hardware.graphics.extraPackages = with pkgs; [
      intel-vaapi-driver   #vaapiIntel
      libva-vdpau-driver   #vaapiVdpau

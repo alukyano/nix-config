@@ -31,15 +31,18 @@ self: super: {
       blasSupport = true;
     }).overrideAttrs
       (oldAttrs: rec {
-        version = "8058";
+        version = "8180";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}";
-          hash = "sha256-R6qV+0z0Vgl+7JGwC6a+jc+Wv9uIedoRbw9NzRDnjYM=";
+          hash = "sha256-RztKdBMuY+/3I+QoYybdRrgNp1iAVjDAHGTYxr7exNA=";
         };
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"
+          "-DGGML_CUDA_FA_ALL_QUANTS=ON"
+          "-DCMAKE_CUDA_ARCHITECTURES=50"
+          "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"
         ];
       });
 
@@ -78,6 +81,8 @@ self: super: {
 
     cmakeFlags = [
       "-DSD_CUDA=ON"
+      "-DCMAKE_CUDA_ARCHITECTURES=50"
+      "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"
       "-DGGML_OPENBLAS=ON"
       "-DCMAKE_BUILD_TYPE=Release"
     ];
@@ -86,7 +91,7 @@ self: super: {
       runHook preBuild
       mkdir -p $TMPDIR/build
       cd $TMPDIR/build
-      cmake $src -DSD_CUDA=ON -DGGML_OPENBLAS=ON -DCMAKE_BUILD_TYPE=Release
+      cmake $src -DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=50 -DCMAKE_CUDA_FLAGS="-Wno-deprecated-gpu-targets" -DGGML_OPENBLAS=ON -DCMAKE_BUILD_TYPE=Release
       cmake --build . --config Release -j$(nproc)
       runHook postBuild
     '';
@@ -104,8 +109,8 @@ self: super: {
     mkdir -p $out/bin
     tar -xzf ${
       super.fetchurl {
-        url = "https://github.com/mostlygeek/llama-swap/releases/download/v190/llama-swap_190_linux_amd64.tar.gz";
-        hash = "sha256:5807e6278622547fd462afbe97652dea82ea91ddbbd07806ede57ee851bfd0e7";
+        url = "https://github.com/mostlygeek/llama-swap/releases/download/v196/llama-swap_196_linux_amd64.tar.gz";
+        hash = "sha256-uQHsjLaGKq7iSZbPqDpQpR46aHdzZUu/TlxmQ765SHs=";
       }
     } -C $out/bin
     chmod +x $out/bin/llama-swap

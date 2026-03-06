@@ -31,12 +31,12 @@ self: super: {
       blasSupport = true;
     }).overrideAttrs
       (oldAttrs: rec {
-        version = "8180";
+        version = "8212";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}";
-          hash = "sha256-RztKdBMuY+/3I+QoYybdRrgNp1iAVjDAHGTYxr7exNA=";
+          hash = "sha256-TH16WLlK2yUuj61dOWEC4SGM0eHazOfpqACuC6jjP+4=";
         };
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"
@@ -82,6 +82,7 @@ self: super: {
     cmakeFlags = [
       "-DSD_CUDA=ON"
       "-DCMAKE_CUDA_ARCHITECTURES=50"
+      "-DGGML_CUDA_FA_ALL_QUANTS=ON"
       "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"
       "-DGGML_OPENBLAS=ON"
       "-DCMAKE_BUILD_TYPE=Release"
@@ -109,8 +110,8 @@ self: super: {
     mkdir -p $out/bin
     tar -xzf ${
       super.fetchurl {
-        url = "https://github.com/mostlygeek/llama-swap/releases/download/v196/llama-swap_196_linux_amd64.tar.gz";
-        hash = "sha256-uQHsjLaGKq7iSZbPqDpQpR46aHdzZUu/TlxmQ765SHs=";
+        url = "https://github.com/mostlygeek/llama-swap/releases/download/v197/llama-swap_197_linux_amd64.tar.gz";
+        hash = "sha256-GOP31onCrHvwvutsDXJV0uj+EKKaQdmZfiaBS0tX7Co=";
       }
     } -C $out/bin
     chmod +x $out/bin/llama-swap

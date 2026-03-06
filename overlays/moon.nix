@@ -31,12 +31,12 @@ self: super: {
       blasSupport = true;
     }).overrideAttrs
       (oldAttrs: rec {
-        version = "8058";
+        version = "8212";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}";
-          hash = "sha256-R6qV+0z0Vgl+7JGwC6a+jc+Wv9uIedoRbw9NzRDnjYM=";
+          hash = "sha256-TH16WLlK2yUuj61dOWEC4SGM0eHazOfpqACuC6jjP+4=";
         };
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"
@@ -104,8 +104,8 @@ self: super: {
     mkdir -p $out/bin
     tar -xzf ${
       super.fetchurl {
-        url = "https://github.com/mostlygeek/llama-swap/releases/download/v190/llama-swap_190_linux_amd64.tar.gz";
-        hash = "sha256:5807e6278622547fd462afbe97652dea82ea91ddbbd07806ede57ee851bfd0e7";
+        url = "https://github.com/mostlygeek/llama-swap/releases/download/v197/llama-swap_197_linux_amd64.tar.gz";
+        hash = "sha256-GOP31onCrHvwvutsDXJV0uj+EKKaQdmZfiaBS0tX7Co=";
       }
     } -C $out/bin
     chmod +x $out/bin/llama-swap

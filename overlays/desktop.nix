@@ -97,4 +97,13 @@ self: super: {
     pname = "classic-image-viewer";
     version = "1.4.0";
   }; 
+
+  vm-curator = super.appimageTools.wrapType2 {
+    src = super.fetchurl {
+      url = "https://github.com/mroboff/vm-curator/releases/download/v0.4.6/vm-curator-v0.4.6-x86_64.AppImage";
+      sha256 = "sha256-kTYWC4DEH5t13VX+mnlocM4PnUgCIJ/jtd/yTZrMu5E=";
+    };
+    pname = "vm-curator";
+    version = "0.4.6";
+  };
 }

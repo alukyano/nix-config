@@ -36,7 +36,7 @@ self: super: {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}";
-          hash = "sha256-TH16WLlK2yUuj61dOWEC4SGM0eHazOfpqACuC6jjP+4=";
+          hash = "sha256-8SkvVdc+3KTOTm1ECuz5rhey7rmj+PA/OEHSiM02ycg=";
         };
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"
@@ -123,7 +123,7 @@ self: super: {
   vm-curator = super.appimageTools.wrapType2 {
     src = super.fetchurl {
       url = "https://github.com/mroboff/vm-curator/releases/download/v0.4.6/vm-curator-v0.4.6-x86_64.AppImage";
-      hash = "sha256-0000000000000000000000000000000000000000000000000000";
+      sha256 = "sha256-kTYWC4DEH5t13VX+mnlocM4PnUgCIJ/jtd/yTZrMu5E=";
     };
     pname = "vm-curator";
     version = "0.4.6";

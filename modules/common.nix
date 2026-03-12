@@ -88,8 +88,11 @@ environment.systemPackages = with pkgs; [
         dysk
         duf
         screen
+        tmux
+        zellij
     # Dev
         libsecret
+        openssl
         go
         llvmPackages_latest.bintools
         llvmPackages_latest.clang

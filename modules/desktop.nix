@@ -20,6 +20,7 @@
         obsidian
         libreoffice
         libsecret
+        xpipe
         #notepad-next
     # Media stuff:
         vlc

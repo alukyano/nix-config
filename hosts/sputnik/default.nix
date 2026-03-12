@@ -21,6 +21,8 @@
       ../../modules/ai_cpu.nix
       ../../modules/xrdp.nix
       ../../modules/ai_agents.nix
+      ../../modules/civ.nix
+      ../../modules/vmcurator.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix      
       #../../modules/proxy.nix 

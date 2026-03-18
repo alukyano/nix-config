@@ -103,6 +103,7 @@ environment.systemPackages = with pkgs; [
         ninja
         protobuf
         gcc
+        ccache
         libgcc
         clang-tools
         cmake

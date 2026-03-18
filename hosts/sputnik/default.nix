@@ -7,6 +7,7 @@
       # Include modules    
       ../../modules/common.nix
       ../../modules/syncthing.nix
+      ../../modules/nvidia-sputnik.nix
       ../../modules/cinnamon-desktop.nix
       ../../modules/xfce-desktop.nix
       ../../modules/desktop.nix

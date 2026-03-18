@@ -7,6 +7,7 @@
       # Include modules    
       ../../modules/common.nix
       ../../modules/syncthing.nix
+      ../../modules/nvidia-sputnik.nix
       ../../modules/cinnamon-desktop.nix
       ../../modules/xfce-desktop.nix
       ../../modules/desktop.nix
@@ -18,7 +19,7 @@
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
       ../../modules/wine.nix
-      ../../modules/ai_cpu.nix
+      ../../modules/ai_cuda.nix
       ../../modules/xrdp.nix
       ../../modules/ai_agents.nix
       ../../modules/civ.nix

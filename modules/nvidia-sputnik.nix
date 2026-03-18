@@ -1,25 +1,18 @@
 {config, pkgs, ...}: {
-  # for Nvidia GPU
-  # hardware.nvidia.datacenter.enable = true;
-
-  #boot.kernelPackages = pkgs.linuxPackages;
-  #boot.kernelPackages.nvidia_x11 = true;
-
   services.xserver.videoDrivers = [
-  #  "amdgpu"  # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
+    "amdgpu"  # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
     "nvidia"
   ];
 
   hardware.nvidia.open = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
 
-  # hardware.nvidia.prime = {
-  #   offload.enable = true;
-  #   offload.enableOffloadCmd = true;
-  #   #intelBusId = "PCI:0:2:0";
-  #   nvidiaBusId = "PCI:1:0:0";
-  #   amdgpuBusId = "PCI:7:0:0"; # If you have an AMD iGPU
-  # };
+   hardware.nvidia.prime = {
+     offload.enable = true;
+     offload.enableOffloadCmd = true;
+     nvidiaBusId = "PCI:1:0:0";
+     amdgpuBusId = "PCI:7:0:0"; # If you have an AMD iGPU
+  };
 
   # boot.initrd.kernelModules = [ "i915" ];
   # boot.blacklistedKernelModules = [ "nvidia" "nvidia_drm" "nvidia_modeset" ];

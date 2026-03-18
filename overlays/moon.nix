@@ -31,7 +31,7 @@ self: super: {
       blasSupport = true;
     }).overrideAttrs
       (oldAttrs: rec {
-        version = "8212";
+        version = "8401";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
@@ -44,7 +44,8 @@ self: super: {
       });
 
  stable-diffusion-cpp = let
-    rev = "636d3cb6ff25d1ffa7267e5f6dac9f2925945606";
+    #rev = "636d3cb6ff25d1ffa7267e5f6dac9f2925945606";
+    rev = "537-545fac4";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";

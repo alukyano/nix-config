@@ -7,7 +7,7 @@ self: super: {
       blasSupport = true;
     }).overrideAttrs
       (oldAttrs: rec {
-        version = "8212";
+        version = "8401";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
@@ -16,11 +16,13 @@ self: super: {
         };
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"
+          "-DGGML_CUDA_FA_ALL_QUANTS=ON"
         ];
       });
 
  stable-diffusion-cpp = let
-    rev = "636d3cb6ff25d1ffa7267e5f6dac9f2925945606";
+    #rev = "636d3cb6ff25d1ffa7267e5f6dac9f2925945606";
+    rev = "537-545fac4";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";
@@ -43,9 +45,9 @@ self: super: {
 
     buildInputs = [
       super.openblas
-      super.vulkan-headers
-      super.vulkan-loader
-      super.vulkan-validation-layers
+      super.cudaPackages.cudatoolkit
+      super.cudaPackages.cuda_cudart
+      super.cudaPackages.libcublas
       super.shaderc
       super.glslang
       super.spirv-tools
@@ -53,8 +55,9 @@ self: super: {
     ];
 
     cmakeFlags = [
+      "-DSD_CUDA=ON"
       "-DGGML_OPENBLAS=ON"
-      "-DSD_VULKAN=ON"
+      "-DGGML_CUDA_FA_ALL_QUANTS=ON"
       "-DCMAKE_BUILD_TYPE=Release"
     ];
 
@@ -62,16 +65,16 @@ self: super: {
       runHook preBuild
       mkdir -p $TMPDIR/build
       cd $TMPDIR/build
-      cmake $src -DGGML_OPENBLAS=ON -DSD_VULKAN=ON -DCMAKE_BUILD_TYPE=Release
+      cmake $src -DSD_CUDA=ON -DGGML_OPENBLAS=ON -DCMAKE_BUILD_TYPE=Release
       cmake --build . --config Release -j$(nproc)
       runHook postBuild
     '';
 
     installPhase = ''
       mkdir -p $out/bin
-      cp $TMPDIR/build/bin/sd-cli $out/bin/sd
+      cp $TMPDIR/build/bin/sd-cli $out/bin/sd-cli
       cp $TMPDIR/build/bin/sd-server $out/bin/sd-server
-      chmod +x $out/bin/sd
+      chmod +x $out/bin/sd-cli
       chmod +x $out/bin/sd-server
     '';
   };

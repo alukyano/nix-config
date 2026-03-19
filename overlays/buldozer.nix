@@ -23,28 +23,29 @@ self: super: {
   #   CGO_LDFLAGS = "-L${super.tree-sitter}/lib";
   # });
 
-  # llama-cpp =
-  #   (super.llama-cpp.override {
-  #     cudaSupport = true;
-  #     rocmSupport = false;
-  #     metalSupport = false;
-  #     blasSupport = true;
-  #   }).overrideAttrs
-  #     (oldAttrs: rec {
-  #       version = "8401";
-  #       src = super.fetchFromGitHub {
-  #         owner = "ggml-org";
-  #         repo = "llama.cpp";
-  #         tag = "b${version}";
-  #         hash = "sha256-TH16WLlK2yUuj61dOWEC4SGM0eHazOfpqACuC6jjP+4=";
-  #       };
-  #       cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
-  #         "-DGGML_NATIVE=ON"
-  #         "-DGGML_CUDA_FA_ALL_QUANTS=ON"
-  #         "-DCMAKE_CUDA_ARCHITECTURES=50"
-  #         "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"
-  #       ];
-  #     });
+  llama-cpp =
+    (super.llama-cpp.override {
+      cudaSupport = true;
+      rocmSupport = false;
+      metalSupport = false;
+      blasSupport = true;
+    }).overrideAttrs
+      (oldAttrs: rec {
+        version = "8422";
+        src = super.fetchFromGitHub {
+          owner = "ggml-org";
+          repo = "llama.cpp";
+          tag = "b${version}";
+          hash = "sha256-TH16WLlK2yUuj61dOWEC4SGM0eHazOfpqACuC6jjP+4=";
+        };
+        npmDepsHash = "sha256-DxgUDVr+kwtW55C4b89Pl+j3u2ILmACcQOvOBjKWAKQ=";
+        cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
+          "-DGGML_NATIVE=ON"
+          "-DGGML_CUDA_FA_ALL_QUANTS=ON"
+          "-DCMAKE_CUDA_ARCHITECTURES=50"
+          "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"
+        ];
+      });
 
  stable-diffusion-cpp = let
     #rev = "636d3cb6ff25d1ffa7267e5f6dac9f2925945606";

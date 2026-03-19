@@ -106,6 +106,7 @@ outputs = inputs @ {
           config = {
             allowUnfree = true;
           };
+          inherit specialArgs;
           overlays = [ (import ./overlays/sputnik.nix) ];
         };            
         specialArgs = {inherit username desktop pkgs-unstable;};

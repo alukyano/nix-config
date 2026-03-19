@@ -1,7 +1,7 @@
 {config, pkgs, ...}: {
 
   services.xserver.videoDrivers = [
-#    "modesetting"  # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
+    "modesetting"  # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
     "nvidia"
   ];
 

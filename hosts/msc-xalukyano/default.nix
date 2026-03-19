@@ -9,8 +9,8 @@
       ../../modules/syncthing.nix
       ../../modules/nvidia-prime-intel.nix
       #../../modules/gnome-desktop.nix
-      ../../modules/plasma-desktop.nix
-      #../../modules/cinnamon-desktop.nix
+      #../../modules/plasma-desktop.nix
+      ../../modules/cinnamon-desktop.nix
       #../../modules/xfce-desktop.nix
       ../../modules/desktop.nix
       ../../modules/games.nix
@@ -56,6 +56,8 @@
   boot.kernelParams = [ "ipv6.disable=1" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.tmp.useTmpfs = true;
+
+  boot.plymouth.enable = false;
 
   swapDevices = [{
     device = "/swapfile";
@@ -122,6 +124,8 @@
   };
 
   #services.xserver.displayManager.defaultSession = "xfce";
-  #services.displayManager.defaultSession = lib.mkForce "cinnamon";
+  services.xserver.displayManager.startx.enable = true;
+  
+  services.displayManager.defaultSession = lib.mkForce "cinnamon";
 }
 

@@ -7,7 +7,7 @@
   };
 
   virtualisation.containers.enable = true;
-  virtualisation.virtualbox.host.enable = true;
+  #virtualisation.virtualbox.host.enable = true;
 
 
   virtualisation = {
@@ -44,7 +44,7 @@
     libvirt
     libvirt-glib
     virt-manager
-    virtualboxKvm
+    #virtualboxKvm
   ];
 
 } 

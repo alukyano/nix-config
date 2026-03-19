@@ -5,7 +5,7 @@
   ];
 
   hardware.nvidia.open = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
    hardware.nvidia.prime = {
      offload.enable = true;
@@ -34,7 +34,7 @@
     nvtopPackages.nvidia
     cudaPackages.cudatoolkit
     linuxPackages.nvidia_x11
-    linuxPackages.nvidiaPackages.latest
+    linuxPackages.nvidiaPackages.stable
     rocmPackages.rpp
     rocmPackages.clr
     rocmPackages.hipcc

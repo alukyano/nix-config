@@ -1,19 +1,24 @@
 self: super: {
   llama-cpp =
     (super.llama-cpp.override {
-      cudaSupport = false;
+      cudaSupport = true;
       rocmSupport = false;
       metalSupport = false;
       blasSupport = true;
     }).overrideAttrs
       (oldAttrs: rec {
-        version = "8401";
+        version = "8422";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}";
-          hash = "sha256-8SkvVdc+3KTOTm1ECuz5rhey7rmj+PA/OEHSiM02ycg=";
+          #hash = "sha256-kU3cxkU6OfcSexH1k51Kcp+dLctQd/Frelbn6GCn8Us="; 
+          #hash = "sha256-DxgUDVr+kwtW55C4b89Pl+j3u2ILmACcQOvOBjKWAKQ=";  
+          hash = "sha256-45KA9WuwJnCcBulgXxfe00zaI5RNMrpfqrRMsO25plA=";
         };
+        #vendorHash = "sha256-mQXFTppDI+KgjpZGU40uNOBGNOuMFKXSj3Qld8lTze4=";
+        npmDepsHash = "sha256-DxgUDVr+kwtW55C4b89Pl+j3u2ILmACcQOvOBjKWAKQ=";
+        #npmDepsHash = lib.fakeHash;
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"
           "-DGGML_CUDA_FA_ALL_QUANTS=ON"

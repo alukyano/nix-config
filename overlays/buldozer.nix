@@ -23,28 +23,28 @@ self: super: {
   #   CGO_LDFLAGS = "-L${super.tree-sitter}/lib";
   # });
 
-  llama-cpp =
-    (super.llama-cpp.override {
-      cudaSupport = true;
-      rocmSupport = false;
-      metalSupport = false;
-      blasSupport = true;
-    }).overrideAttrs
-      (oldAttrs: rec {
-        version = "8401";
-        src = super.fetchFromGitHub {
-          owner = "ggml-org";
-          repo = "llama.cpp";
-          tag = "b${version}";
-          hash = "sha256-8SkvVdc+3KTOTm1ECuz5rhey7rmj+PA/OEHSiM02ycg=";
-        };
-        cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
-          "-DGGML_NATIVE=ON"
-          "-DGGML_CUDA_FA_ALL_QUANTS=ON"
-          "-DCMAKE_CUDA_ARCHITECTURES=50"
-          "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"
-        ];
-      });
+  # llama-cpp =
+  #   (super.llama-cpp.override {
+  #     cudaSupport = true;
+  #     rocmSupport = false;
+  #     metalSupport = false;
+  #     blasSupport = true;
+  #   }).overrideAttrs
+  #     (oldAttrs: rec {
+  #       version = "8200";
+  #       src = super.fetchFromGitHub {
+  #         owner = "ggml-org";
+  #         repo = "llama.cpp";
+  #         tag = "b${version}";
+  #         hash = "sha256-8SkvVdc+3KTOTm1ECuz5rhey7rmj+PA/OEHSiM02ycg=";
+  #       };
+  #       cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
+  #         "-DGGML_NATIVE=ON"
+  #         "-DGGML_CUDA_FA_ALL_QUANTS=ON"
+  #         "-DCMAKE_CUDA_ARCHITECTURES=50"
+  #         "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"
+  #       ];
+  #     });
 
  stable-diffusion-cpp = let
     #rev = "636d3cb6ff25d1ffa7267e5f6dac9f2925945606";
@@ -57,8 +57,8 @@ self: super: {
     src = super.fetchFromGitHub {
       owner = "leejet";
       repo = "stable-diffusion.cpp";
-      rev = rev;
-      sha256 = "sha256-PBNRbb8lufHT5mOIhyy6eP+bWQO4N8KjurLgrNuFsH0=";
+      rev = version;
+      sha256 = "sha256-JprdyzLkPaZsTg2uxDODBmL5BF3RT+i04ZbbMOLs2z4=";
       fetchSubmodules = true;
     };
 

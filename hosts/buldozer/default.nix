@@ -24,7 +24,7 @@
       ../../modules/docker.nix
       ../../modules/ai_cuda.nix  
       ../../modules/xrdp.nix    
-      ../../modules/gitlab.nix  
+      #../../modules/gitlab.nix  
       #../../modules/n8n.nix
       #../../modules/adb.nix
       #../../modules/wine.nix

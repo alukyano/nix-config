@@ -22,14 +22,20 @@
       ../../modules/docker.nix
       ../../modules/wine.nix
       ../../modules/ai_cuda.nix
+      ../../modules/ai_agents.nix
+      ../../modules/civ.nix
+      
       #../../modules/winboat.nix
       #../../modules/xrdp.nix
       #../../modules/xrdp-wayland.nix
-      ../../modules/ai_agents.nix
-      ../../modules/n8n.nix
+      #../../modules/n8n.nix
       #../../modules/adb.nix
+<<<<<<< HEAD
       ../../modules/civ.nix
       ../../modules/vmcurator.nix
+=======
+
+>>>>>>> ccbf9916f91843109b5a34344ff227aa99474890
     ];
 
   system.stateVersion = "25.11";

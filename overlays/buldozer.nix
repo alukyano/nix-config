@@ -36,7 +36,7 @@ self: super: {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}";
-          hash = "sha256-TH16WLlK2yUuj61dOWEC4SGM0eHazOfpqACuC6jjP+4=";
+          hash = "sha256-45KA9WuwJnCcBulgXxfe00zaI5RNMrpfqrRMsO25plA=";
         };
         npmDepsHash = "sha256-DxgUDVr+kwtW55C4b89Pl+j3u2ILmACcQOvOBjKWAKQ=";
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
@@ -58,8 +58,8 @@ self: super: {
     src = super.fetchFromGitHub {
       owner = "leejet";
       repo = "stable-diffusion.cpp";
-      rev = rev;
-      sha256 = "sha256-PBNRbb8lufHT5mOIhyy6eP+bWQO4N8KjurLgrNuFsH0=";
+      rev = version;
+      sha256 = "sha256-JprdyzLkPaZsTg2uxDODBmL5BF3RT+i04ZbbMOLs2z4=";
       fetchSubmodules = true;
     };
 

@@ -23,15 +23,17 @@
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
       ../../modules/ai_cuda.nix  
-      ../../modules/xrdp.nix    
-      ../../modules/gitlab.nix  
+      ../../modules/xrdp.nix
+      ../../modules/vmcurator.nix
+      ../../modules/civ.nix  
+      #../../modules/gitlab.nix  
       #../../modules/n8n.nix
       #../../modules/adb.nix
       #../../modules/wine.nix
       #../../modules/games.nix
       #../../modules/winboat.nix
       #../../modules/proxy.nix
-      #../../modules/ai_agents.nix  
+      ../../modules/ai_agents.nix  
       ];
 
   # Bootloader.

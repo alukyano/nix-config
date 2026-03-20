@@ -6,14 +6,14 @@
   ];
 
   hardware.nvidia.open = true;
-  hardware.nvidia.prime = {
-    offload.enable = true;
-    offload.enableOffloadCmd = true;
-    intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:1:0:0";
-  };
+#  hardware.nvidia.prime = {
+#    offload.enable = true;
+#    offload.enableOffloadCmd = true;
+#    intelBusId = "PCI:0:2:0";
+#    nvidiaBusId = "PCI:1:0:0";
+#  };
 
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
     
   environment.systemPackages = 
   with pkgs; [
@@ -21,7 +21,7 @@
     nvtopPackages.nvidia
     cudaPackages.cudatoolkit
     linuxPackages.nvidia_x11
-    linuxPackages.nvidiaPackages.latest
+    linuxPackages.nvidiaPackages.stable
   ];
 
   hardware.graphics.extraPackages = with pkgs; [

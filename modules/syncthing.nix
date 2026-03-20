@@ -17,8 +17,13 @@
         folders = {
           "Shared" = {
             path = "/home/${username}/Shared";
+<<<<<<< HEAD
             #devices = [ "msc-xalukyano" "buldozer" "sputnik" "moon" ];
             #ignorePerms = true; # Enable file permission syncing
+=======
+           # devices = [ "msc-xalukyano" "buldozer" "sputnik" "moon" ];
+           # ignorePerms = true; # Enable file permission syncing
+>>>>>>> c23a98a (msc-xalukyano)
           };
         };
       };

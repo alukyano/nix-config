@@ -24,7 +24,7 @@
       ../../modules/ai_cuda.nix
       ../../modules/ai_agents.nix
       ../../modules/civ.nix
-      
+      ../../modules/vmcurator.nix
       #../../modules/winboat.nix
       #../../modules/xrdp.nix
       #../../modules/xrdp-wayland.nix
@@ -61,7 +61,7 @@
   # Swappiness to reduce swapfile usage.
   boot.kernel.sysctl = { "vm.swappiness" = 10;};
   boot.kernelParams = [ "ipv6.disable=1" ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
   boot.tmp.useTmpfs = true;
 
   boot.plymouth.enable = false;

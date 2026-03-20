@@ -29,6 +29,7 @@
       ../../modules/n8n.nix
       #../../modules/adb.nix
       ../../modules/civ.nix
+      ../../modules/vmcurator.nix
     ];
 
   system.stateVersion = "25.11";

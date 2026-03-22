@@ -24,13 +24,12 @@
       ../../modules/ai_cuda.nix
       ../../modules/ai_agents.nix
       ../../modules/civ.nix
-      
+      ../../modules/vmcurator.nix
+      ../../modules/xrdp.nix
       #../../modules/winboat.nix
-      #../../modules/xrdp.nix
       #../../modules/xrdp-wayland.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix
-
     ];
 
   system.stateVersion = "25.11";
@@ -56,7 +55,7 @@
   # Swappiness to reduce swapfile usage.
   boot.kernel.sysctl = { "vm.swappiness" = 10;};
   boot.kernelParams = [ "ipv6.disable=1" ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
   boot.tmp.useTmpfs = true;
 
   boot.plymouth.enable = false;

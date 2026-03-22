@@ -36,7 +36,7 @@ self: super: {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}";
-          hash = "sha256-TH16WLlK2yUuj61dOWEC4SGM0eHazOfpqACuC6jjP+4=";
+          hash = "sha256-45KA9WuwJnCcBulgXxfe00zaI5RNMrpfqrRMsO25plA=";
         };
         npmDepsHash = "sha256-DxgUDVr+kwtW55C4b89Pl+j3u2ILmACcQOvOBjKWAKQ=";
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [

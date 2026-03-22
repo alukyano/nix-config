@@ -38,7 +38,7 @@ self: super: {
           tag = "b${version}";
           hash = "sha256-8SkvVdc+3KTOTm1ECuz5rhey7rmj+PA/OEHSiM02ycg=";
         };
-        npmDepsHash = "sha256-DxgUDVr+kwtW55C4b89Pl+j3u2ILmACcQOvOBjKWAKQ=";
+        npmDepsHash = "sha256-FKjoZTKm0ddoVdpxzYrRUmTiuafEfbKc4UD2fz2fb8A=";
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"
         ];
@@ -95,9 +95,9 @@ self: super: {
 
     installPhase = ''
       mkdir -p $out/bin
-      cp $TMPDIR/build/bin/sd-cli $out/bin/sd
+      cp $TMPDIR/build/bin/sd-cli $out/bin/sd-cli
       cp $TMPDIR/build/bin/sd-server $out/bin/sd-server
-      chmod +x $out/bin/sd
+      chmod +x $out/bin/sd-cli
       chmod +x $out/bin/sd-server
     '';
   };

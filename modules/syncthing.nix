@@ -16,7 +16,7 @@
         };
         folders = {
           "Shared" = {
-            path = "/home/${username}/Shared";
+            #path = "/home/${username}/Shared";
             #devices = [ "msc-xalukyano" "buldozer" "sputnik" "moon" ];
             #ignorePerms = true; # Enable file permission syncing
           };

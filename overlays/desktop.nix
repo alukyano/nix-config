@@ -1,26 +1,26 @@
 self: super: {
-  # llama-cpp =
-  #   (super.llama-cpp.override {
-  #     cudaSupport = true;
-  #     rocmSupport = false;
-  #     metalSupport = false;
-  #     blasSupport = true;
-  #   }).overrideAttrs
-  #     (oldAttrs: rec {
-  #       version = "8422";
-  #       src = super.fetchFromGitHub {
-  #         owner = "ggml-org";
-  #         repo = "llama.cpp";
-  #         tag = "b${version}";
-  #         #hash = "sha256-FKjoZTKm0ddoVdpxzYrRUmTiuafEfbKc4UD2fz2fb8A=";
-  #         hash = "sha256-45KA9WuwJnCcBulgXxfe00zaI5RNMrpfqrRMsO25plA=";
-  #       };
-  #       npmDepsHash = "sha256-FKjoZTKm0ddoVdpxzYrRUmTiuafEfbKc4UD2fz2fb8A=";
-  #       cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
-  #         "-DGGML_NATIVE=ON"
-  #         "-DGGML_CUDA_FA_ALL_QUANTS=ON"
-  #       ];
-  #     });
+  llama-cpp =
+    (super.llama-cpp.override {
+      cudaSupport = true;
+      rocmSupport = false;
+      metalSupport = false;
+      blasSupport = true;
+    }).overrideAttrs
+      (oldAttrs: rec {
+        version = "8500";
+        src = super.fetchFromGitHub {
+          owner = "ggml-org";
+          repo = "llama.cpp";
+          tag = "b${version}";
+          #hash = "sha256-FKjoZTKm0ddoVdpxzYrRUmTiuafEfbKc4UD2fz2fb8A=";
+          hash = "sha256-45KA9WuwJnCcBulgXxfe00zaI5RNMrpfqrRMsO25plA=";
+        };
+        npmDepsHash = "sha256-DxgUDVr+kwtW55C4b89Pl+j3u2ILmACcQOvOBjKWAKQ=";
+        cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
+          "-DGGML_NATIVE=ON"
+          "-DGGML_CUDA_FA_ALL_QUANTS=ON"
+        ];
+      });
 
  stable-diffusion-cpp = let
     #rev = "636d3cb6ff25d1ffa7267e5f6dac9f2925945606";

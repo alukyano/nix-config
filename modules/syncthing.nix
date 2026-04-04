@@ -6,7 +6,6 @@
     settings = {
         gui = {
           user = "${username}";
-          password = "345a79-05445.4s4";
         };
         devices = {
           #"msc-xalukyano" = { id = "J2KLOD6-BKGH73X-BNYUUI2-FGFWD7R-BYCTOZS-CYBZLI5-WFQVSCH-IOZY4AG"; };

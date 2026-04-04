@@ -14,13 +14,12 @@
           #"sputnik" = { id = "5IW27RD-VIVY3VB-LCIRJOX-72SB4X3-B7OAU3H-TDII57E-BKYDJXD-WUOMMQB"; };
           #"moon" = { id = "7JIOH7R-LAZMVW6-EITU7WR-LKKJNZD-FK2A4EN-PYUABPM-LCRNNJN-5THTZAY"; };
         };
-        folders = {
-          "Shared" = {
+        #folders = {
+          #"Shared" = {
             #path = "/home/${username}/Shared";
             #devices = [ "msc-xalukyano" "buldozer" "sputnik" "moon" ];
             #ignorePerms = true; # Enable file permission syncing
-          };
+          #};
         };
       };
-  };
 }

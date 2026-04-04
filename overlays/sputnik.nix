@@ -7,7 +7,7 @@ self: super: {
       blasSupport = true;
     }).overrideAttrs
       (oldAttrs: rec {
-        version = "8422";
+        version = "8664";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
@@ -27,7 +27,7 @@ self: super: {
 
  stable-diffusion-cpp = let
     #rev = "636d3cb6ff25d1ffa7267e5f6dac9f2925945606";
-    rev = "537-545fac4";
+    rev = "552-87ecb95";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";
@@ -36,8 +36,9 @@ self: super: {
     src = super.fetchFromGitHub {
       owner = "leejet";
       repo = "stable-diffusion.cpp";
-      rev = rev;
-      sha256 = "sha256-PBNRbb8lufHT5mOIhyy6eP+bWQO4N8KjurLgrNuFsH0=";
+      tag = version;
+      #rev = rev;
+      sha256 = "sha256-7eZME4vCF3g/WcitUYg/K+f4TeV+bHW5DylHWHsrqmw=";
       fetchSubmodules = true;
     };
 

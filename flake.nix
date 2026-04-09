@@ -17,6 +17,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    hermes-agent.url = "github:NousResearch/hermes-agent";
     
     home-manager = {
        url = "github:nix-community/home-manager/release-25.11";
@@ -31,6 +32,7 @@ outputs = inputs @ {
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
+    hermes-agent,
     ...
   }: {
     nixosConfigurations = {
@@ -116,6 +118,7 @@ outputs = inputs @ {
           system = "x86_64-linux";
 
           modules = [
+            hermes-agent.nixosModules.default
             ./hosts/sputnik
             ./users/${username}/nixos.nix
 

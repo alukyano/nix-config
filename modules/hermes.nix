@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  username,
   ...
 }: {
   services.hermes-agent = {
@@ -20,5 +19,4 @@
 #   display = { compact = false; personality = "kawaii"; };
 #   memory = { memory_enabled = true; user_profile_enabled = true; };
 # };
-
-}
+};

@@ -55,8 +55,7 @@ self: super: {
       });
 
  stable-diffusion-cpp = let
-    #rev = "636d3cb6ff25d1ffa7267e5f6dac9f2925945606";
-    rev = "552-87ecb95";
+    rev = "585-44cca3d";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";
@@ -66,8 +65,7 @@ self: super: {
       owner = "leejet";
       repo = "stable-diffusion.cpp";
       tag = version;
-      #rev = rev;
-      sha256 = "sha256-7eZME4vCF3g/WcitUYg/K+f4TeV+bHW5DylHWHsrqmw=";
+      sha256 = "sha256-ExriJzuVfU+ubLaj9sJK/yrW/3RWAjZ0RK4kgmsDY9g=";
       fetchSubmodules = true;
     };
 
@@ -118,8 +116,8 @@ self: super: {
     mkdir -p $out/bin
     tar -xzf ${
       super.fetchurl {
-        url = "https://github.com/mostlygeek/llama-swap/releases/download/v197/llama-swap_197_linux_amd64.tar.gz";
-        hash = "sha256-GOP31onCrHvwvutsDXJV0uj+EKKaQdmZfiaBS0tX7Co=";
+        url = "https://github.com/mostlygeek/llama-swap/releases/download/v204/llama-swap_204_linux_amd64.tar.gz";
+        hash = "sha256-LyXfxfUeM5+BNhZIyhYWsOeTig7TnVg6Twb26Vs1xR8=";
       }
     } -C $out/bin
     chmod +x $out/bin/llama-swap
@@ -127,7 +125,7 @@ self: super: {
 
   classic-image-viewer = super.appimageTools.wrapType2 {
     src = super.fetchurl {
-      url = "https://github.com/classicimageviewer/ClassicImageViewer/releases/download/v1.4.0/ClassicImageViewer-x86_64.AppImage";
+      url = "https://github.com/classicimageviewer/ClassicImageViewer/releases/download/v1.5.0/ClassicImageViewer-x86_64.AppImage";
       sha256 = "sha256-M4CSBv22Hvy99vHyuxUV2dnkY4Vz7EjM7FKIVuYwgVQ=";
     };
     pname = "classic-image-viewer";
@@ -136,11 +134,11 @@ self: super: {
 
   vm-curator = super.appimageTools.wrapType2 {
     src = super.fetchurl {
-      url = "https://github.com/mroboff/vm-curator/releases/download/v0.4.6/vm-curator-v0.4.6-x86_64.AppImage";
-      sha256 = "sha256-kTYWC4DEH5t13VX+mnlocM4PnUgCIJ/jtd/yTZrMu5E=";
+      url = "https://github.com/mroboff/vm-curator/releases/download/v0.4.7/vm-curator-v0.4.7-x86_64.AppImage";
+      sha256 = "sha256-WD4afUZvKsLETXDiQ3dUkzoa7kxQpGANE560MP5uENA=";
     };
     pname = "vm-curator";
-    version = "0.4.6";
+    version = "0.4.7";
   };
 
 }

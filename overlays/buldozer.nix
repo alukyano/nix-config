@@ -72,6 +72,8 @@ self: super: {
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"
           "-DGGML_CUDA_FA_ALL_QUANTS=ON"
+          "-DCMAKE_CUDA_ARCHITECTURES=50"
+          "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"          
         ];
       });
 

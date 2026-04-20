@@ -7,18 +7,47 @@ self: super: {
       blasSupport = true;
     }).overrideAttrs
       (oldAttrs: rec {
-        version = "8664";
+        pname = "llama-cpp";
+        version = "8851";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}";
           #hash = "sha256-kU3cxkU6OfcSexH1k51Kcp+dLctQd/Frelbn6GCn8Us="; 
           #hash = "sha256-DxgUDVr+kwtW55C4b89Pl+j3u2ILmACcQOvOBjKWAKQ=";  
-          hash = "sha256-45KA9WuwJnCcBulgXxfe00zaI5RNMrpfqrRMsO25plA=";
+          hash = "sha256-K4Bh//yOmMaRiz8DU/Wn/2VQhV+T3AfmU0o8ftW9U7k=";
+          leaveDotGit = true;
+          postFetch = ''
+            git -C "$out" rev-parse --short HEAD > $out/COMMIT
+            find "$out" -name .git -print0 | xargs -0 rm -rf
+          '';
         };
+        patches = [ ];
         #vendorHash = "sha256-mQXFTppDI+KgjpZGU40uNOBGNOuMFKXSj3Qld8lTze4=";
-        npmDepsHash = "sha256-DxgUDVr+kwtW55C4b89Pl+j3u2ILmACcQOvOBjKWAKQ=";
+        npmRoot = "tools/server/webui";
+        npmDepsHash = "sha256-RAFtsbBGBjteCt5yXhrmHL39rIDJMCFBETgzId2eRRk=";
         #npmDepsHash = lib.fakeHash;
+
+        npmDeps = super.fetchNpmDeps {
+          name = "${pname}-${version}-npm-deps";
+          inherit src patches;
+          preBuild = ''
+            pushd ${npmRoot}
+          '';
+          hash = npmDepsHash;
+        };
+        
+          #prependToVar cmakeFlags "-DLLAMA_BUILD_COMMIT:STRING=$(cat COMMIT)"
+        prePatch = ''
+          touch tools/server/public/index.html.gz
+        '';
+
+        preConfigure = ''
+          pushd ${npmRoot}
+          npm run build
+          popd
+        '';
+
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"
           "-DGGML_CUDA_FA_ALL_QUANTS=ON"
@@ -113,4 +142,5 @@ self: super: {
     pname = "vm-curator";
     version = "0.4.6";
   };
+
 }

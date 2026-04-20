@@ -23,7 +23,7 @@ self: super: {
   #   CGO_LDFLAGS = "-L${super.tree-sitter}/lib";
   # });
 
-  llama-cpp =
+ llama-cpp =
     (super.llama-cpp.override {
       cudaSupport = true;
       rocmSupport = false;
@@ -31,19 +31,47 @@ self: super: {
       blasSupport = true;
     }).overrideAttrs
       (oldAttrs: rec {
-        version = "8664";
+        pname = "llama-cpp";
+        version = "8851";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}";
-          hash = "sha256-45KA9WuwJnCcBulgXxfe00zaI5RNMrpfqrRMsO25plA=";
+          #hash = "sha256-DxgUDVr+kwtW55C4b89Pl+j3u2ILmACcQOvOBjKWAKQ=";  
+          hash = "sha256-K4Bh//yOmMaRiz8DU/Wn/2VQhV+T3AfmU0o8ftW9U7k=";
+          leaveDotGit = true;
+          postFetch = ''
+            git -C "$out" rev-parse --short HEAD > $out/COMMIT
+            find "$out" -name .git -print0 | xargs -0 rm -rf
+          '';
         };
-        npmDepsHash = "sha256-DxgUDVr+kwtW55C4b89Pl+j3u2ILmACcQOvOBjKWAKQ=";
+        patches = [ ];
+        npmRoot = "tools/server/webui";
+        npmDepsHash = "sha256-RAFtsbBGBjteCt5yXhrmHL39rIDJMCFBETgzId2eRRk=";
+        #npmDepsHash = lib.fakeHash;
+
+        npmDeps = super.fetchNpmDeps {
+          name = "${pname}-${version}-npm-deps";
+          inherit src patches;
+          preBuild = ''
+            pushd ${npmRoot}
+          '';
+          hash = npmDepsHash;
+        };
+        
+        prePatch = ''
+          touch tools/server/public/index.html.gz
+        '';
+
+        preConfigure = ''
+          pushd ${npmRoot}
+          npm run build
+          popd
+        '';
+
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"
           "-DGGML_CUDA_FA_ALL_QUANTS=ON"
-          "-DCMAKE_CUDA_ARCHITECTURES=50"
-          "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"
         ];
       });
 
@@ -112,8 +140,8 @@ self: super: {
     mkdir -p $out/bin
     tar -xzf ${
       super.fetchurl {
-        url = "https://github.com/mostlygeek/llama-swap/releases/download/v197/llama-swap_197_linux_amd64.tar.gz";
-        hash = "sha256-GOP31onCrHvwvutsDXJV0uj+EKKaQdmZfiaBS0tX7Co=";
+        url = "https://github.com/mostlygeek/llama-swap/releases/download/v204/llama-swap_204_linux_amd64.tar.gz";
+        hash = "sha256-LyXfxfUeM5+BNhZIyhYWsOeTig7TnVg6Twb26Vs1xR8=";
       }
     } -C $out/bin
     chmod +x $out/bin/llama-swap
@@ -121,19 +149,19 @@ self: super: {
 
   classic-image-viewer = super.appimageTools.wrapType2 {
     src = super.fetchurl {
-      url = "https://github.com/classicimageviewer/ClassicImageViewer/releases/download/v1.4.0/ClassicImageViewer-x86_64.AppImage";
-      sha256 = "sha256-M4CSBv22Hvy99vHyuxUV2dnkY4Vz7EjM7FKIVuYwgVQ=";
+      url = "https://github.com/classicimageviewer/ClassicImageViewer/releases/download/v1.5.0/ClassicImageViewer-x86_64.AppImage";
+      sha256 = "sha256-SgdsIcRu05mJA/bchyIPJ+bZgga4cp4KI4VaqJoRrpE=";
     };
     pname = "classic-image-viewer";
-    version = "1.4.0";
+    version = "1.5.0";
   }; 
 
   vm-curator = super.appimageTools.wrapType2 {
     src = super.fetchurl {
-      url = "https://github.com/mroboff/vm-curator/releases/download/v0.4.6/vm-curator-v0.4.6-x86_64.AppImage";
-      sha256 = "sha256-kTYWC4DEH5t13VX+mnlocM4PnUgCIJ/jtd/yTZrMu5E=";
+      url = "https://github.com/mroboff/vm-curator/releases/download/v0.4.7/vm-curator-v0.4.7-x86_64.AppImage";
+      sha256 = "sha256-WD4afUZvKsLETXDiQ3dUkzoa7kxQpGANE560MP5uENA=";
     };
     pname = "vm-curator";
-    version = "0.4.6";
+    version = "0.4.7";
   };
 }

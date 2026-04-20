@@ -1,14 +1,10 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: {
+{pkgs, pkgs-unstable, ...}: {  
   services.hermes-agent = {
     enable = true;
     container.enable = true;
-    #settings.model.default = "anthropic/claude-sonnet-4";
-    #environmentFiles = [ config.sops.secrets."hermes-env".path ];
+    settings.model.base_url = "http://127.0.0.1:1234/v1";
+    settings.model.default = "hermes-qwen3.5-35b-a3b";
+    environmentFiles = [ config.sops.secrets."hermes-env".path ];
     addToSystemPackages = true;
   };
 
@@ -19,4 +15,4 @@
 #   display = { compact = false; personality = "kawaii"; };
 #   memory = { memory_enabled = true; user_profile_enabled = true; };
 # };
-};
+}

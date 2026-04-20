@@ -24,7 +24,7 @@
       ../../modules/ai_agents.nix
       ../../modules/civ.nix
       ../../modules/vmcurator.nix
-      ../../modules/hermes.nix
+      #../../modules/hermes.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix      
       #../../modules/proxy.nix 

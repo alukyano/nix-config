@@ -24,6 +24,11 @@
        inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
      nixai.url = "github:olafkfreund/nix-ai-help";
   };
 
@@ -32,6 +37,7 @@ outputs = inputs @ {
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
+    sops-nix,
     hermes-agent,
     ...
   }: {
@@ -118,6 +124,7 @@ outputs = inputs @ {
           system = "x86_64-linux";
 
           modules = [
+            sops-nix.nixosModules.sops
             hermes-agent.nixosModules.default
             ./hosts/sputnik
             ./users/${username}/nixos.nix

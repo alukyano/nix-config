@@ -8,7 +8,7 @@ self: super: {
     }).overrideAttrs
       (oldAttrs: rec {
         pname = "llama-cpp";
-        version = "8870";
+        version = "8882";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";

@@ -10,7 +10,7 @@
   users.extraGroups.vboxusers.members = [username];
   virtualisation.virtualbox.host.enableHardening = false;
 
-  environment.systemPackages = [
-      pkgs.virtualbox
-    ];  
+  # environment.systemPackages = [
+  #     pkgs.virtualbox
+  #   ];  
 }

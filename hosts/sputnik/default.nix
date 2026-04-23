@@ -54,8 +54,11 @@
   # Swappiness to reduce swapfile usage.
   boot.kernel.sysctl = { "vm.swappiness" = 10;};
   boot.kernelParams = [ "ipv6.disable=1" ];
-  boot.kernelPackages = pkgs.linuxPackages;
+  #boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
   boot.tmp.useTmpfs = true;
+
+  
 
   swapDevices = [{
     device = "/swapfile";

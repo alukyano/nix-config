@@ -24,9 +24,7 @@
       ../../modules/ai_cuda.nix
       ../../modules/ai_agents.nix
       ../../modules/civ.nix
-      ../../modules/vmcurator.nix
       ../../modules/xrdp.nix
-      #../../modules/winboat.nix
       #../../modules/xrdp-wayland.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix

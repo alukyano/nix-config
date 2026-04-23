@@ -23,10 +23,8 @@
       ../../modules/wine.nix
       ../../modules/ai_cpu.nix
       ../../modules/xrdp.nix
-      #../../modules/winboat.nix
       ../../modules/ai_agents.nix 
       ../../modules/civ.nix
-      ../../modules/vmcurator.nix
     ];
 
   system.stateVersion = "25.11";

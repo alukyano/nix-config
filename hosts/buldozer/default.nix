@@ -24,7 +24,6 @@
       ../../modules/docker.nix
       ../../modules/ai_cuda.nix  
       ../../modules/xrdp.nix
-      ../../modules/vmcurator.nix
       ../../modules/civ.nix  
       #../../modules/gitlab.nix  
       #../../modules/n8n.nix

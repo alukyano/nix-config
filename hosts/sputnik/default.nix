@@ -23,8 +23,6 @@
       ../../modules/xrdp.nix
       ../../modules/ai_agents.nix
       ../../modules/civ.nix
-      ../../modules/vmcurator.nix
-      ../../modules/virtualbox.nix
       #../../modules/hermes.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix      

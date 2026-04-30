@@ -8,7 +8,7 @@ self: super: {
     }).overrideAttrs
       (oldAttrs: rec {
         pname = "llama-cpp";
-        version = "8882";
+        version = "8984";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
@@ -55,7 +55,7 @@ self: super: {
       });
 
  stable-diffusion-cpp = let
-    rev = "585-44cca3d";
+    rev = "593-3d6064b";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";
@@ -116,8 +116,8 @@ self: super: {
     mkdir -p $out/bin
     tar -xzf ${
       super.fetchurl {
-        url = "https://github.com/mostlygeek/llama-swap/releases/download/v204/llama-swap_204_linux_amd64.tar.gz";
-        hash = "sha256-LyXfxfUeM5+BNhZIyhYWsOeTig7TnVg6Twb26Vs1xR8=";
+        url = "https://github.com/mostlygeek/llama-swap/releases/download/v209/llama-swap_209_linux_amd64.tar.gz";
+        hash = "sha256-DD/+YvT19nde+SvVLRuU4uJLLYQiD3AYRhESa+5OLRo=";
       }
     } -C $out/bin
     chmod +x $out/bin/llama-swap
@@ -131,14 +131,5 @@ self: super: {
     pname = "classic-image-viewer";
     version = "1.5.0";
   }; 
-
-  vm-curator = super.appimageTools.wrapType2 {
-    src = super.fetchurl {
-      url = "https://github.com/mroboff/vm-curator/releases/download/v0.4.7/vm-curator-v0.4.7-x86_64.AppImage";
-      sha256 = "sha256-WD4afUZvKsLETXDiQ3dUkzoa7kxQpGANE560MP5uENA=";
-    };
-    pname = "vm-curator";
-    version = "0.4.7";
-  };
 
 }

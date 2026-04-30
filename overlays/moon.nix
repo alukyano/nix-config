@@ -31,7 +31,7 @@ self: super: {
     }).overrideAttrs
       (oldAttrs: rec {
         pname = "llama-cpp";
-        version = "8882";
+        version = "8984";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
@@ -77,7 +77,7 @@ self: super: {
       });
 
  stable-diffusion-cpp = let
-    rev = "585-44cca3d";
+    rev = "593-3d6064b";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";
@@ -87,7 +87,9 @@ self: super: {
       owner = "leejet";
       repo = "stable-diffusion.cpp";
       rev = rev;
+      #
       sha256 = "sha256-PBNRbb8lufHT5mOIhyy6eP+bWQO4N8KjurLgrNuFsH0=";
+      #sha256 = lib.fakeHash;
       fetchSubmodules = true;
     };
 
@@ -147,7 +149,7 @@ self: super: {
  classic-image-viewer = super.appimageTools.wrapType2 {
     src = super.fetchurl {
       url = "https://github.com/classicimageviewer/ClassicImageViewer/releases/download/v1.5.0/ClassicImageViewer-x86_64.AppImage";
-      sha256 = "sha256-M4CSBv22Hvy99vHyuxUV2dnkY4Vz7EjM7FKIVuYwgVQ=";
+      sha256 = "sha256-SgdsIcRu05mJA/bchyIPJ+bZgga4cp4KI4VaqJoRrpE";
     };
     pname = "classic-image-viewer";
     version = "1.5.0";

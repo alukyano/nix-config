@@ -15,7 +15,7 @@ self: super: {
           tag = "b${version}";
           #hash = "sha256-kU3cxkU6OfcSexH1k51Kcp+dLctQd/Frelbn6GCn8Us="; 
           #hash = "sha256-DxgUDVr+kwtW55C4b89Pl+j3u2ILmACcQOvOBjKWAKQ=";  
-          hash = "sha256-K4Bh//yOmMaRiz8DU/Wn/2VQhV+T3AfmU0o8ftW9U7k=";
+          hash = "sha256-yppqvwM5+4C0dPOFuh4OGGAxLDjzGdoy+c56vj8YXAU=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT

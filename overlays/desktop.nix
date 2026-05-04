@@ -8,14 +8,12 @@ self: super: {
     }).overrideAttrs
       (oldAttrs: rec {
         pname = "llama-cpp";
-        version = "8893";
+        version = "9016";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
-          tag = "b${version}";
-          #hash = "sha256-kU3cxkU6OfcSexH1k51Kcp+dLctQd/Frelbn6GCn8Us="; 
-          #hash = "sha256-DxgUDVr+kwtW55C4b89Pl+j3u2ILmACcQOvOBjKWAKQ=";  
-          hash = "sha256-K4Bh//yOmMaRiz8DU/Wn/2VQhV+T3AfmU0o8ftW9U7k=";
+          tag = "b${version}";  
+          hash = "ha256-QhTboBhXQVFyZLlaqXxP254kMq/9idb1fgSsy6pWlvA=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT
@@ -25,7 +23,7 @@ self: super: {
         patches = [ ];
         #vendorHash = "sha256-mQXFTppDI+KgjpZGU40uNOBGNOuMFKXSj3Qld8lTze4=";
         npmRoot = "tools/server/webui";
-        npmDepsHash = "sha256-RAFtsbBGBjteCt5yXhrmHL39rIDJMCFBETgzId2eRRk=";
+        npmDepsHash = "sha256-k62LIbyY2DXvs7XXbX0lNPiYxuYzeJUyQtS4eA+68f8=";
         #npmDepsHash = lib.fakeHash;
 
         npmDeps = super.fetchNpmDeps {
@@ -55,7 +53,7 @@ self: super: {
       });
 
  stable-diffusion-cpp = let
-    rev = "586-c97702e";
+    rev = "593-3d6064b";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";
@@ -66,7 +64,7 @@ self: super: {
       repo = "stable-diffusion.cpp";
       tag = version;
       #rev = rev;
-      sha256 = "sha256-PBNRbb8lufHT5mOIhyy6eP+bWQO4N8KjurLgrNuFsH0=";
+      sha256 = "sha256-ExriJzuVfU+ubLaj9sJK/yrW/3RWAjZ0RK4kgmsDY9g=";
       fetchSubmodules = true;
     };
 
@@ -117,8 +115,8 @@ self: super: {
     mkdir -p $out/bin
     tar -xzf ${
       super.fetchurl {
-        url = "https://github.com/mostlygeek/llama-swap/releases/download/v206/llama-swap_206_linux_amd64.tar.gz";
-        hash = "sha256-rGnTYnIBBtbXerf0DCPaV37vEVCMjJLsq7DN66tN8zU=";
+        url = "https://github.com/mostlygeek/llama-swap/releases/download/v211/llama-swap_211_linux_amd64.tar.gz";
+        hash = "sha256-/2KqcCz2axJlRvpjwOvKbQ1rzkp4H1ys+DTi583bRGU=";
       }
     } -C $out/bin
     chmod +x $out/bin/llama-swap

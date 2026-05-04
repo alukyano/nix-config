@@ -88,7 +88,7 @@ self: super: {
       repo = "stable-diffusion.cpp";
       rev = rev;
       #
-      sha256 = "sha256-PBNRbb8lufHT5mOIhyy6eP+bWQO4N8KjurLgrNuFsH0=";
+      sha256 = "sha256-ExriJzuVfU+ubLaj9sJK/yrW/3RWAjZ0RK4kgmsDY9g=";
       #sha256 = lib.fakeHash;
       fetchSubmodules = true;
     };
@@ -139,8 +139,8 @@ self: super: {
     mkdir -p $out/bin
     tar -xzf ${
       super.fetchurl {
-        url = "https://github.com/mostlygeek/llama-swap/releases/download/v204/llama-swap_204_linux_amd64.tar.gz";
-        hash = "sha256-LyXfxfUeM5+BNhZIyhYWsOeTig7TnVg6Twb26Vs1xR8=";
+        url = "https://github.com/mostlygeek/llama-swap/releases/download/v211/llama-swap_211_linux_amd64.tar.gz";
+        hash = "sha256-/2KqcCz2axJlRvpjwOvKbQ1rzkp4H1ys+DTi583bRGU=";
       }
     } -C $out/bin
     chmod +x $out/bin/llama-swap

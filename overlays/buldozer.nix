@@ -88,7 +88,7 @@ self: super: {
       owner = "leejet";
       repo = "stable-diffusion.cpp";
       tag = version;
-      sha256 = "sha256-ExriJzuVfU+ubLaj9sJK/yrW/3RWAjZ0RK4kgmsDY9g=";
+      sha256 = "sha256-vJ9pudTS8cYDUmgnuMhOg3l3jtvtn4XgtqEFWfgIodY=";
       fetchSubmodules = true;
     };
 

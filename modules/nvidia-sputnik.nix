@@ -35,26 +35,26 @@
     cudaPackages.cudatoolkit
     linuxPackages.nvidia_x11
     linuxPackages.nvidiaPackages.stable
-    rocmPackages.rpp
-    rocmPackages.clr
-    rocmPackages.hipcc
-    rocmPackages.rocm-smi
-    rocmPackages.rocm-runtime
+    # rocmPackages.rpp
+    # rocmPackages.clr
+    # rocmPackages.hipcc
+    # rocmPackages.rocm-smi
+    # rocmPackages.rocm-runtime
     mesa-demos
   ];
 
   hardware.graphics.extraPackages = with pkgs; [
         mesa # For OpenCL support
         lact # For monitoring utilities
-        rocmPackages.clr
-        rocmPackages.rocminfo
-        rocmPackages.rocm-smi
-        rocmPackages.rocm-runtime
+        # rocmPackages.clr
+        # rocmPackages.rocminfo
+        # rocmPackages.rocm-smi
+        # rocmPackages.rocm-runtime
   ];
 
   hardware.nvidia-container-toolkit = {
       enable = true;
-      mount-nvidia-executables = false;
+      mount-nvidia-executables = true;
       suppressNvidiaDriverAssertion = true;
   };
 }

@@ -33,7 +33,7 @@
 
   hardware.nvidia-container-toolkit = {
       enable = true;
-      mount-nvidia-executables = false;
+      mount-nvidia-executables = true;
       suppressNvidiaDriverAssertion = true;
   };
 }

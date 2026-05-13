@@ -15,7 +15,7 @@
      host = "0.0.0.0";
      openFirewall = true;
      environmentVariables = {
-       OLLAMA_CONTEXT_LENGTH = "131072";
+       OLLAMA_CONTEXT_LENGTH = "204800";
      };
    };
 }

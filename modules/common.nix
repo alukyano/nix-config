@@ -94,6 +94,7 @@ environment.systemPackages = with pkgs; [
         libsecret
         openssl
         go
+        ruby
         llvmPackages_latest.bintools
         llvmPackages_latest.clang
         llvmPackages_latest.lldb

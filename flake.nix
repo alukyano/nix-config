@@ -83,7 +83,9 @@ outputs = inputs @ {
           config = {
             allowUnfree = true;
           };
-          overlays = [ (import ./overlays/desktop.nix) ]; 
+          overlays = [ (import ./overlays/desktop.nix)
+                       (import ./overlays/desktop2.nix)
+           ]; 
         };            
         specialArgs = {inherit username desktop pkgs-unstable;};
       in

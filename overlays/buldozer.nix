@@ -32,7 +32,7 @@ self: super: {
     }).overrideAttrs
       (oldAttrs: rec {
         pname = "llama-cpp";
-        version = "9016";
+        version = "9279";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
@@ -45,9 +45,11 @@ self: super: {
             find "$out" -name .git -print0 | xargs -0 rm -rf
           '';
         };
-        patches = [ ];
-        npmRoot = "tools/server/webui";
-        npmDepsHash = "sha256-k62LIbyY2DXvs7XXbX0lNPiYxuYzeJUyQtS4eA+68f8=";
+       patches = [ ];
+        #vendorHash = "sha256-mQXFTppDI+KgjpZGU40uNOBGNOuMFKXSj3Qld8lTze4=";
+        #npmRoot = "tools/server/webui";
+        npmRoot = "tools/ui";
+        npmDepsHash = "sha256-Iyg8FpcTKf2UYHuK7mA3cTAqVaLcQPcS0YCa5Qf01Gc=";
         #npmDepsHash = lib.fakeHash;
 
         npmDeps = super.fetchNpmDeps {
@@ -59,21 +61,37 @@ self: super: {
           hash = npmDepsHash;
         };
         
-        prePatch = ''
-          touch tools/server/public/index.html.gz
-        '';
+          #prependToVar cmakeFlags "-DLLAMA_BUILD_COMMIT:STRING=$(cat COMMIT)"
+        # prePatch = ''
+        #   touch tools/server/public/index.html.gz
+        # '';
 
-        preConfigure = ''
-          pushd ${npmRoot}
-          npm run build
-          popd
-        '';
+        # preConfigure = ''
+        #   mkdir -p build/tools/ui/dist
+        #   ${super.lib.concatStrings (
+        #     super.lib.mapAttrsToList (name: drv: ''
+        #       cp ${drv} build/tools/ui/dist/${name}
+        #     '') uiAssets
+        #   )}
+        #   export NIX_ENFORCE_NO_NATIVE=0
+        #   ${oldAttrs.preConfigure or ""}
+        # '';
 
-        cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
+        # preConfigure = ''
+        #   pushd ${npmRoot}
+        #   npm run build
+        #   popd
+        # '';
+
+        cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [f
           "-DGGML_NATIVE=ON"
           "-DGGML_CUDA_FA_ALL_QUANTS=ON"
           "-DCMAKE_CUDA_ARCHITECTURES=50"
-          "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"          
+          "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"
+          "-DLLAMA_BUILD_WEBUI=OFF" 
+          "-DGGML_CUDA_ENABLE_UNIFIED_MEMORY=ON"
+          "-DGGML_CUDA_FA_ALL_VARIANTS=ON"
+          "-DBUILD_SHARED_LIBS=OFF"
         ];
       });
 

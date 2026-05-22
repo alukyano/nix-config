@@ -12,10 +12,8 @@ self: super: {
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
-          tag = "b${version}";
-          #hash = "sha256-kU3cxkU6OfcSexH1k51Kcp+dLctQd/Frelbn6GCn8Us="; 
-          #hash = "sha256-DxgUDVr+kwtW55C4b89Pl+j3u2ILmACcQOvOBjKWAKQ=";  
-          hash = "sha256-QhTboBhXQVFyZLlaqXxP254kMq/9idb1fgSsy6pWlvA=";
+          tag = "b${version}"; 
+          hash = "sha256-7xVKImSbjNPYgGhMLv8nNfjZ1okYw6OAOiPtY2JnSYE=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT
@@ -24,8 +22,9 @@ self: super: {
         };
         patches = [ ];
         #vendorHash = "sha256-mQXFTppDI+KgjpZGU40uNOBGNOuMFKXSj3Qld8lTze4=";
-        npmRoot = "tools/server/webui";
-        npmDepsHash = "sha256-k62LIbyY2DXvs7XXbX0lNPiYxuYzeJUyQtS4eA+68f8=";
+        #npmRoot = "tools/server/webui";
+        npmRoot = "tools/ui";
+        npmDepsHash = "sha256-Iyg8FpcTKf2UYHuK7mA3cTAqVaLcQPcS0YCa5Qf01Gc=";
         #npmDepsHash = lib.fakeHash;
 
         npmDeps = super.fetchNpmDeps {
@@ -38,18 +37,42 @@ self: super: {
         };
         
           #prependToVar cmakeFlags "-DLLAMA_BUILD_COMMIT:STRING=$(cat COMMIT)"
-        prePatch = ''
-          touch tools/server/public/index.html.gz
-        '';
+        # prePatch = ''
+        #   touch tools/server/public/index.html.gz
+        # '';
 
-        preConfigure = ''
-          pushd ${npmRoot}
-          npm run build
-          popd
-        '';
+        # preConfigure = ''
+        #   mkdir -p build/tools/ui/dist
+        #   ${super.lib.concatStrings (
+        #     super.lib.mapAttrsToList (name: drv: ''
+        #       cp ${drv} build/tools/ui/dist/${name}
+        #     '') uiAssets
+        #   )}
+        #   export NIX_ENFORCE_NO_NATIVE=0
+        #   ${oldAttrs.preConfigure or ""}
+        # '';
+
+        # preConfigure = ''
+        #   pushd ${npmRoot}
+        #   npm run build
+        #   popd
+        # '';
 
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"
+          "-DLLAMA_BUILD_WEBUI=OFF"
+          "-DGGML_CUDA_FA_ALL_QUANTS=ON"
+          "-DCMAKE_CUDA_ARCHITECTURES=native"
+          "-DGGML_CUDA_ENABLE_UNIFIED_MEMORY=ON"
+          "-DGGML_CUDA_GRAPH=ON"
+          "-DGGML_CUDA_USE_CUBLASLT=ON"
+          "-DGGML_CUDA_FA_ALL_VARIANTS=ON"
+          "-DGGML_AVX512=ON"
+          "-DGGML_AVX512_VBMI=ON"
+          "-DGGML_AVX512_VNNI=ON"
+          "-DGGML_LTO=ON"
+          "-DGGML_OPENMP=ON"
+          "-DBUILD_SHARED_LIBS=OFF"
         ];
       });
 }

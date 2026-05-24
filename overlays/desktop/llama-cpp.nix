@@ -1,7 +1,7 @@
 self: super: {
   llama-cpp =
     (super.llama-cpp.override {
-      cudaSupport = false;
+      cudaSupport = true;
       rocmSupport = false;
       metalSupport = false;
       blasSupport = true;

@@ -11,7 +11,7 @@ self: super: {
       repo = "stable-diffusion.cpp";
       tag = version;
       #rev = rev;
-      sha256 = "sha256-vJ9pudTS8cYDUmgnuMhOg3l3jtvtn4XgtqEFWfgIodY=";
+      sha256 = "sha256-fsx1v3ZpbuH9pL/KTnt90mN4nYAHqvjC06gklbMKNog=";
       fetchSubmodules = true;
     };
 
@@ -33,23 +33,23 @@ self: super: {
       super.gtest
     ];
 
-    cmakeFlags = [
-      "-DGGML_OPENBLAS=ON"
-      "-DSD_VULKAN=ON"
-      "-DGGML_AVX512=ON"
-      "-DGGML_AVX512_VBMI=ON"
-      "-DGGML_AVX512_VNNI=ON"
-      "-DGGML_LTO=ON"
-      "-DGGML_OPENMP=ON"
-      "-DBUILD_SHARED_LIBS=OFF"
-      "-DCMAKE_BUILD_TYPE=Release"
-    ];
+    # cmakeFlags = [
+    #   "-DGGML_OPENBLAS=ON"
+    #   "-DSD_VULKAN=ON"
+    #   "-DGGML_AVX512=ON"
+    #   "-DGGML_AVX512_VBMI=ON"
+    #   "-DGGML_AVX512_VNNI=ON"
+    #   "-DGGML_LTO=ON"
+    #   "-DGGML_OPENMP=ON"
+    #   "-DBUILD_SHARED_LIBS=OFF"
+    #   "-DCMAKE_BUILD_TYPE=Release"
+    # ];
 
     buildPhase = ''
       runHook preBuild
       mkdir -p $TMPDIR/build
       cd $TMPDIR/build
-      cmake $src -DSD_CUDA=ON -DGGML_OPENBLAS=ON -DCMAKE_BUILD_TYPE=Release
+      cmake $src -DGGML_NATIVE=ON -DGGML_OPENBLAS=ON -DSD_VULKAN=ON -DGGML_LTO=ON -DGGML_OPENMP=ON -DCMAKE_BUILD_TYPE=Release
       cmake --build . --config Release -j$(nproc)
       runHook postBuild
     '';

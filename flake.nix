@@ -64,6 +64,7 @@ outputs = inputs @ {
             ./hosts/buldozer
             ./users/${username}/nixos.nix
 
+            hermes-agent.nixosModules
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

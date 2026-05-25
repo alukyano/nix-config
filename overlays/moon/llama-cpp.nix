@@ -1,19 +1,19 @@
 self: super: {
   llama-cpp =
     (super.llama-cpp.override {
-      cudaSupport = true;
+      cudaSupport = false;
       rocmSupport = false;
       metalSupport = false;
       blasSupport = true;
     }).overrideAttrs
       (oldAttrs: rec {
         pname = "llama-cpp";
-        version = "9279";
+        version = "9297";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}"; 
-          hash = "sha256-7xVKImSbjNPYgGhMLv8nNfjZ1okYw6OAOiPtY2JnSYE=";
+          hash = "sha256-3y1T4Cdi6BfwbShVqiu+mma2yiBS6m4NYAxoKbA72fE=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT
@@ -61,12 +61,6 @@ self: super: {
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"
           "-DLLAMA_BUILD_WEBUI=OFF"
-          "-DGGML_CUDA_FA_ALL_QUANTS=ON"
-          "-DCMAKE_CUDA_ARCHITECTURES=native"
-          "-DGGML_CUDA_ENABLE_UNIFIED_MEMORY=ON"
-          "-DGGML_CUDA_GRAPH=ON"
-          "-DGGML_CUDA_USE_CUBLASLT=ON"
-          "-DGGML_CUDA_FA_ALL_VARIANTS=ON"
           "-DGGML_AVX512=ON"
           "-DGGML_AVX512_VBMI=ON"
           "-DGGML_AVX512_VNNI=ON"

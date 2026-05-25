@@ -32,7 +32,7 @@ self: super: {
     }).overrideAttrs
       (oldAttrs: rec {
         pname = "llama-cpp";
-        version = "9279";
+        version = "9305";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
@@ -47,9 +47,9 @@ self: super: {
         };
        patches = [ ];
         #vendorHash = "sha256-mQXFTppDI+KgjpZGU40uNOBGNOuMFKXSj3Qld8lTze4=";
-        #npmRoot = "tools/server/webui";
-        npmRoot = "tools/ui";
-        npmDepsHash = "sha256-Iyg8FpcTKf2UYHuK7mA3cTAqVaLcQPcS0YCa5Qf01Gc=";
+        npmRoot = "tools/server/webui";
+        #npmRoot = "tools/ui";
+        npmDepsHash = "sha256-k62LIbyY2DXvs7XXbX0lNPiYxuYzeJUyQtS4eA+68f8=";
         #npmDepsHash = lib.fakeHash;
 
         npmDeps = super.fetchNpmDeps {
@@ -83,7 +83,7 @@ self: super: {
         #   popd
         # '';
 
-        cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [f
+        cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"
           "-DGGML_CUDA_FA_ALL_QUANTS=ON"
           "-DCMAKE_CUDA_ARCHITECTURES=50"

@@ -96,7 +96,7 @@ self: super: {
       });
 
  stable-diffusion-cpp = let
-    rev = "593-3d6064b";
+    rev = "647-72e512a";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";
@@ -130,10 +130,18 @@ self: super: {
 
     cmakeFlags = [
       "-DSD_CUDA=ON"
+      "-DGGML_CUDA_ENABLE_UNIFIED_MEMORY=ON"
+      "-DGGML_CUDA_GRAPH=ON"
+      "-DGGML_CUDA_USE_CUBLASLT=ON"
+      "-DGGML_CUDA_FA_ALL_VARIANTS=ON"
+      "-DGGML_CUDA_FA_ALL_QUANTS=ON"
+      "-DCMAKE_CUDA_ARCHITECTURES=native"
       "-DCMAKE_CUDA_ARCHITECTURES=50"
       "-DGGML_CUDA_FA_ALL_QUANTS=ON"
       "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"
       "-DGGML_OPENBLAS=ON"
+      "-DGGML_LTO=ON"
+      "-DGGML_OPENMP=ON"
       "-DCMAKE_BUILD_TYPE=Release"
     ];
 
@@ -141,7 +149,7 @@ self: super: {
       runHook preBuild
       mkdir -p $TMPDIR/build
       cd $TMPDIR/build
-      cmake $src -DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=50 -DCMAKE_CUDA_FLAGS="-Wno-deprecated-gpu-targets" -DGGML_OPENBLAS=ON -DCMAKE_BUILD_TYPE=Release
+      cmake $src -DSD_CUDA=ON -DGGML_LTO=ON -DGGML_OPENMP=ON -DCMAKE_CUDA_ARCHITECTURES=50 -DCMAKE_CUDA_FLAGS="-Wno-deprecated-gpu-targets" -DCMAKE_CUDA_ARCHITECTURES=native -DGGML_CUDA_USE_CUBLASLT=ON -DGGML_CUDA_ENABLE_UNIFIED_MEMORY=ON -DGGML_CUDA_GRAPH=ON -DGGML_OPENBLAS=ON -DCMAKE_BUILD_TYPE=Release
       cmake --build . --config Release -j$(nproc)
       runHook postBuild
     '';

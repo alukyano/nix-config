@@ -32,7 +32,7 @@ self: super: {
     }).overrideAttrs
       (oldAttrs: rec {
         pname = "llama-cpp";
-        version = "9016";
+        version = "9305";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
@@ -45,8 +45,10 @@ self: super: {
             find "$out" -name .git -print0 | xargs -0 rm -rf
           '';
         };
-        patches = [ ];
+       patches = [ ];
+        #vendorHash = "sha256-mQXFTppDI+KgjpZGU40uNOBGNOuMFKXSj3Qld8lTze4=";
         npmRoot = "tools/server/webui";
+        #npmRoot = "tools/ui";
         npmDepsHash = "sha256-k62LIbyY2DXvs7XXbX0lNPiYxuYzeJUyQtS4eA+68f8=";
         #npmDepsHash = lib.fakeHash;
 
@@ -59,26 +61,42 @@ self: super: {
           hash = npmDepsHash;
         };
         
-        prePatch = ''
-          touch tools/server/public/index.html.gz
-        '';
+          #prependToVar cmakeFlags "-DLLAMA_BUILD_COMMIT:STRING=$(cat COMMIT)"
+        # prePatch = ''
+        #   touch tools/server/public/index.html.gz
+        # '';
 
-        preConfigure = ''
-          pushd ${npmRoot}
-          npm run build
-          popd
-        '';
+        # preConfigure = ''
+        #   mkdir -p build/tools/ui/dist
+        #   ${super.lib.concatStrings (
+        #     super.lib.mapAttrsToList (name: drv: ''
+        #       cp ${drv} build/tools/ui/dist/${name}
+        #     '') uiAssets
+        #   )}
+        #   export NIX_ENFORCE_NO_NATIVE=0
+        #   ${oldAttrs.preConfigure or ""}
+        # '';
+
+        # preConfigure = ''
+        #   pushd ${npmRoot}
+        #   npm run build
+        #   popd
+        # '';
 
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"
           "-DGGML_CUDA_FA_ALL_QUANTS=ON"
           "-DCMAKE_CUDA_ARCHITECTURES=50"
-          "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"          
+          "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"
+          "-DLLAMA_BUILD_WEBUI=OFF" 
+          "-DGGML_CUDA_ENABLE_UNIFIED_MEMORY=ON"
+          "-DGGML_CUDA_FA_ALL_VARIANTS=ON"
+          "-DBUILD_SHARED_LIBS=OFF"
         ];
       });
 
  stable-diffusion-cpp = let
-    rev = "593-3d6064b";
+    rev = "647-72e512a";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";
@@ -112,10 +130,18 @@ self: super: {
 
     cmakeFlags = [
       "-DSD_CUDA=ON"
+      "-DGGML_CUDA_ENABLE_UNIFIED_MEMORY=ON"
+      "-DGGML_CUDA_GRAPH=ON"
+      "-DGGML_CUDA_USE_CUBLASLT=ON"
+      "-DGGML_CUDA_FA_ALL_VARIANTS=ON"
+      "-DGGML_CUDA_FA_ALL_QUANTS=ON"
+      "-DCMAKE_CUDA_ARCHITECTURES=native"
       "-DCMAKE_CUDA_ARCHITECTURES=50"
       "-DGGML_CUDA_FA_ALL_QUANTS=ON"
       "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"
       "-DGGML_OPENBLAS=ON"
+      "-DGGML_LTO=ON"
+      "-DGGML_OPENMP=ON"
       "-DCMAKE_BUILD_TYPE=Release"
     ];
 
@@ -123,7 +149,7 @@ self: super: {
       runHook preBuild
       mkdir -p $TMPDIR/build
       cd $TMPDIR/build
-      cmake $src -DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=50 -DCMAKE_CUDA_FLAGS="-Wno-deprecated-gpu-targets" -DGGML_OPENBLAS=ON -DCMAKE_BUILD_TYPE=Release
+      cmake $src -DSD_CUDA=ON -DGGML_LTO=ON -DGGML_OPENMP=ON -DCMAKE_CUDA_ARCHITECTURES=50 -DCMAKE_CUDA_FLAGS="-Wno-deprecated-gpu-targets" -DCMAKE_CUDA_ARCHITECTURES=native -DGGML_CUDA_USE_CUBLASLT=ON -DGGML_CUDA_ENABLE_UNIFIED_MEMORY=ON -DGGML_CUDA_GRAPH=ON -DGGML_OPENBLAS=ON -DCMAKE_BUILD_TYPE=Release
       cmake --build . --config Release -j$(nproc)
       runHook postBuild
     '';

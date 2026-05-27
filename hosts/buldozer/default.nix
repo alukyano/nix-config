@@ -25,7 +25,7 @@
       ../../modules/ai_cuda.nix  
       ../../modules/xrdp.nix
       ../../modules/civ.nix  
-      #../../modules/gitlab.nix  
+      ../../modules/gitlab.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix
       #../../modules/wine.nix
@@ -33,6 +33,7 @@
       #../../modules/winboat.nix
       #../../modules/proxy.nix
       ../../modules/ai_agents.nix  
+      ../../modules/hermes.nix 
       ];
 
   # Bootloader.

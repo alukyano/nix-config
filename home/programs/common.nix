@@ -62,7 +62,7 @@
     btop.enable = true; # replacement of htop/nmon
     eza.enable = true; # A modern replacement for ‘ls’
     jq.enable = true; # A lightweight and flexible command-line JSON processor
-    ssh.enable = true;
+    #ssh.enable = true;
     aria2.enable = true;
 
     skim = {
@@ -84,7 +84,7 @@
     enableZshIntegration = true;
     
     settings = {
-      theme = "catppuccin-mocha";
+      #theme = "catppuccin-mocha";
       font-size = 14;
       background-opacity = 0.9;
       #window-decoration = false; # Example: remove title bar

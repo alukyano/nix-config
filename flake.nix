@@ -64,6 +64,7 @@ outputs = inputs @ {
             ./hosts/buldozer
             ./users/${username}/nixos.nix
 
+            hermes-agent.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -83,7 +84,10 @@ outputs = inputs @ {
           config = {
             allowUnfree = true;
           };
-          overlays = [ (import ./overlays/desktop.nix) ]; 
+          overlays = [ (import ./overlays/desktop/llama-cpp.nix)
+                       (import ./overlays/desktop/stable-diffusion-cpp.nix)
+                       (import ./overlays/desktop/civ.nix)
+           ]; 
         };            
         specialArgs = {inherit username desktop pkgs-unstable;};
       in
@@ -178,7 +182,10 @@ outputs = inputs @ {
           config = {
             allowUnfree = true;
           };
-          overlays = [ (import ./overlays/moon.nix) ];
+          overlays = [ (import ./overlays/moon/llama-cpp.nix)
+                       (import ./overlays/moon/stable-diffusion-cpp.nix)
+                       (import ./overlays/moon/civ.nix)
+           ]; 
         };          
         specialArgs = {inherit username desktop pkgs-unstable;};
       

@@ -148,36 +148,6 @@ outputs = inputs @ {
           ];
         };
 
-      saturn = let
-        username = "alukyano";
-        desktop = "gnome";
-        pkgs-unstable = import nixpkgs-unstable {
-          system = "x86_64-linux";
-          config = {
-            allowUnfree = true;
-          };
-        };            
-        specialArgs = {inherit username desktop pkgs-unstable;};
-      in
-        nixpkgs.lib.nixosSystem {
-          inherit specialArgs;
-          system = "x86_64-linux";
-
-          modules = [
-            ./hosts/saturn
-            ./users/${username}/nixos.nix
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-
-              home-manager.extraSpecialArgs = inputs // specialArgs;
-              home-manager.users.${username} = import ./users/${username}/home.nix;
-            }
-          ];
-        };
-
       moon = let
         username = "alukyano";
         desktop = "gnome";

@@ -8,12 +8,12 @@ self: super: {
     }).overrideAttrs
       (oldAttrs: rec {
         pname = "llama-cpp";
-        version = "9305";
+        version = "9371";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}"; 
-          hash = "sha256-7xVKImSbjNPYgGhMLv8nNfjZ1okYw6OAOiPtY2JnSYE=";
+          hash = "sha256-NhFtb3wzhKuRf3zoYqiJhKB/jDqwCm5QwGe6ZZvOqJg=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT

@@ -17,7 +17,7 @@
     model = {
       povider = "custom";
       base_url = "http://192.168.55.56:9148/v1";
-      default = "custom/hermes-qwen3.5-35b-a3b-Q4_K_M.gguf";
+      default = "hermes-qwen3.5-35b-a3b-Q4_K_M.gguf";
       context_length = 200000;
     };
 
@@ -67,6 +67,6 @@
       restartSec = 5;
     };
 
-
+    extraPackages = with pkgs; [docker jq ripgrep curl];
   };
 }

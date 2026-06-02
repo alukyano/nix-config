@@ -1,4 +1,4 @@
-{config, pkgs, pkgs-unstable, username, ...}: {  
+{config, pkgs, lib, pkgs-unstable, username, ...}: {  
   services.hermes-agent = {
     enable = true;
     container.enable = true;
@@ -37,7 +37,7 @@
     
     gateway = {
       platform = "telegram";
-      token = "8904270755:AAGvXWU8Ifs7mGVfGgLPyo5vVuPP4hy0viY";
+      token = lib.strings.removeSuffix "\n" (builtins.readFile ./secrets/tgtoken.txt);
       transport_kwargs.proxy_url = "socks5://192.168.55.56:4444";
     };
       # # ── Documents ──────────────────────────────────────────────────────

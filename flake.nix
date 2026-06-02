@@ -99,6 +99,7 @@ outputs = inputs @ {
             ./hosts/msc-xalukyano
             ./users/${username}/nixos.nix
 
+            hermes-agent.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -119,7 +120,10 @@ outputs = inputs @ {
             allowUnfree = true;
           };
           inherit specialArgs;
-          overlays = [ (import ./overlays/sputnik.nix) ];
+          overlays = [ (import ./overlays/desktop/llama-cpp.nix)
+                       (import ./overlays/desktop/stable-diffusion-cpp.nix)
+                       (import ./overlays/desktop/civ.nix)
+           ]; 
         };            
         specialArgs = {inherit username desktop pkgs-unstable;};
       in
@@ -131,36 +135,6 @@ outputs = inputs @ {
             sops-nix.nixosModules.sops
             hermes-agent.nixosModules.default
             ./hosts/sputnik
-            ./users/${username}/nixos.nix
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-
-              home-manager.extraSpecialArgs = inputs // specialArgs;
-              home-manager.users.${username} = import ./users/${username}/home.nix;
-            }
-          ];
-        };
-
-      saturn = let
-        username = "alukyano";
-        desktop = "gnome";
-        pkgs-unstable = import nixpkgs-unstable {
-          system = "x86_64-linux";
-          config = {
-            allowUnfree = true;
-          };
-        };            
-        specialArgs = {inherit username desktop pkgs-unstable;};
-      in
-        nixpkgs.lib.nixosSystem {
-          inherit specialArgs;
-          system = "x86_64-linux";
-
-          modules = [
-            ./hosts/saturn
             ./users/${username}/nixos.nix
 
             home-manager.nixosModules.home-manager

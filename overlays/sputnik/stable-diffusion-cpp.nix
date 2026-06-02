@@ -1,6 +1,6 @@
 self: super: {
  stable-diffusion-cpp = let
-    rev = "647-72e512a";
+    rev = "652-92dc726";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";
@@ -10,7 +10,8 @@ self: super: {
       owner = "leejet";
       repo = "stable-diffusion.cpp";
       tag = version;
-      sha256 = "sha256-fsx1v3ZpbuH9pL/KTnt90mN4nYAHqvjC06gklbMKNog=";
+      #rev = rev;
+      sha256 = "sha256-vJ9pudTS8cYDUmgnuMhOg3l3jtvtn4XgtqEFWfgIodY=";
       fetchSubmodules = true;
     };
 
@@ -54,7 +55,7 @@ self: super: {
       runHook preBuild
       mkdir -p $TMPDIR/build
       cd $TMPDIR/build
-      cmake $src -DSD_CUDA=ON -DGGML_OPENBLAS=ON -DCMAKE_BUILD_TYPE=Release
+      cmake $src -DSD_CUDA=ON -DGGML_OPENBLAS=ON -DGGML_CUDA_ENABLE_UNIFIED_MEMORY=ON -DGGML_CUDA_USE_CUBLASLT=ON -DGGML_CUDA_GRAPH=ON -DGGML_CUDA_FA_ALL_VARIANTS=ON -DGGML_CUDA_FA_ALL_QUANTS=ON -DGGML_AVX512=ON -DGGML_AVX512_VBMI=ON -DGGML_LTO=ON -DGGML_OPENMP=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release
       cmake --build . --config Release -j$(nproc)
       runHook postBuild
     '';

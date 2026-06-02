@@ -16,16 +16,16 @@
   settings = {
     model = {
       povider = "custom";
-      base_url = "http://192.168.55.56:9148/v1";
-      default = "hermes-qwen3.5-35b-a3b-Q4_K_M.gguf";
+      base_url = "http://192.168.55.61:8888/v1";
+      default = "Qwen3.5-4B-heretic.Q4_K_S.gguf";
       context_length = 200000;
     };
 
     custom_providers = {
       name = [ "custom" ];
-      base_url = "http://192.168.55.56:9148/v1";
-      model = "hermes-qwen3.5-35b-a3b-Q4_K_M.gguf";
-      models."hermes-qwen3.5-35b-a3b-Q4_K_M.gguf".context_length = 200000;
+      base_url = "http://192.168.55.61:8888/v1";
+      model = "Qwen3.5-4B-heretic.Q4_K_Sgguf";
+      models."Qwen3.5-4B-heretic.Q4_K_S.gguf".context_length = 75000;
     };
 
     toolsets = [ "all" ];
@@ -38,7 +38,7 @@
     gateway = {
       platform = "telegram";
       token = lib.strings.removeSuffix "\n" (builtins.readFile ./secrets/tgtoken.txt);
-      transport_kwargs.proxy_url = "socks5://192.168.55.56:4444";
+      transport_kwargs.proxy_url = "socks5://192.168.55.61:4444";
     };
       # # ── Documents ──────────────────────────────────────────────────────
       # documents = {
@@ -68,5 +68,10 @@
     };
 
     extraPackages = with pkgs; [docker jq ripgrep curl];
+
+    environment.variables = {
+      HERMES_DEFAULT_PROVIDER = "custom";
+      HERMES_OLLAMA_API_BASE = "http://192.168.55.61:8888";
+    };
   };
 }

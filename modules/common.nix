@@ -78,7 +78,7 @@ environment.systemPackages = with pkgs; [
         sysstat
         lm_sensors # for `sensors` command        
         rsync
-        neofetch
+        fastfetch
         git
         gdal
         gperftools

@@ -60,6 +60,12 @@
     size = 32 * 1024;
   }];
 
+  # systemd.sleep.settings.Sleep = {
+  #   AllowSuspend = false;
+  #   AllowHibernation = false;
+  #   AllowHybridSleep = false;
+  #   AllowSuspendThenHibernate = false;
+  # };
   systemd.sleep.extraConfig = ''
     AllowSuspend=no
     AllowHibernation=no

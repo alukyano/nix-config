@@ -119,9 +119,9 @@ outputs = inputs @ {
             allowUnfree = true;
           };
           inherit specialArgs;
-          overlays = [ (import ./overlays/desktop/llama-cpp.nix)
-                       (import ./overlays/desktop/stable-diffusion-cpp.nix)
-                       (import ./overlays/desktop/civ.nix)
+          overlays = [ (import ./overlays/sputnik/llama-cpp.nix)
+                       (import ./overlays/sputnik/stable-diffusion-cpp.nix)
+                       (import ./overlays/sputnik/civ.nix)
            ]; 
         };            
         specialArgs = {inherit username desktop pkgs-unstable;};

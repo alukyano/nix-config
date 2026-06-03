@@ -7,7 +7,7 @@
       user = "${username}";
       dataDir = "/home/${username}";
       configDir = "/home/${username}/.config/syncthing";
-    };
+
     folders = {
         sputnik-output = {
           id = "wm2fq-zmiiv";
@@ -15,6 +15,7 @@
           #devices = [ "buldozer" "sputnik" ];
           ignorePerms = true;
         };
+     };
     };
   };
 }

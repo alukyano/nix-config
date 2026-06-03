@@ -27,7 +27,7 @@
       ../../modules/civ.nix
     ];
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
@@ -58,13 +58,19 @@
   hardware.graphics = {
     enable = true;
   };
-
-  systemd.sleep.extraConfig = ''
-    AllowSuspend=no
-    AllowHibernation=no
-    AllowHybridSleep=no
-    AllowSuspendThenHibernate=no
-    '';
+  
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = false;
+    AllowHibernation = false;
+    AllowHybridSleep = false;
+    AllowSuspendThenHibernate = false;
+  };
+  # systemd.sleep.extraConfig = ''
+  #   AllowSuspend=no
+  #   AllowHibernation=no
+  #   AllowHybridSleep=no
+  #   AllowSuspendThenHibernate=no
+  #   '';
 
   networking.hostName = "moon"; # Define your hostname.
   networking.networkmanager.enable = true;

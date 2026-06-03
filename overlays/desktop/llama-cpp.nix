@@ -8,7 +8,7 @@ self: super: {
     }).overrideAttrs
       (oldAttrs: rec {
         pname = "llama-cpp";
-        version = "9371";
+        version = "9481";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
@@ -72,7 +72,7 @@ self: super: {
           "-DGGML_AVX512_VNNI=ON"
           "-DGGML_LTO=ON"
           "-DGGML_OPENMP=ON"
-          "-DBUILD_SHARED_LIBS=OFF"
+      #    "-DBUILD_SHARED_LIBS=OFF"
         ];
       });
 }

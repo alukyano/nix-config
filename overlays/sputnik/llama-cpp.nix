@@ -13,7 +13,7 @@ self: super: {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}"; 
-          hash = "sha256-7xVKImSbjNPYgGhMLv8nNfjZ1okYw6OAOiPtY2JnSYE=";
+          hash = "sha256-7fJK7YjPBYqFaEDzJ0Rx1L9UWuilNUP2uicM1pxRWk8=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT

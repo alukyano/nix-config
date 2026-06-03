@@ -1,6 +1,6 @@
 self: super: {
  stable-diffusion-cpp = let
-    rev = "647-72e512a";
+    rev = "669-2d40a8b";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";
@@ -46,7 +46,6 @@ self: super: {
       "-DGGML_AVX512_VNNI=ON"
       "-DGGML_LTO=ON"
       "-DGGML_OPENMP=ON"
-      "-DBUILD_SHARED_LIBS=OFF"
       "-DCMAKE_BUILD_TYPE=Release"
     ];
 

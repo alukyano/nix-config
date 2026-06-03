@@ -15,12 +15,12 @@
   # };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     hermes-agent.url = "github:NousResearch/hermes-agent";
     
     home-manager = {
-       url = "github:nix-community/home-manager/release-25.11";
+       url = "github:nix-community/home-manager/release-26.05";
        inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -120,9 +120,9 @@ outputs = inputs @ {
             allowUnfree = true;
           };
           inherit specialArgs;
-          overlays = [ (import ./overlays/desktop/llama-cpp.nix)
-                       (import ./overlays/desktop/stable-diffusion-cpp.nix)
-                       (import ./overlays/desktop/civ.nix)
+          overlays = [ (import ./overlays/sputnik/llama-cpp.nix)
+                       (import ./overlays/sputnik/stable-diffusion-cpp.nix)
+                       (import ./overlays/sputnik/civ.nix)
            ]; 
         };            
         specialArgs = {inherit username desktop pkgs-unstable;};
@@ -172,6 +172,7 @@ outputs = inputs @ {
             ./hosts/moon
             ./users/${username}/nixos.nix
 
+            hermes-agent.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

@@ -18,7 +18,7 @@
       povider = "custom";
       base_url = "http://192.168.55.61:8888/v1";
       default = "Qwen3.5-4B-heretic.Q4_K_S.gguf";
-      context_length = 200000;
+      context_length = 75000;
     };
 
     custom_providers = {
@@ -35,11 +35,11 @@
     memory = { memory_enabled = true; user_profile_enabled = true; };
     agent = { max_turns = 100; verbose = false; };
     
-    gateway = {
-      platform = "telegram";
-      token = lib.strings.removeSuffix "\n" (builtins.readFile ./secrets/tgtoken.txt);
-      transport_kwargs.proxy_url = "socks5://192.168.55.61:4444";
-    };
+    # gateway = {
+    #   platform = "telegram";
+    #   token = builtins.readFile "${config.home.homeDirectory}/projects/nix-config/secrets/tgtoken.txt";
+    #   transport_kwargs.proxy_url = "socks5://192.168.55.61:4444";
+    # };
       # # ── Documents ──────────────────────────────────────────────────────
       # documents = {
       #   "USER.md" = ./documents/USER.md;
@@ -56,8 +56,8 @@
         image = "ubuntu:24.04";
         backend = "docker";
         hostUsers = [ "${username}" ];
-        extraVolumes = [ "/home/user/Hermes:/Hermes:rw" ];
-        extraOptions = [ "--gpus" "all" ];
+        extraVolumes = [ "/home/alukyano/Hermes:/Hermes:rw" ];
+        #extraOptions = [ "--gpus" "all" ];
       };
 
       # ── Service tuning ─────────────────────────────────────────────────
@@ -69,9 +69,13 @@
 
     extraPackages = with pkgs; [docker jq ripgrep curl];
 
-    environment.variables = {
+    environment = {
       HERMES_DEFAULT_PROVIDER = "custom";
-      HERMES_OLLAMA_API_BASE = "http://192.168.55.61:8888";
+      OPENAI_BASE_URL = "http://192.168.55.61:8888";
+      TELEGRAM_PROXY = "socks5://192.168.55.61:4444";
+      TELEGRAM_BOT_TOKEN="";
+      TELEGRAM_ALLOWED_USERS="97981052";
+      TELEGRAM_HOME_CHANNEL="Alex";
     };
   };
 }

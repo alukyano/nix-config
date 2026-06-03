@@ -66,7 +66,7 @@ self: super: {
           "-DGGML_AVX512_VNNI=ON"
           "-DGGML_LTO=ON"
           "-DGGML_OPENMP=ON"
-          "-DBUILD_SHARED_LIBS=OFF"
+          #"-DBUILD_SHARED_LIBS=OFF"
         ];
       });
 }

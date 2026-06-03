@@ -41,7 +41,7 @@
   boot.loader.grub.device = "/dev/nvme0n1";
   boot.loader.grub.useOSProber = true;
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
     
@@ -63,12 +63,19 @@
     size = 16 * 1024;
   }];
   
-    systemd.sleep.extraConfig = ''
-    AllowSuspend=no
-    AllowHibernation=no
-    AllowHybridSleep=no
-    AllowSuspendThenHibernate=no
-    '';
+    systemd.sleep.settings.Sleep = {
+    AllowSuspend = false;
+    AllowHibernation = false;
+    AllowHybridSleep = false;
+    AllowSuspendThenHibernate = false;
+  };
+  
+    # systemd.sleep.extraConfig = ''
+    # AllowSuspend=no
+    # AllowHibernation=no
+    # AllowHybridSleep=no
+    # AllowSuspendThenHibernate=no
+    # '';
 
   networking.hostName = "buldozer"; # Define your hostname.
   #enp4s0f1 a8:1e:84:7e:ec:9f

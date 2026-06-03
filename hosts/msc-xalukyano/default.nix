@@ -25,13 +25,13 @@
       ../../modules/ai_agents.nix
       ../../modules/civ.nix
       ../../modules/xrdp.nix
-      #../../modules/hermes-desktop.nix 
+      ../../modules/hermes-desktop.nix 
       #../../modules/xrdp-wayland.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix
     ];
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
@@ -60,18 +60,18 @@
     size = 32 * 1024;
   }];
 
-  # systemd.sleep.settings.Sleep = {
-  #   AllowSuspend = false;
-  #   AllowHibernation = false;
-  #   AllowHybridSleep = false;
-  #   AllowSuspendThenHibernate = false;
-  # };
-  systemd.sleep.extraConfig = ''
-    AllowSuspend=no
-    AllowHibernation=no
-    AllowHybridSleep=no
-    AllowSuspendThenHibernate=no
-    '';
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = false;
+    AllowHibernation = false;
+    AllowHybridSleep = false;
+    AllowSuspendThenHibernate = false;
+  };
+  # systemd.sleep.extraConfig = ''
+  #   AllowSuspend=no
+  #   AllowHibernation=no
+  #   AllowHybridSleep=no
+  #   AllowSuspendThenHibernate=no
+  #   '';
 
   hardware.graphics = {
     enable = true;

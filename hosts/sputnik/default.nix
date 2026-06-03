@@ -29,7 +29,7 @@
       #../../modules/proxy.nix 
     ];
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   nix.settings.trusted-public-keys = [
@@ -63,12 +63,19 @@
     enable = true;
   };
 
-  systemd.sleep.extraConfig = ''
-    AllowSuspend=no
-    AllowHibernation=no
-    AllowHybridSleep=no
-    AllowSuspendThenHibernate=no
-    '';
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = false;
+    AllowHibernation = false;
+    AllowHybridSleep = false;
+    AllowSuspendThenHibernate = false;
+  };
+
+  # systemd.sleep.extraConfig = ''
+  #   AllowSuspend=no
+  #   AllowHibernation=no
+  #   AllowHybridSleep=no
+  #   AllowSuspendThenHibernate=no
+  #   '';
 
   networking.hostName = "sputnik"; # Define your hostname.
   networking.networkmanager.enable = true;

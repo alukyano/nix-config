@@ -8,12 +8,12 @@ self: super: {
     }).overrideAttrs
       (oldAttrs: rec {
         pname = "llama-cpp";
-        version = "9305";
+        version = "9481";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}"; 
-          hash = "sha256-7xVKImSbjNPYgGhMLv8nNfjZ1okYw6OAOiPtY2JnSYE=";
+          hash = "sha256-NhFtb3wzhKuRf3zoYqiJhKB/jDqwCm5QwGe6ZZvOqJg=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT
@@ -72,7 +72,7 @@ self: super: {
           "-DGGML_AVX512_VNNI=ON"
           "-DGGML_LTO=ON"
           "-DGGML_OPENMP=ON"
-          "-DBUILD_SHARED_LIBS=OFF"
+      #    "-DBUILD_SHARED_LIBS=OFF"
         ];
       });
 }

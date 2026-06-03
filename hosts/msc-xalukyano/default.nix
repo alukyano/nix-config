@@ -1,5 +1,5 @@
 
-{ config, lib, pkgs, options, username, ... }:
+{ config, lib, inputs, pkgs, options, username, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -16,7 +16,7 @@
       ../../modules/games.nix
       ../../modules/fonts.nix
       ../../modules/netbird.nix
-      ../../modules/rustdesk-unstable.nix
+      #../../modules/rustdesk-unstable.nix
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
@@ -25,6 +25,7 @@
       ../../modules/ai_agents.nix
       ../../modules/civ.nix
       ../../modules/xrdp.nix
+      #../../modules/hermes-desktop.nix 
       #../../modules/xrdp-wayland.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix
@@ -59,6 +60,12 @@
     size = 32 * 1024;
   }];
 
+  # systemd.sleep.settings.Sleep = {
+  #   AllowSuspend = false;
+  #   AllowHibernation = false;
+  #   AllowHybridSleep = false;
+  #   AllowSuspendThenHibernate = false;
+  # };
   systemd.sleep.extraConfig = ''
     AllowSuspend=no
     AllowHibernation=no

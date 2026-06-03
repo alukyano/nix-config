@@ -33,7 +33,7 @@
       #../../modules/winboat.nix
       #../../modules/proxy.nix
       ../../modules/ai_agents.nix  
-      ../../modules/hermes.nix 
+      ../../modules/hermes-buldozer.nix 
       ];
 
   # Bootloader.

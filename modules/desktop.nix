@@ -7,7 +7,6 @@
         vscodium
         vscode-extensions.golang.go
         vscode-extensions.ms-python.python
-        far2l
 
     #desktop stuff   
         qgis
@@ -50,6 +49,10 @@
         kitty
         kitty-themes
         ghostty
+    #file management
+        gnome-commander
+        mucommander
+        far2l
     ];
 
 

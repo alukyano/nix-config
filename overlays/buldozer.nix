@@ -32,7 +32,7 @@ self: super: {
     }).overrideAttrs
       (oldAttrs: rec {
         pname = "llama-cpp";
-        version = "9305";
+        version = "9469";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
@@ -96,7 +96,7 @@ self: super: {
       });
 
  stable-diffusion-cpp = let
-    rev = "647-72e512a";
+    rev = "650-1ceb5bd";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";

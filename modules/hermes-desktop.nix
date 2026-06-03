@@ -76,7 +76,8 @@
       HERMES_DEFAULT_PROVIDER = "custom";
       OPENAI_BASE_URL = "http://192.168.55.56:9148";
       TELEGRAM_PROXY = "socks5://192.168.55.56:4444";
-      TELEGRAM_BOT_TOKEN="";
+      #TELEGRAM_BOT_TOKEN="8904270755:AAGvXWU8Ifs7mGVfGgLPyo5vVuPP4hy0viY";
+      TELEGRAM_BOT_TOKEN = builtins.readFile ../secrets/tgtoken.txt;
       TELEGRAM_ALLOWED_USERS="97981052";
       TELEGRAM_HOME_CHANNEL="Alex";
 
@@ -87,7 +88,6 @@
     extraGroups = [ "docker" "users" ];
     packages = with pkgs; [
       docker
-      
     ];
   };
 

@@ -172,6 +172,7 @@ outputs = inputs @ {
             ./hosts/moon
             ./users/${username}/nixos.nix
 
+            hermes-agent.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

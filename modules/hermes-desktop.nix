@@ -1,31 +1,33 @@
-{config, pkgs, lib, pkgs-unstable, username, ...}: {  
+{config, pkgs, lib, pkgs-unstable, inputs, username, ...}: {  
+  
   services.hermes-agent = {
     enable = true;
     container.enable = true;
 
     environmentFiles = [ "/var/lib/hermes/env" ];
-    # settings.model.default = "Qwen3.5-4B";
-    # settings.model.provider = "local";
-    # settings.model.base_url = "http://192.168.55.61:11111/v1";
+    settings.model.default = "hermes-qwen3.5-35b-a3b-Q4_K_M.gguf";
+    settings.model.provider = "custom";
+    settings.model.base_url = "http://192.168.55.56:9148/v1";
+    settings.model.context_length = 200000;
     #environmentFiles = [ config.sops.secrets."hermes-env".path ];
-    #user = "${username}";
+    #user = "alukyano";
     group = "users"; # Or your primary group (e.g., "your-username")
-    #extraDependencyGroups = [ "messaging" ];
+    extraDependencyGroups = [ "messaging" ];
  
 
-  settings = {
-    model = {
-      povider = "custom";
-      base_url = "http://192.168.55.56:9148/v1";
-      default = "hermes-qwen3.5-35b-a3b-Q4_K_M.gguf";
-      context_length = 200000;
-    };
+    settings = {
+  #   model = {
+  #     povider = "custom";
+  #     base_url = "http://192.168.55.56:9148/v1";
+  #     default = "hermes-qwen3.5-35b-a3b-Q4_K_M.gguf";
+  #     context_length = 200000;
+  #   };
 
     custom_providers = {
       name = [ "custom" ];
       base_url = "http://192.168.55.56:9148/v1";
       model = "hermes-qwen3.5-35b-a3b-Q4_K_M.gguf";
-      models."hermes-qwen3.5-35b-a3b-Q4_K_M.gguf".context_length = 75000;
+      models."hermes-qwen3.5-35b-a3b-Q4_K_M.gguf".context_length = 200000;
     };
 
     toolsets = [ "all" ];
@@ -35,11 +37,12 @@
     memory = { memory_enabled = true; user_profile_enabled = true; };
     agent = { max_turns = 100; verbose = false; };
     
-    gateway = {
-      platform = "telegram";
-      token = lib.strings.removeSuffix "\n" (builtins.readFile ./secrets/tgtoken.txt);
-      transport_kwargs.proxy_url = "socks5://192.168.55.56:4444";
-    };
+    # gateway = {
+    #   platform = "telegram";
+    #   #token = lib.strings.removeSuffix "\n" (builtins.readFile ../secrets/tgtoken.txt);
+    #   token = builtins.readFile ../secrets/tgtoken.txt;
+    #   transport_kwargs.proxy_url = "socks5://192.168.55.56:4444";
+    # };
       # # ── Documents ──────────────────────────────────────────────────────
       # documents = {
       #   "USER.md" = ./documents/USER.md;
@@ -56,7 +59,7 @@
         image = "ubuntu:24.04";
         backend = "docker";
         hostUsers = [ "${username}" ];
-        extraVolumes = [ "/home/user/Hermes:/Hermes:rw" ];
+        extraVolumes = [ "/home/alukyano/Hermes:/Hermes:rw" ];
         extraOptions = [ "--gpus" "all" ];
       };
 
@@ -69,9 +72,18 @@
 
     extraPackages = with pkgs; [docker jq ripgrep curl];
 
-    environment.variables = {
+    environment = {
       HERMES_DEFAULT_PROVIDER = "custom";
-      HERMES_OLLAMA_API_BASE = "http://192.168.55.61:8888";
+      OPENAI_BASE_URL = "http://192.168.55.56:9148";
+      TELEGRAM_PROXY = "socks5://192.168.55.56:4444";
+      TELEGRAM_BOT_TOKEN="";
+      TELEGRAM_ALLOWED_USERS="97981052";
+      TELEGRAM_HOME_CHANNEL="Alex";
+
     };
   };
+users.users.hermes.extraGroups = [ "docker" ];
+#   environment.systemPackages = [
+#   inputs.hermes-agent.packages.${pkgs.system}.default
+# ];
 }

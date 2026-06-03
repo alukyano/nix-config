@@ -37,7 +37,7 @@
     
     gateway = {
       platform = "telegram";
-      token = lib.strings.removeSuffix "\n" (builtins.readFile ./secrets/tgtoken.txt);
+      token = builtins.readFile "${config.home.homeDirectory}/projects/nix-config/secrets/tgtoken.txt";
       transport_kwargs.proxy_url = "socks5://192.168.55.61:4444";
     };
       # # ── Documents ──────────────────────────────────────────────────────

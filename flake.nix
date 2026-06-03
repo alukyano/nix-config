@@ -54,7 +54,7 @@ outputs = inputs @ {
         };
 
         #specialArgs = {inherit pkgs-unstable llm-agents username desktop;};
-        specialArgs = {inherit pkgs-unstable username desktop;};
+        specialArgs = {inherit pkgs-unstable username desktop inputs;};
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
@@ -89,7 +89,7 @@ outputs = inputs @ {
                        (import ./overlays/desktop/civ.nix)
            ]; 
         };            
-        specialArgs = {inherit username desktop pkgs-unstable;};
+        specialArgs = {inherit username desktop pkgs-unstable inputs;};
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
@@ -125,7 +125,7 @@ outputs = inputs @ {
                        (import ./overlays/sputnik/civ.nix)
            ]; 
         };            
-        specialArgs = {inherit username desktop pkgs-unstable;};
+        specialArgs = {inherit username desktop pkgs-unstable inputs;};
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
@@ -161,7 +161,7 @@ outputs = inputs @ {
                        (import ./overlays/moon/civ.nix)
            ]; 
         };          
-        specialArgs = {inherit username desktop pkgs-unstable;};
+        specialArgs = {inherit username desktop pkgs-unstable inputs;};
       
       in
         nixpkgs.lib.nixosSystem {

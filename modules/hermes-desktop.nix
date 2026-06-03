@@ -4,7 +4,7 @@
     enable = true;
     container.enable = true;
 
-    environmentFiles = [ "/var/lib/hermes/env" ];
+    #environmentFiles = [ "/var/lib/hermes/env" ];
     settings.model.default = "hermes-qwen3.5-35b-a3b-Q4_K_M.gguf";
     settings.model.provider = "custom";
     settings.model.base_url = "http://192.168.55.56:9148/v1";
@@ -60,7 +60,7 @@
         backend = "docker";
         hostUsers = [ "${username}" ];
         extraVolumes = [ "/home/alukyano/Hermes:/Hermes:rw" ];
-        extraOptions = [ "--gpus" "all" ];
+        #extraOptions = [ "--gpus" "all" ];
       };
 
       # ── Service tuning ─────────────────────────────────────────────────
@@ -82,8 +82,16 @@
 
     };
   };
-users.users.hermes.extraGroups = [ "docker" ];
-#   environment.systemPackages = [
-#   inputs.hermes-agent.packages.${pkgs.system}.default
-# ];
+
+  users.users.hermes = {
+    extraGroups = [ "docker" "users" ];
+    packages = with pkgs; [
+      docker
+      
+    ];
+  };
+
+   environment.systemPackages = [
+    inputs.hermes-agent.packages.${pkgs.system}.default
+ ];
 }

@@ -36,6 +36,10 @@
     pgcli
   ];
 
+  services.syncthing = {
+    enable = true;
+  };
+  
   programs = {
     tmux = {
       enable = true;

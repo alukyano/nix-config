@@ -2,7 +2,7 @@
   
   services.hermes-agent = {
     enable = true;
-    container.enable = true;
+    #container.enable = true;
 
     #environmentFiles = [ "/var/lib/hermes/env" ];
     settings.model.default = "hermes-qwen3.5-35b-a3b-Q4_K_M.gguf";
@@ -11,8 +11,8 @@
     settings.model.context_length = 200000;
     #environmentFiles = [ config.sops.secrets."hermes-env".path ];
     #user = "alukyano";
-    group = "users"; # Or your primary group (e.g., "your-username")
-    extraDependencyGroups = [ "messaging" ];
+    group = "alukyano"; # Or your primary group (e.g., "your-username")
+    #extraDependencyGroups = [ "messaging" ];
  
 
     settings = {
@@ -32,17 +32,17 @@
 
     toolsets = [ "all" ];
     max_turns = 100;
-    terminal = { backend = "docker"; timeout = 180; };
+    terminal = { backend = "local"; timeout = 180; };
     display = { compact = false; personality = "kawaii"; };
     memory = { memory_enabled = true; user_profile_enabled = true; };
     agent = { max_turns = 100; verbose = false; };
     
-    # gateway = {
-    #   platform = "telegram";
-    #   #token = lib.strings.removeSuffix "\n" (builtins.readFile ../secrets/tgtoken.txt);
-    #   token = builtins.readFile ../secrets/tgtoken.txt;
-    #   transport_kwargs.proxy_url = "socks5://192.168.55.56:4444";
-    # };
+    gateway = {
+      platform = "telegram";
+      #token = lib.strings.removeSuffix "\n" (builtins.readFile ../secrets/tgtoken.txt);
+      token = builtins.readFile ./secrets/tgtoken_desktop.txt;
+      transport_kwargs.proxy_url = "socks5://192.168.55.56:4444";
+    };
       # # ── Documents ──────────────────────────────────────────────────────
       # documents = {
       #   "USER.md" = ./documents/USER.md;
@@ -54,14 +54,14 @@
       #   args = [ "-y" "@modelcontextprotocol/server-filesystem" "/data/workspace" ];
       # };
 
-      # ── Container options ──────────────────────────────────────────────
-      container = {
-        image = "ubuntu:24.04";
-        backend = "docker";
-        hostUsers = [ "${username}" ];
-        extraVolumes = [ "/home/alukyano/Hermes:/Hermes:rw" ];
-        #extraOptions = [ "--gpus" "all" ];
-      };
+      # # ── Container options ──────────────────────────────────────────────
+      # container = {
+      #   image = "ubuntu:24.04";
+      #   backend = "docker";
+      #   hostUsers = [ "${username}" ];
+      #   extraVolumes = [ "/home/alukyano/Hermes:/Hermes:rw" ];
+      #   #extraOptions = [ "--gpus" "all" ];
+      # };
 
       # ── Service tuning ─────────────────────────────────────────────────
       addToSystemPackages = true;
@@ -70,26 +70,87 @@
       restartSec = 5;
     };
 
-    extraPackages = with pkgs; [docker jq ripgrep curl];
+    extraPackages = with pkgs; [
+        bat
+        openssh
+        diffutils
+        gnused
+        gawk
+        binutils
+        nettools
+        iputils
+        jq 
+        ripgrep 
+        curl
+        docker
+        docker-compose
+        kubectl
+
+        python313
+        jdk_headless
+        go
+        perl
+        gcc
+        gnumake
+        cmake
+        nodejs
+        bash
+        git
+        gdal
+        tmux
+
+        ffmpeg
+        yt-dlp   
+        sox
+        lame
+        flac
+        imagemagick
+        opencv
+        aria2
+        tcpdump
+        nmap
+        ngrep
+        tshark
+        netcat-gnu
+        lynx
+        links2
+        browsh
+
+      ];
+
+    extraPythonPackages = with pkgs; [ 
+      python313Packages.numpy 
+      python313Packages.pandas
+      python313Packages.geopandas
+      python313Packages.gdal
+      python313Packages.pillow
+      python313Packages.av
+      python313Packages.sh
+      python313Packages.uv
+      python313Packages.psutil
+      python313Packages.aiohttp
+      python313Packages.pyyaml
+      python313Packages.scipy
+      python313Packages.opencv4
+      python313Packages.pyshark
+      ];
 
     environment = {
       HERMES_DEFAULT_PROVIDER = "custom";
       OPENAI_BASE_URL = "http://192.168.55.56:9148";
       TELEGRAM_PROXY = "socks5://192.168.55.56:4444";
-      #TELEGRAM_BOT_TOKEN="8904270755:AAGvXWU8Ifs7mGVfGgLPyo5vVuPP4hy0viY";
-      TELEGRAM_BOT_TOKEN = builtins.readFile ../secrets/tgtoken.txt;
+      TELEGRAM_BOT_TOKEN = builtins.readFile ./secrets/tgtoken_desktop.txt;
       TELEGRAM_ALLOWED_USERS="97981052";
       TELEGRAM_HOME_CHANNEL="Alex";
-
     };
   };
 
-  users.users.hermes = {
-    extraGroups = [ "docker" "users" ];
-    packages = with pkgs; [
-      docker
-    ];
-  };
+#   users.users.hermes = {
+#     extraGroups = [ "docker" "users" ];
+#     packages = with pkgs; [
+#       docker
+#     ];
+#   };
 
    environment.systemPackages = [
     inputs.hermes-agent.packages.${pkgs.system}.default

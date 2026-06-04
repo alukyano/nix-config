@@ -25,7 +25,7 @@
       ../../modules/ai_agents.nix
       ../../modules/civ.nix
       ../../modules/xrdp.nix
-      ../../modules/hermes-desktop.nix 
+      ../../modules/hermes-desktop-local.nix 
       #../../modules/xrdp-wayland.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix

@@ -4,14 +4,14 @@
     enable = true;
     openDefaultPorts = true;
     settings = {
-      user = "${username}";
-      dataDir = "/home/${username}";
-      configDir = "/home/${username}/.config/syncthing";
+      user = "alukyano";
+      dataDir = "/home/alukyano";
+      configDir = "/home/alukyano/.config/syncthing";
 
     folders = {
         sputnik-output = {
           id = "wm2fq-zmiiv";
-          path = "/home/${username}/temp/comfy/basedir/output";
+          path = "/home/alukyano/temp/comfy/basedir/output";
           #devices = [ "buldozer" "sputnik" ];
           ignorePerms = true;
         };

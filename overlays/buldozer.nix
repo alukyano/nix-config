@@ -32,13 +32,12 @@ self: super: {
     }).overrideAttrs
       (oldAttrs: rec {
         pname = "llama-cpp";
-        version = "9469";
+        version = "9481";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
-          tag = "b${version}";
-          #hash = "sha256-DxgUDVr+kwtW55C4b89Pl+j3u2ILmACcQOvOBjKWAKQ=";  
-          hash = "sha256-QhTboBhXQVFyZLlaqXxP254kMq/9idb1fgSsy6pWlvA=";
+          tag = "b${version}"; 
+          hash = "sha256-3QeM6TxWDzF2BoKNieytPcTI6F4snbHFxwZqHCP9lGk=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT
@@ -46,10 +45,9 @@ self: super: {
           '';
         };
        patches = [ ];
-        #vendorHash = "sha256-mQXFTppDI+KgjpZGU40uNOBGNOuMFKXSj3Qld8lTze4=";
-        npmRoot = "tools/server/webui";
-        #npmRoot = "tools/ui";
-        npmDepsHash = "sha256-k62LIbyY2DXvs7XXbX0lNPiYxuYzeJUyQtS4eA+68f8=";
+        #npmRoot = "tools/server/webui";
+        npmRoot = "tools/ui";
+        npmDepsHash = "sha256-Iyg8FpcTKf2UYHuK7mA3cTAqVaLcQPcS0YCa5Qf01Gc=";
         #npmDepsHash = lib.fakeHash;
 
         npmDeps = super.fetchNpmDeps {
@@ -85,18 +83,20 @@ self: super: {
 
         cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
           "-DGGML_NATIVE=ON"
+          "-DGGML_CUDA_ENABLE_UNIFIED_MEMORY=ON"
+          "-DGGML_CUDA_GRAPH=ON"
+          "-DGGML_CUDA_USE_CUBLASLT=ON"
+          "-DGGML_CUDA_FA_ALL_VARIANTS=ON"
           "-DGGML_CUDA_FA_ALL_QUANTS=ON"
           "-DCMAKE_CUDA_ARCHITECTURES=50"
           "-DCMAKE_CUDA_FLAGS=-Wno-deprecated-gpu-targets"
           "-DLLAMA_BUILD_WEBUI=OFF" 
-          "-DGGML_CUDA_ENABLE_UNIFIED_MEMORY=ON"
-          "-DGGML_CUDA_FA_ALL_VARIANTS=ON"
-          "-DBUILD_SHARED_LIBS=OFF"
+          #"-DBUILD_SHARED_LIBS=OFF"
         ];
       });
 
  stable-diffusion-cpp = let
-    rev = "650-1ceb5bd";
+    rev = "672-1f9ee88";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";
@@ -106,7 +106,7 @@ self: super: {
       owner = "leejet";
       repo = "stable-diffusion.cpp";
       tag = version;
-      sha256 = "sha256-vJ9pudTS8cYDUmgnuMhOg3l3jtvtn4XgtqEFWfgIodY=";
+      sha256 = "sha256-Vwe4K/N36gAZ5p2+VNTZYyzyAmfPMuCFpQpaGYYFF34=";
       fetchSubmodules = true;
     };
 

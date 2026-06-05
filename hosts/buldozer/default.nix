@@ -33,7 +33,7 @@
       #../../modules/winboat.nix
       #../../modules/proxy.nix
       ../../modules/ai_agents.nix  
-      ../../modules/hermes-buldozer.nix 
+      #../../modules/hermes/hermes-buldozer.nix 
       ];
 
   # Bootloader.
@@ -62,7 +62,7 @@
     device = "/swapfile";
     size = 16 * 1024;
   }];
-  
+
     systemd.sleep.settings.Sleep = {
     AllowSuspend = false;
     AllowHibernation = false;

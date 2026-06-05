@@ -6,7 +6,7 @@
       ./hardware-configuration.nix
       # Include modules    
       ../../modules/common.nix
-      ../../modules/syncthing.nix
+      #../../modules/syncthing.nix
       ../../modules/nvidia-prime-intel.nix
       #../../modules/gnome-desktop.nix
       #../../modules/plasma-desktop.nix

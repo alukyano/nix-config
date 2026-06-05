@@ -6,10 +6,10 @@
       ./hardware-configuration.nix
       # Include modules    
       ../../modules/common.nix
-      ../../modules/syncthing.nix
+      #../../modules/syncthing/syncthing-sputnik.nix
       ../../modules/nvidia-sputnik.nix
       ../../modules/cinnamon-desktop.nix
-      ../../modules/xfce-desktop.nix
+      #../../modules/xfce-desktop.nix
       ../../modules/desktop.nix
       ../../modules/games.nix
       ../../modules/fonts.nix

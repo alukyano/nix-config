@@ -1,12 +1,18 @@
 {config, pkgs, lib, pkgs-unstable, inputs, username, ...}: {  
 
-  sops.secrets.telegram_key = { };
+  sops = {
+    secrets."hermes-env" = { format = "yaml"; };
+  };
 
   services.hermes-agent = {
     enable = true;
     container.enable = true;
 
     #environmentFiles = [ "/var/lib/hermes/env" ];
+    environmentFiles = [
+      config.sops.secrets."hermes-env".path
+    ];
+    
     settings.model.default = "hermes-qwen3.5-35b-a3b-Q4_K_M.gguf";
     settings.model.provider = "custom";
     settings.model.base_url = "http://192.168.55.56:9148/v1";
@@ -42,7 +48,8 @@
     # gateway = {
     #   platform = "telegram";
     #   #token = lib.strings.removeSuffix "\n" (builtins.readFile ../secrets/tgtoken.txt);
-    #   token = builtins.readFile ./secrets/tgtoken_desktop.txt;
+    #   token = (builtins.readFile config.sops.secrets.telegram_key.path);
+    #   allowed_users="97981052";
     #   transport_kwargs.proxy_url = "socks5://192.168.55.56:4444";
     # };
       # # ── Documents ──────────────────────────────────────────────────────
@@ -60,7 +67,7 @@
       container = {
         image = "ubuntu:24.04";
         backend = "docker";
-        hostUsers = [ "${username}" ];
+        hostUsers = [ "alukyano" ];
         extraVolumes = [ "/home/alukyano/Hermes:/Hermes:rw" "/var/run/docker.pid:/var/run/docker.pid" ];
         #extraOptions = [ "--gpus" "all" ];
       };
@@ -78,11 +85,9 @@
       HERMES_DEFAULT_PROVIDER = "custom";
       OPENAI_BASE_URL = "http://192.168.55.56:9148";
       TELEGRAM_PROXY = "socks5://192.168.55.56:4444";
-      TELEGRAM_BOT_TOKEN = config.sops.secrets.telegram_key.path;
-      #TELEGRAM_BOT_TOKEN = builtins.readFile ../secrets/tgtoken_desktop.txt;
+      #TELEGRAM_BOT_TOKEN = config.sops.templates."telegram_key".content;
       TELEGRAM_ALLOWED_USERS="97981052";
       TELEGRAM_HOME_CHANNEL="Alex";
-
     };
   };
 

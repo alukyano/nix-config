@@ -6,6 +6,15 @@
   ];
 
   hardware.nvidia.open = false;
+  #   # Force the 580 driver version
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production.overrideAttrs {
+  #   version = "580.142.04"; # (Optional) adjust to your exact known 580.xx sub-version
+  #   src = pkgs.fetchurl {
+  #     url = "https://nvidia.com";
+  #     sha256 = "1111111111111111111111111111111111111111111111111111"; # Replace with actual SHA256
+  #   };
+  # };
+
   hardware.nvidia.prime = {
     offload.enable = true;
     offload.enableOffloadCmd = true;
@@ -17,11 +26,18 @@
   with pkgs; [
     nvtopPackages.nvidia
     cudaPackages.cudatoolkit
-    linuxPackages.nvidia_x11
-    linuxPackages.nvidiaPackages.stable
+    #linuxPackages.nvidia_x11
+    linuxPackages.nvidiaPackages.legacy_580
+    #legacy_580
   ];
 
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+
+
+  #boot.kernelPackages = pkgs.linuxPackages_6_12;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
     
   hardware.graphics.extraPackages = with pkgs; [
      intel-vaapi-driver   #vaapiIntel

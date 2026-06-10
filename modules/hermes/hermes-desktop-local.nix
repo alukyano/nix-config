@@ -11,8 +11,8 @@
     settings.model.context_length = 200000;
     #environmentFiles = [ config.sops.secrets."hermes-env".path ];
     #user = "alukyano";
-    group = "alukyano"; # Or your primary group (e.g., "your-username")
-    #extraDependencyGroups = [ "messaging" ];
+    group = "users"; # Or your primary group (e.g., "your-username")
+    extraDependencyGroups = [ "messaging" ];
  
 
     settings = {
@@ -24,7 +24,7 @@
   #   };
 
     custom_providers = {
-      name = [ "custom" ];
+      name = "custom";
       base_url = "http://192.168.55.56:9148/v1";
       model = "hermes-qwen3.5-35b-a3b-Q4_K_M.gguf";
       models."hermes-qwen3.5-35b-a3b-Q4_K_M.gguf".context_length = 200000;
@@ -37,12 +37,22 @@
     memory = { memory_enabled = true; user_profile_enabled = true; };
     agent = { max_turns = 100; verbose = false; };
     
+    # gateway = {
+    #   platform = "telegram";
+    #   #token = lib.strings.removeSuffix "\n" (builtins.readFile ../secrets/tgtoken.txt);
+    #   token = builtins.readFile ./secrets/tgtoken_desktop.txt;
+    #   transport_kwargs.proxy_url = "socks5://192.168.55.56:4444";
+    # };
     gateway = {
-      platform = "telegram";
-      #token = lib.strings.removeSuffix "\n" (builtins.readFile ../secrets/tgtoken.txt);
-      token = builtins.readFile ./secrets/tgtoken_desktop.txt;
-      transport_kwargs.proxy_url = "socks5://192.168.55.56:4444";
-    };
+      platform = "irc";
+      enabled = true;
+      host = "84.54.47.152";
+      port = 6667;
+      use_ssl = false;
+      nickname = "hermes-desktop";
+      channels = [ "#hermes-desktop" ];
+      password = "mordor";
+    };    
       # # ── Documents ──────────────────────────────────────────────────────
       # documents = {
       #   "USER.md" = ./documents/USER.md;
@@ -138,10 +148,18 @@
     environment = {
       HERMES_DEFAULT_PROVIDER = "custom";
       OPENAI_BASE_URL = "http://192.168.55.56:9148";
-      TELEGRAM_PROXY = "socks5://192.168.55.56:4444";
-      TELEGRAM_BOT_TOKEN = builtins.readFile ./secrets/tgtoken_desktop.txt;
-      TELEGRAM_ALLOWED_USERS="97981052";
-      TELEGRAM_HOME_CHANNEL="Alex";
+      IRC_SERVER="84.54.47.152";
+      IRC_USE_TLS="false";
+      IRC_PORT="6667";
+      IRC_NICKNAME="hermes-desktop";
+      IRC_CHANNEL="hermes-desktop";
+      IRC_SERVER_PASSWORD="mordor";
+      IRC_ALLOW_ALL_USERS="false";
+      IRC_ALLOWED_USERS="alukyano";
+      # TELEGRAM_PROXY = "socks5://192.168.55.56:4444";
+      # TELEGRAM_BOT_TOKEN = builtins.readFile ./secrets/tgtoken_desktop.txt;
+      # TELEGRAM_ALLOWED_USERS="97981052";
+      # TELEGRAM_HOME_CHANNEL="Alex";
     };
   };
 

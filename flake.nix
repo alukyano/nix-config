@@ -96,10 +96,12 @@ outputs = inputs @ {
           system = "x86_64-linux";
 
           modules = [
+            sops-nix.nixosModules.sops
+            hermes-agent.nixosModules.default
+
             ./hosts/msc-xalukyano
             ./users/${username}/nixos.nix
 
-            hermes-agent.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

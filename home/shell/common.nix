@@ -8,6 +8,7 @@
     alejandra
     deadnix
     statix
+    age
   ];
 
   programs.direnv = {

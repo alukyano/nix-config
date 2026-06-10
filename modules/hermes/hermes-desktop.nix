@@ -1,5 +1,6 @@
 {config, pkgs, lib, pkgs-unstable, inputs, username, ...}: {  
-  
+  sops.age.keyFile = "/etc/age-key.txt";
+
   services.hermes-agent = {
     enable = true;
     container.enable = true;
@@ -59,7 +60,7 @@
         image = "ubuntu:24.04";
         backend = "docker";
         hostUsers = [ "${username}" ];
-        extraVolumes = [ "/home/alukyano/Hermes:/Hermes:rw" ];
+        extraVolumes = [ "/home/alukyano/Hermes:/Hermes:rw" "/var/run/docker.pid:/var/run/docker.pid" ];
         #extraOptions = [ "--gpus" "all" ];
       };
 
@@ -70,14 +71,14 @@
       restartSec = 5;
     };
 
-    extraPackages = with pkgs; [jq ripgrep curl];
+    extraPackages = with pkgs; [jq ripgrep docker curl];
 
     environment = {
       HERMES_DEFAULT_PROVIDER = "custom";
       OPENAI_BASE_URL = "http://192.168.55.56:9148";
       TELEGRAM_PROXY = "socks5://192.168.55.56:4444";
-      #TELEGRAM_BOT_TOKEN="8904270755:AAGvXWU8Ifs7mGVfGgLPyo5vVuPP4hy0viY";
-      TELEGRAM_BOT_TOKEN = builtins.readFile ../secrets/tgtoken_desktop.txt;
+      TELEGRAM_BOT_TOKEN = config.sops.secrets.telegram_token_desktop;
+      #TELEGRAM_BOT_TOKEN = builtins.readFile ../secrets/tgtoken_desktop.txt;
       TELEGRAM_ALLOWED_USERS="97981052";
       TELEGRAM_HOME_CHANNEL="Alex";
 

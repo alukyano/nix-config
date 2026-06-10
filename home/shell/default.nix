@@ -18,7 +18,7 @@ in {
     WINEPREFIX = d + "/wine";
 
     # set default applications
-    EDITOR = "vim";
+    EDITOR = "mcedit";
     BROWSER = "firefox";
     TERMINAL = "alacritty";
 

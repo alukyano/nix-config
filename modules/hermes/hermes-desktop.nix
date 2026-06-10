@@ -1,5 +1,6 @@
 {config, pkgs, lib, pkgs-unstable, inputs, username, ...}: {  
-  sops.age.keyFile = "/etc/age-key.txt";
+
+  sops.secrets.telegram_key = { };
 
   services.hermes-agent = {
     enable = true;
@@ -77,7 +78,7 @@
       HERMES_DEFAULT_PROVIDER = "custom";
       OPENAI_BASE_URL = "http://192.168.55.56:9148";
       TELEGRAM_PROXY = "socks5://192.168.55.56:4444";
-      TELEGRAM_BOT_TOKEN = config.sops.secrets.telegram_token_desktop;
+      TELEGRAM_BOT_TOKEN = config.sops.secrets.telegram_key.path;
       #TELEGRAM_BOT_TOKEN = builtins.readFile ../secrets/tgtoken_desktop.txt;
       TELEGRAM_ALLOWED_USERS="97981052";
       TELEGRAM_HOME_CHANNEL="Alex";

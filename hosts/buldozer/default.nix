@@ -107,6 +107,12 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  sops = {
+    age.keyFile = "/etc/age-key.txt";
+    defaultSopsFile = ./secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.nvidia.acceptLicense = true;

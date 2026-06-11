@@ -68,7 +68,12 @@
         image = "ubuntu:24.04";
         backend = "docker";
         hostUsers = [ "alukyano" ];
-        extraVolumes = [ "/home/alukyano/Hermes:/Hermes:rw" "/var/run/docker.pid:/var/run/docker.pid" ];
+        extraVolumes = [ "/home/alukyano/Hermes:/Hermes:rw" "/var/run/docker.pid:/var/run/docker.pid" "/var/run/docker.sock:/var/run/docker.sock" ];
+        extraPackages = with pkgs; [ docker ]; 
+        extraOptions = [ 
+            "-v" "/run/docker.sock:/run/docker.sock"
+            "-v" "/run/dbus:/run/dbus"
+        ];
         #extraOptions = [ "--gpus" "all" ];
       };
 
@@ -88,6 +93,11 @@
       #TELEGRAM_BOT_TOKEN = config.sops.templates."telegram_key".content;
       TELEGRAM_ALLOWED_USERS="97981052";
       TELEGRAM_HOME_CHANNEL="Alex";
+    };
+
+    environment.variables = {
+      DOCKER_HOST = "unix:///var/run/docker.sock";
+      PATH = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/run/current-system/sw/bin";
     };
   };
 

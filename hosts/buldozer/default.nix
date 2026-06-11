@@ -1,4 +1,4 @@
-{ lib, config, pkgs, username, ... }:
+{ config, lib, inputs, pkgs, options, username, ... }:
 
 {
 
@@ -33,7 +33,7 @@
       #../../modules/winboat.nix
       #../../modules/proxy.nix
       ../../modules/ai_agents.nix  
-      #../../modules/hermes/hermes-buldozer.nix 
+      #../../modules/hermes/hermes-buldozer-local.nix 
       ];
 
   # Bootloader.

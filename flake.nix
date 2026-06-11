@@ -64,6 +64,7 @@ outputs = inputs @ {
             ./hosts/buldozer
             ./users/${username}/nixos.nix
 
+            sops-nix.nixosModules.sops
             hermes-agent.nixosModules.default
             home-manager.nixosModules.home-manager
             {
@@ -174,6 +175,7 @@ outputs = inputs @ {
             ./hosts/moon
             ./users/${username}/nixos.nix
 
+            sops-nix.nixosModules.sops
             hermes-agent.nixosModules.default
             home-manager.nixosModules.home-manager
             {

@@ -77,6 +77,23 @@
     enable = true;
   };
 
+  # hardware.pulseaudio = {
+  #   enable = true;
+  #   # Needed to prevent dummy audio devices from being picked up
+  #   support32Bit = true;
+  #   package = pkgs.pulseaudio.override {
+  #     pulsAudioModules = [ pkgs.pulseaudio-module-xrdp ];
+  # };
+
+  services.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+    extraModules = [ pkgs.pulseaudio-module-xrdp ];
+  };
+
+  # Disable PipeWire to prevent conflicts
+  services.pipewire.enable = false; 
+
   networking.hostName = "msc-xalukyano"; # Define your hostname.
   networking.networkmanager.enable = true;
   #enp4s d8:43:ae:a5:05:77

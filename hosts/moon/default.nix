@@ -72,6 +72,13 @@
   #   AllowSuspendThenHibernate=no
   #   '';
 
+
+  services.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+    extraModules = [ pkgs.pulseaudio-module-xrdp ];
+  };
+
   networking.hostName = "moon"; # Define your hostname.
   networking.networkmanager.enable = true;
   # enp44s0 58:47:ca:7c:db:e9

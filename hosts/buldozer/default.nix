@@ -76,6 +76,21 @@
     # AllowHybridSleep=no
     # AllowSuspendThenHibernate=no
     # '';
+  hardware.graphics = {
+    enable = true;
+  };
+
+  # hardware.pulseaudio.enable = true;
+  # hardware.pulseaudio.package = pkgs.pulseaudio.override {
+  #   pulsAudioModules = [ pkgs.pulseaudio-module-xrdp ];
+  # };
+
+  services.pulseaudio = {
+  enable = true;
+  package = pkgs.pulseaudioFull;
+  extraModules = [ pkgs.pulseaudio-module-xrdp ];
+  };
+
 
   networking.hostName = "buldozer"; # Define your hostname.
   #enp4s0f1 a8:1e:84:7e:ec:9f

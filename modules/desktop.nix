@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
     environment.systemPackages = with pkgs; [
     # GUI dev tools
        #jetbrains.pycharm-community
@@ -56,17 +56,22 @@
     ];
 
 
+  security.rtkit.enable = true;
+
   programs.throne.tunMode.enable = true;
 
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
+  services.pulseaudio.enable = true;
+  services.pipewire.enable = false; 
+  
+# Enable sound with pipewire.
+#   services.pulseaudio.enable = false;
+
+#   services.pipewire = {
+#     enable = true;
+#     alsa.enable = true;
+#     alsa.support32Bit = true;
+#     pulse.enable = true;
+#   };
 
   services.geoclue2.enable = true;
   

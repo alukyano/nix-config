@@ -68,6 +68,12 @@
     AllowSuspendThenHibernate = false;
   };
 
+  services.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+    extraModules = [ pkgs.pulseaudio-module-xrdp ];
+  };
+
   # systemd.sleep.extraConfig = ''
   #   AllowSuspend=no
   #   AllowHibernation=no

@@ -25,7 +25,7 @@
       ../../modules/ai_cuda.nix  
       ../../modules/xrdp.nix
       ../../modules/civ.nix  
-      ../../modules/gitlab.nix
+      ../../modules/gitea.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix
       #../../modules/wine.nix

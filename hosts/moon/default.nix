@@ -18,6 +18,7 @@
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
+      ../../modules/gitea.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix
       ../../modules/wine.nix

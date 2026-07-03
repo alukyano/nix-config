@@ -12,7 +12,7 @@
       config.sops.secrets."hermes-env".path
     ];
 
-    settings.model.default = "hermes-qwen3.5-35b-a3b-Q4_K_M.gguf";
+    settings.model.default = "Qwen3.6-35B-A3B-Uncensored-Genesis-APEX.gguf";
     settings.model.provider = "custom";
     settings.model.base_url = "http://192.168.55.56:9148/v1";
     settings.model.context_length = 262144;
@@ -24,8 +24,8 @@
     custom_providers = {
       name = "custom";
       base_url = "http://192.168.55.56:9148/v1";
-      model = "hermes-qwen3.5-35b-a3b-Q4_K_M.gguf";
-      models."hermes-qwen3.5-35b-a3b-Q4_K_M.gguf".context_length = 262144;
+      model = "Qwen3.6-35B-A3B-Uncensored-Genesis-APEX.gguf ";
+      models."./Qwen3.6-35B-A3B-Uncensored-Genesis-APEX.gguf".context_length = 262144;
     };
 
     toolsets = [ "all" ];
@@ -41,10 +41,10 @@
       cache_enabled = true;
     };
   
-    settings.container = {
-      resources.memory = "8g";
-      resources.cpus = "4";
-    };
+    # settings.container = {
+    #   resources.memory = "8g";
+    #   resources.cpus = "4";
+    # };
 
     # gateway = {
     #   platform = "telegram";

@@ -1,6 +1,6 @@
 self: super: {
  stable-diffusion-cpp = let
-    rev = "647-72e512a";
+    rev = "746-2574f59";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";

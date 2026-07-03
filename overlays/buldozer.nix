@@ -32,12 +32,12 @@ self: super: {
     }).overrideAttrs
       (oldAttrs: rec {
         pname = "llama-cpp";
-        version = "9481";
+        version = "9840";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}"; 
-          hash = "sha256-3QeM6TxWDzF2BoKNieytPcTI6F4snbHFxwZqHCP9lGk=";
+          hash = "sha256-LugzC4UmzC49tRF/DXb3dnXPW4BJkoAaKETrMmDhTsY=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT
@@ -47,7 +47,7 @@ self: super: {
        patches = [ ];
         #npmRoot = "tools/server/webui";
         npmRoot = "tools/ui";
-        npmDepsHash = "sha256-Iyg8FpcTKf2UYHuK7mA3cTAqVaLcQPcS0YCa5Qf01Gc=";
+        npmDepsHash = "sha256-X1DZgmhS/zHTqDT5zq0kywwntthcJ9vRXeqyO3zz6UU=";
         #npmDepsHash = lib.fakeHash;
 
         npmDeps = super.fetchNpmDeps {
@@ -96,7 +96,7 @@ self: super: {
       });
 
  stable-diffusion-cpp = let
-    rev = "672-1f9ee88";
+    rev = "731-9f855c9";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";
@@ -106,7 +106,7 @@ self: super: {
       owner = "leejet";
       repo = "stable-diffusion.cpp";
       tag = version;
-      sha256 = "sha256-Vwe4K/N36gAZ5p2+VNTZYyzyAmfPMuCFpQpaGYYFF34=";
+      sha256 = "sha256-JIv0qFbDoPJAgiCAFuFPkpQ8AIdRTvILaSUOc2WCoP4=";
       fetchSubmodules = true;
     };
 

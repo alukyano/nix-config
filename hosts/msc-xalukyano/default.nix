@@ -20,12 +20,12 @@
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
-      ../../modules/wine.nix
+      #../../modules/wine.nix
       ../../modules/ai_cuda.nix
       ../../modules/ai_agents.nix
       ../../modules/civ.nix
       ../../modules/xrdp.nix
-      ../../modules/hermes/hermes-desktop-local.nix 
+      #../../modules/hermes/hermes-desktop-local.nix 
       #../../modules/xrdp-wayland.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix

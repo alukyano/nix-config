@@ -1,6 +1,6 @@
 self: super: {
  stable-diffusion-cpp = let
-    rev = "669-2d40a8b";
+    rev = "758-c674225";
     version = "master-${rev}";
   in super.stdenv.mkDerivation {
     pname = "stable-diffusion-cpp";
@@ -10,7 +10,7 @@ self: super: {
       owner = "leejet";
       repo = "stable-diffusion.cpp";
       tag = version;
-      sha256 = "sha256-fsx1v3ZpbuH9pL/KTnt90mN4nYAHqvjC06gklbMKNog=";
+      sha256 = "sha256-pr1h2EeqFFmwMT/TrX5R0vRuA1nPdyxtvlV/KujRMk0=";
       fetchSubmodules = true;
     };
 

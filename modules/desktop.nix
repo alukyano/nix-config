@@ -63,7 +63,8 @@
 
   security.rtkit.enable = true;
 
-  programs.throne.tunMode.enable = true;
+  #programs.throne.tunMode.enable = true;
+  programs.throne.tunMode.setuid = true;
 
   services.pulseaudio.enable = true;
   services.pipewire.enable = false; 

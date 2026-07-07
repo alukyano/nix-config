@@ -16,7 +16,7 @@
       ../../modules/remote.nix
       ../../modules/virtualisation.nix
       ../../modules/docker.nix
-      ../../modules/wine.nix
+      #../../modules/wine.nix
       ../../modules/ai_cuda.nix
       ../../modules/xrdp.nix
       ../../modules/ai_agents.nix

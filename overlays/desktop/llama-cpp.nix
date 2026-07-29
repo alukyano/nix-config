@@ -8,12 +8,12 @@ self: super: {
     }).overrideAttrs
       (oldAttrs: rec {
         pname = "llama-cpp";
-        version = "9884";
+        version = "10176";
         src = super.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
           tag = "b${version}"; 
-          hash = "sha256-32kxztIagvzbhiFEYHFas6CripOQViWTgD5ZXHdXkEw=";
+          hash = "sha256-Vyj03Pksm/9PTTS4Cl1rDwOfFjSIp2hxkcrOWMHoCT4=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT
@@ -24,7 +24,7 @@ self: super: {
         #vendorHash = "sha256-mQXFTppDI+KgjpZGU40uNOBGNOuMFKXSj3Qld8lTze4=";
         #npmRoot = "tools/server/webui";
         npmRoot = "tools/ui";
-        npmDepsHash = "sha256-X1DZgmhS/zHTqDT5zq0kywwntthcJ9vRXeqyO3zz6UU=";
+        npmDepsHash = "sha256-B7uEynAG70a3xauBKc20RuFa9cnWaWzVBCh+LPLBnIM=";
         #npmDepsHash = lib.fakeHash;
 
         npmDeps = super.fetchNpmDeps {

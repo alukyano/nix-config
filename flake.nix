@@ -88,7 +88,7 @@ outputs = inputs @ {
           overlays = [ (import ./overlays/desktop/llama-cpp.nix)
                        (import ./overlays/desktop/llama-swap.nix)
                        (import ./overlays/desktop/stable-diffusion-cpp.nix)
-                       (import ./overlays/desktop/civ.nix)
+                       #(import ./overlays/desktop/civ.nix)
            ]; 
         };            
         specialArgs = {inherit username desktop pkgs-unstable inputs;};
@@ -126,7 +126,7 @@ outputs = inputs @ {
           inherit specialArgs;
           overlays = [ (import ./overlays/sputnik/llama-cpp.nix)
                        (import ./overlays/sputnik/stable-diffusion-cpp.nix)
-                       (import ./overlays/sputnik/civ.nix)
+                       #(import ./overlays/sputnik/civ.nix)
            ]; 
         };            
         specialArgs = {inherit username desktop pkgs-unstable inputs;};

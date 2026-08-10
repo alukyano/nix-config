@@ -20,7 +20,7 @@
       ../../modules/ai_cuda.nix
       ../../modules/xrdp.nix
       ../../modules/ai_agents.nix
-      ../../modules/civ.nix
+      #../../modules/civ.nix
       ../../modules/gitea.nix
       #../../modules/hermes.nix
       #../../modules/n8n.nix

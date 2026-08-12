@@ -11,7 +11,7 @@ self: super: {
       repo = "stable-diffusion.cpp";
       tag = version;
       #rev = rev;
-      sha256 = "sha256-fsx1v3ZpbuH9pL/KTnt90mN4nYAHqvjC06gklbMKNog=";
+      sha256 = "sha256-vzVKxrHiwwl3k8YC2SDy57U0hV9nzH1zmuwCF+xPmTQ=";
       fetchSubmodules = true;
     };
 

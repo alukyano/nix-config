@@ -1,6 +1,6 @@
 {pkgs, ...}: {
 environment.systemPackages = with pkgs; [
-    wineWowPackages.wayland
+    wineWow64Packages.wayland
     wine
     winetricks
   ];

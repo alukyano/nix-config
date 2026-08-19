@@ -16,6 +16,7 @@
       ../../modules/games.nix
       ../../modules/fonts.nix
       ../../modules/netbird.nix
+      ../../modules/gitea.nix
       #../../modules/rustdesk-unstable.nix
       ../../modules/remote.nix
       ../../modules/virtualisation.nix

@@ -22,6 +22,8 @@
     cudaPackages.cudatoolkit
     linuxPackages.nvidia_x11
     linuxPackages.nvidiaPackages.stable
+    #tuxclocker-without-unfree
+    #tuxclocker-plugins
   ];
 
   hardware.graphics.extraPackages = with pkgs; [

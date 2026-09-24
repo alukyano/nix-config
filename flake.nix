@@ -29,7 +29,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-     nixai.url = "github:olafkfreund/nix-ai-help";
+     #nixai.url = "github:olafkfreund/nix-ai-help";
   };
 
 outputs = inputs @ {

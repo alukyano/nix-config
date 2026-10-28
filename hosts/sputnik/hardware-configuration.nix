@@ -18,6 +18,11 @@
       fsType = "ext4";
     };
 
+    fileSystems."/home/alukyano/data" =
+    { device = "/dev/disk/by-uuid/f3a5c488-7cd4-457a-a8fa-257ad77df032";
+      fsType = "ext4";
+    };  
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/41B8-48B8";
       fsType = "vfat";

@@ -26,6 +26,7 @@
       #../../modules/n8n.nix
       #../../modules/adb.nix      
       #../../modules/proxy.nix 
+      ../../modules/xray.nix       
     ];
 
   system.stateVersion = "26.05";

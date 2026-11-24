@@ -4,7 +4,7 @@ let
 
   # Пользователь, от имени которого будет работать прокси
   proxyUser = "zapret";
-  proxyUid = 987; 
+  proxyUid = 339; 
   # Очередь и fwmark берем напрямую из настроек модуля zapret2
   qnum = toString config.services.zapret2.firewall.queue;
   fwmark = toString config.services.zapret2.firewall.desyncFwmark;
@@ -24,6 +24,9 @@ in
   # 2. Настройка zapret2 без глобального перехвата трафика хоста
   services.zapret2 = {
     enable = true;
+    extraOptions = [
+      "--debug=1" # или "--debug=syslog"
+    ];
     firewall.configureAutomatically = false;
     package = pkgs-unstable.zapret2;
 
@@ -35,12 +38,13 @@ in
 
     profiles.default = {
       priority = 100;
+      hosts.autodetect.enable = true;
       # Замените на ваши рабочие стратегии, подобранные через blockcheck2
-      parameters = [
-        "--filter-tcp=80,443"
-        "--lua-desync=fake:blob=fake_default_tls:tcp_md5"
-        "--lua-desync=multisplit:pos=1,sniext+1"
-      ];
+      # parameters = [
+      #   "--filter-tcp=80,443"
+      #   "--lua-desync=fake:blob=fake_default_tls:tcp_md5"
+      #   "--lua-desync=multisplit:pos=1,sniext+1"
+      # ];
     };
   };
 

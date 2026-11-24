@@ -25,7 +25,7 @@
       ../../modules/ai_cpu.nix
       ../../modules/xrdp.nix
       ../../modules/ai_agents.nix 
-      ../../modules/civ.nix
+      #../../modules/civ.nix
       ../../modules/xray.nix 
       ../../modules/zapret-moon.nix     
     ];
@@ -49,7 +49,7 @@
 
   # Swappiness to reduce swapfile usage.
   boot.kernel.sysctl = { "vm.swappiness" = 10;};
-  boot.kernelParams = [ "ipv6.disable=1" ];
+  #boot.kernelParams = [ "ipv6.disable=1" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.tmp.useTmpfs = true;
 

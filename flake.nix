@@ -176,6 +176,7 @@ outputs = inputs @ {
           modules = [
             ./hosts/moon
             ./users/${username}/nixos.nix
+            "${nixpkgs-unstable}/nixos/modules/services/networking/zapret2.nix"
 
             sops-nix.nixosModules.sops
             hermes-agent.nixosModules.default

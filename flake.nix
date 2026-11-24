@@ -164,7 +164,7 @@ outputs = inputs @ {
           # overlays = [ (import ./overlays/moon/llama-cpp.nix)
           #              (import ./overlays/moon/stable-diffusion-cpp.nix)
           #              (import ./overlays/moon/civ.nix)
-           ]; 
+          #]; 
         };          
         specialArgs = {inherit username desktop pkgs-unstable inputs;};
       

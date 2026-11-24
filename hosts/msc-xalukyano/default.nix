@@ -30,6 +30,7 @@
       #../../modules/xrdp-wayland.nix
       #../../modules/n8n.nix
       #../../modules/adb.nix
+      ../../modules/xray.nix      
     ];
 
   system.stateVersion = "26.05";

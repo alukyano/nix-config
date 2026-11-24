@@ -41,7 +41,7 @@
         evince
         viewnior
     # VPN
-        throne # former nekoray 
+        #throne # former nekoray 
     # Cloud    
         yandex-disk 
     # Browsers

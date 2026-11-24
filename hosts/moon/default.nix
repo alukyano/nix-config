@@ -26,6 +26,7 @@
       ../../modules/xrdp.nix
       ../../modules/ai_agents.nix 
       ../../modules/civ.nix
+      ../../modules/xray.nix      
     ];
 
   system.stateVersion = "26.05";

@@ -1,6 +1,7 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, pkgs, pkgs-unstable, inputs, ... }:
 
 let
+
   # Пользователь, от имени которого будет работать прокси
   proxyUser = "zapret";
   # Очередь и fwmark берем напрямую из настроек модуля zapret2
@@ -19,6 +20,7 @@ in
   services.zapret2 = {
     enable = true;
     firewall.configureAutomatically = false;
+    package = pkgs-unstable.zapret2;
 
     files = [ 
             "zapret-lib" 

@@ -50,7 +50,7 @@ outputs = inputs @ {
           config = {
             allowUnfree = true;
           };  
-          overlays = [ (import ./overlays/buldozer.nix) ];   
+          #overlays = [ (import ./overlays/buldozer.nix) ];   
         };
 
         #specialArgs = {inherit pkgs-unstable llm-agents username desktop;};

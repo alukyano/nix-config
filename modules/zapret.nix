@@ -4,17 +4,22 @@ let
 
   # Пользователь, от имени которого будет работать прокси
   proxyUser = "zapret";
+  proxyUid = 987; 
   # Очередь и fwmark берем напрямую из настроек модуля zapret2
   qnum = toString config.services.zapret2.firewall.queue;
   fwmark = toString config.services.zapret2.firewall.desyncFwmark;
 in
-{
+{ 
+  documentation.nixos.enable = false;
   # 1. Выделенный системный пользователь для прокси
   users.users.${proxyUser} = {
     isSystemUser = true;
+    uid = proxyUid;
     group = proxyUser;
   };
-  users.groups.${proxyUser} = { };
+  users.groups.${proxyUser} = {
+    gid = proxyUid;
+  };
 
   # 2. Настройка zapret2 без глобального перехвата трафика хоста
   services.zapret2 = {
@@ -31,7 +36,7 @@ in
     profiles.default = {
       priority = 100;
       # Замените на ваши рабочие стратегии, подобранные через blockcheck2
-      args = [
+      parameters = [
         "--filter-tcp=80,443"
         "--lua-desync=fake:blob=fake_default_tls:tcp_md5"
         "--lua-desync=multisplit:pos=1,sniext+1"
@@ -80,8 +85,8 @@ in
 
   # Запускаем sing-box от имени нашего выделенного пользователя
   systemd.services.sing-box.serviceConfig = {
-    User = proxyUser;
-    Group = proxyUser;
+    User = pkgs.lib.mkForce proxyUser;
+    Group = pkgs.lib.mkForce proxyUser;
     DynamicUser = pkgs.lib.mkForce false;
   };
 
@@ -103,7 +108,7 @@ in
           meta mark & ${fwmark} == ${fwmark} accept
 
           # Заворачиваем в очередь zapret2 ТОЛЬКО исходящий трафик прокси-сервера
-          meta skuid "${proxyUser}" counter queue num ${qnum} bypass
+          meta skuid ${toString proxyUid} counter queue num ${qnum} bypass
         }
       '';
     };

@@ -34,6 +34,7 @@
       #../../modules/proxy.nix
       ../../modules/ai_agents.nix  
       #../../modules/hermes/hermes-buldozer-local.nix 
+      ../../modules/zapret.nix
       ];
 
   # Bootloader.

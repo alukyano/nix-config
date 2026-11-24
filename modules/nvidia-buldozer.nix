@@ -34,8 +34,8 @@
 
 
 
-  #boot.kernelPackages = pkgs.linuxPackages_6_12;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_6;
+  #boot.kernelPackages = pkgs.linuxPackages_lts;
 
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
     
